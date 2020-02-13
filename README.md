@@ -1,2 +1,2 @@
 # BookReader
-PDF reader based on native iOS PDFKit.
+PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit.  
