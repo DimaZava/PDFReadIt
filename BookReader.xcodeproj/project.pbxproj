@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				1421EF141F0A411E00BEB695 /* AppDelegate.swift */,
-				48522FAE23EA1D790089FF84 /* PDFReader */,
+				E6187FB523F5777F005245AC /* Classes */,
 				140E250F1F0A793100298665 /* LaunchScreen.storyboard */,
 				E7C9FA3122350A55003FBCB6 /* Assets.xcassets */,
 				1421EF201F0A411E00BEB695 /* Info.plist */,
@@ -269,6 +269,14 @@
 				48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */,
 			);
 			path = PagesRangeSelectionTableViewCell;
+			sourceTree = "<group>";
+		};
+		E6187FB523F5777F005245AC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				48522FAE23EA1D790089FF84 /* PDFReader */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
