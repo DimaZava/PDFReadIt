@@ -16,8 +16,8 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "BookReader"
-  spec.version      = "1.0.7"
-  spec.summary      = "A short description of BookReader."
+  spec.version      = "1.0.8"
+  spec.summary      = "PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit."
   spec.swift_version = '4.2'
   spec.requires_arc = true
 
@@ -27,7 +27,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit. Share range of files, add annotations, draw, navigate through previews and many many more.
+  PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit. Share range of pages, add annotations, draw, navigate through previews and many many more.
                    DESC
 
   spec.homepage     = "https://github.com/DimaZava/BookReader"
