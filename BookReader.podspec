@@ -27,7 +27,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  PDF reader based on native iOS PDFKit.  
+  PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit.  
                    DESC
 
   spec.homepage     = "https://github.com/DimaZava/BookReader"
@@ -66,7 +66,6 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # spec.platform     = :ios
   spec.platform     = :ios, "11.0"
 
   #  When using multiple platforms
