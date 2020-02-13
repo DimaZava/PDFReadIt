@@ -10,7 +10,7 @@
 		140E24F71F0A675900298665 /* PDFBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E24F61F0A675900298665 /* PDFBookmarkViewController.swift */; };
 		140E24FA1F0A73F200298665 /* PDFSearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E24F81F0A73F200298665 /* PDFSearchResultsCell.swift */; };
 		140E250C1F0A790F00298665 /* PDFSearchResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140E250E1F0A790F00298665 /* PDFSearchResultsCell.xib */; };
-		140E25111F0A797E00298665 /* PDFReader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140E25081F0A78C900298665 /* PDFReader.storyboard */; };
+		140E25111F0A797E00298665 /* PDFReadIt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140E25081F0A78C900298665 /* PDFReadIt.storyboard */; };
 		140E25121F0A798400298665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140E250F1F0A793100298665 /* LaunchScreen.storyboard */; };
 		140E25141F0AB67C00298665 /* ActionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E25131F0AB67C00298665 /* ActionMenuViewController.swift */; };
 		140E251A1F0AE1BD00298665 /* Sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 140E25191F0ADEC800298665 /* Sample.pdf */; };
@@ -23,7 +23,7 @@
 		14155C8A1F0A45E300A53380 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C891F0A45E300A53380 /* AppearanceViewController.swift */; };
 		14155C8C1F0A460E00A53380 /* PDFSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C8B1F0A460E00A53380 /* PDFSearchViewController.swift */; };
 		1421EF151F0A411E00BEB695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421EF141F0A411E00BEB695 /* AppDelegate.swift */; };
-		1421EF1C1F0A411E00BEB695 /* PDFReader.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */; };
+		1421EF1C1F0A411E00BEB695 /* PDFReadIt.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1421EF1B1F0A411E00BEB695 /* PDFReadIt.xcassets */; };
 		4897D13B23E95BFA00736353 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897D13A23E95BFA00736353 /* ActionViewModel.swift */; };
 		48AB3AC323E8665F0064A89F /* PDFViewGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */; };
 		48AB3AC823E86A770064A89F /* PDFOutlineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48AB3AC723E86A770064A89F /* PDFOutlineCell.xib */; };
@@ -46,7 +46,7 @@
 /* Begin PBXFileReference section */
 		140E24F61F0A675900298665 /* PDFBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFBookmarkViewController.swift; sourceTree = "<group>"; };
 		140E24F81F0A73F200298665 /* PDFSearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFSearchResultsCell.swift; sourceTree = "<group>"; };
-		140E25091F0A78C900298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PDFReader.storyboard; sourceTree = "<group>"; };
+		140E25091F0A78C900298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PDFReadIt.storyboard; sourceTree = "<group>"; };
 		140E250D1F0A790F00298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PDFSearchResultsCell.xib; sourceTree = "<group>"; };
 		140E25101F0A793100298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		140E25131F0AB67C00298665 /* ActionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuViewController.swift; sourceTree = "<group>"; };
@@ -59,9 +59,9 @@
 		14155C871F0A45BE00A53380 /* PDFOutlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFOutlineCell.swift; sourceTree = "<group>"; };
 		14155C891F0A45E300A53380 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
 		14155C8B1F0A460E00A53380 /* PDFSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFSearchViewController.swift; sourceTree = "<group>"; };
-		1421EF111F0A411E00BEB695 /* BookReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1421EF111F0A411E00BEB695 /* PDFReadIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFReadIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1421EF141F0A411E00BEB695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PDFReader.xcassets; sourceTree = "<group>"; };
+		1421EF1B1F0A411E00BEB695 /* PDFReadIt.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PDFReadIt.xcassets; sourceTree = "<group>"; };
 		1421EF201F0A411E00BEB695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4897D13A23E95BFA00736353 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
 		48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		1421EF081F0A411E00BEB695 = {
 			isa = PBXGroup;
 			children = (
-				1421EF131F0A411E00BEB695 /* BookReader */,
+				1421EF131F0A411E00BEB695 /* PDFReadIt */,
 				1421EF121F0A411E00BEB695 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,12 +104,12 @@
 		1421EF121F0A411E00BEB695 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1421EF111F0A411E00BEB695 /* BookReader.app */,
+				1421EF111F0A411E00BEB695 /* PDFReadIt.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1421EF131F0A411E00BEB695 /* BookReader */ = {
+		1421EF131F0A411E00BEB695 /* PDFReadIt */ = {
 			isa = PBXGroup;
 			children = (
 				E6187FB523F5777F005245AC /* Classes */,
@@ -120,16 +120,16 @@
 				1421EF201F0A411E00BEB695 /* Info.plist */,
 				140E25191F0ADEC800298665 /* Sample.pdf */,
 			);
-			path = BookReader;
+			path = PDFReadIt;
 			sourceTree = "<group>";
 		};
-		48522FAE23EA1D790089FF84 /* PDFReader */ = {
+		48522FAE23EA1D790089FF84 /* Reader */ = {
 			isa = PBXGroup;
 			children = (
 				48AB3AC123E8664A0064A89F /* PDFSupport */,
 				48AB3AC023E8663E0064A89F /* PDFViewControllers */,
 			);
-			path = PDFReader;
+			path = Reader;
 			sourceTree = "<group>";
 		};
 		4897D13923E95BE000736353 /* Actions */ = {
@@ -273,7 +273,7 @@
 		E6187FB523F5777F005245AC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				48522FAE23EA1D790089FF84 /* PDFReader */,
+				48522FAE23EA1D790089FF84 /* Reader */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -281,8 +281,8 @@
 		E68BA65A23F57C6400209405 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				140E25081F0A78C900298665 /* PDFReader.storyboard */,
-				1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */,
+				140E25081F0A78C900298665 /* PDFReadIt.storyboard */,
+				1421EF1B1F0A411E00BEB695 /* PDFReadIt.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -290,9 +290,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1421EF101F0A411E00BEB695 /* BookReader */ = {
+		1421EF101F0A411E00BEB695 /* PDFReadIt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1421EF231F0A411E00BEB695 /* Build configuration list for PBXNativeTarget "BookReader" */;
+			buildConfigurationList = 1421EF231F0A411E00BEB695 /* Build configuration list for PBXNativeTarget "PDFReadIt" */;
 			buildPhases = (
 				1421EF0D1F0A411E00BEB695 /* Sources */,
 				1421EF0E1F0A411E00BEB695 /* Frameworks */,
@@ -302,9 +302,9 @@
 			);
 			dependencies = (
 			);
-			name = BookReader;
+			name = PDFReadIt;
 			productName = BookReader;
-			productReference = 1421EF111F0A411E00BEB695 /* BookReader.app */;
+			productReference = 1421EF111F0A411E00BEB695 /* PDFReadIt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -323,7 +323,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1421EF0C1F0A411E00BEB695 /* Build configuration list for PBXProject "BookReader" */;
+			buildConfigurationList = 1421EF0C1F0A411E00BEB695 /* Build configuration list for PBXProject "PDFReadIt" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -336,7 +336,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1421EF101F0A411E00BEB695 /* BookReader */,
+				1421EF101F0A411E00BEB695 /* PDFReadIt */,
 			);
 		};
 /* End PBXProject section */
@@ -347,10 +347,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				48C91EA723E999820014DF44 /* PagesSelectionViewController.xib in Resources */,
-				140E25111F0A797E00298665 /* PDFReader.storyboard in Resources */,
+				140E25111F0A797E00298665 /* PDFReadIt.storyboard in Resources */,
 				140E25121F0A798400298665 /* LaunchScreen.storyboard in Resources */,
 				48C91EB323E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib in Resources */,
-				1421EF1C1F0A411E00BEB695 /* PDFReader.xcassets in Resources */,
+				1421EF1C1F0A411E00BEB695 /* PDFReadIt.xcassets in Resources */,
 				140E250C1F0A790F00298665 /* PDFSearchResultsCell.xib in Resources */,
 				48C91E9923E96C370014DF44 /* PageActionTableViewCell.xib in Resources */,
 				48C91EAD23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib in Resources */,
@@ -396,12 +396,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		140E25081F0A78C900298665 /* PDFReader.storyboard */ = {
+		140E25081F0A78C900298665 /* PDFReadIt.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				140E25091F0A78C900298665 /* Base */,
 			);
-			name = PDFReader.storyboard;
+			name = PDFReadIt.storyboard;
 			sourceTree = "<group>";
 		};
 		140E250E1F0A790F00298665 /* PDFSearchResultsCell.xib */ = {
@@ -547,9 +547,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3KMY6RBT5Y;
-				INFOPLIST_FILE = BookReader/Info.plist;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pdf-test";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PDFReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -560,10 +560,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6M2Z6C29XA;
-				INFOPLIST_FILE = BookReader/Info.plist;
+				DEVELOPMENT_TEAM = 3KMY6RBT5Y;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kishikawakatsumi.BookReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PDFReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -573,7 +573,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1421EF0C1F0A411E00BEB695 /* Build configuration list for PBXProject "BookReader" */ = {
+		1421EF0C1F0A411E00BEB695 /* Build configuration list for PBXProject "PDFReadIt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1421EF211F0A411E00BEB695 /* Debug */,
@@ -582,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1421EF231F0A411E00BEB695 /* Build configuration list for PBXNativeTarget "BookReader" */ = {
+		1421EF231F0A411E00BEB695 /* Build configuration list for PBXNativeTarget "PDFReadIt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1421EF241F0A411E00BEB695 /* Debug */,

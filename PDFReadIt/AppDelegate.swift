@@ -15,13 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        let fileManager = FileManager.default
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let contents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-        let documents = contents.compactMap { PDFDocument(url: $0) }
+        let url = Bundle.main.url(forResource: "Sample", withExtension: "pdf")
+        let document = PDFDocument(url: url!)!
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = PDFReaderViewController.instantiateViewController(with: documents.first!)
+        let viewController = PDFReaderViewController.instantiateViewController(with: document)
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         

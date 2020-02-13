@@ -14,7 +14,7 @@ class PDFReaderViewController: UIViewController {
 
     // MARK: - Static members
     static func instantiateViewController(with document: PDFDocument) -> UINavigationController {
-        guard let navigationController = UIStoryboard(name: "PDFReader", bundle: nil).instantiateInitialViewController() as? UINavigationController,
+        guard let navigationController = UIStoryboard(name: "PDFReadIt", bundle: nil).instantiateInitialViewController() as? UINavigationController,
             let viewController = navigationController.topViewController as? Self else {
                 fatalError("Unable to instantiate PDFReaderViewController")
         }

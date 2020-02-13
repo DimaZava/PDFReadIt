@@ -15,11 +15,10 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "BookReader"
+  spec.name         = "PDFReadIt"
   spec.version      = "1.0.8"
   spec.summary      = "PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit."
   spec.swift_version = '4.2'
-  spec.requires_arc = true
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -30,7 +29,7 @@ Pod::Spec.new do |spec|
   PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit. Share range of pages, add annotations, draw, navigate through previews and many many more.
                    DESC
 
-  spec.homepage     = "https://github.com/DimaZava/BookReader"
+  spec.homepage     = "https://github.com/DimaZava/PDFReadIt"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -81,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source = { :git => "https://github.com/DimaZava/BookReader.git", :tag => "#{spec.version}" }
+  spec.source = { :git => "https://github.com/DimaZava/PDFReadIt.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -92,7 +91,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files = "BookReader/Classes/**/*"
+  spec.source_files = "PDFReadIt/Classes/**/*"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -107,7 +106,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  spec.resources = "BookReader/Resources/**/*"
+  spec.resources = "PDFReadIt/Resources/**/*"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -131,7 +130,7 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # spec.requires_arc = true
+  spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
