@@ -16,8 +16,10 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "BookReader"
-  spec.version      = "1.0.5"
+  spec.version      = "1.0.6"
   spec.summary      = "A short description of BookReader."
+  spec.swift_version = '4.2'
+  spec.requires_arc = true
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +27,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  PDF reader based on native iOS PDFKit. 
+  PDF reader based on native iOS PDFKit.  
                    DESC
 
   spec.homepage     = "https://github.com/DimaZava/BookReader"
