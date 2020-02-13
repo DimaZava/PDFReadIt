@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		140E24F71F0A675900298665 /* PDFBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E24F61F0A675900298665 /* PDFBookmarkViewController.swift */; };
+		140E24FA1F0A73F200298665 /* PDFSearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E24F81F0A73F200298665 /* PDFSearchResultsCell.swift */; };
+		140E250C1F0A790F00298665 /* PDFSearchResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140E250E1F0A790F00298665 /* PDFSearchResultsCell.xib */; };
+		140E25111F0A797E00298665 /* PDFReader.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140E25081F0A78C900298665 /* PDFReader.storyboard */; };
+		140E25121F0A798400298665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140E250F1F0A793100298665 /* LaunchScreen.storyboard */; };
+		140E25141F0AB67C00298665 /* ActionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140E25131F0AB67C00298665 /* ActionMenuViewController.swift */; };
+		140E251A1F0AE1BD00298665 /* Sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 140E25191F0ADEC800298665 /* Sample.pdf */; };
+		140E251D1F0AF89D00298665 /* PDFThumbnailGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 140E251F1F0AF89D00298665 /* PDFThumbnailGridCell.xib */; };
+		14155C801F0A425F00A53380 /* PDFReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C7F1F0A425F00A53380 /* PDFReaderViewController.swift */; };
+		14155C821F0A449F00A53380 /* PDFThumbnailGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C811F0A449F00A53380 /* PDFThumbnailGridViewController.swift */; };
+		14155C841F0A450E00A53380 /* PDFThumbnailGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C831F0A450E00A53380 /* PDFThumbnailGridCell.swift */; };
+		14155C861F0A459200A53380 /* PDFOutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C851F0A459200A53380 /* PDFOutlineViewController.swift */; };
+		14155C881F0A45BE00A53380 /* PDFOutlineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C871F0A45BE00A53380 /* PDFOutlineCell.swift */; };
+		14155C8A1F0A45E300A53380 /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C891F0A45E300A53380 /* AppearanceViewController.swift */; };
+		14155C8C1F0A460E00A53380 /* PDFSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14155C8B1F0A460E00A53380 /* PDFSearchViewController.swift */; };
+		1421EF151F0A411E00BEB695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421EF141F0A411E00BEB695 /* AppDelegate.swift */; };
+		1421EF1C1F0A411E00BEB695 /* PDFReader.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */; };
+		4897D13B23E95BFA00736353 /* ActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4897D13A23E95BFA00736353 /* ActionViewModel.swift */; };
+		48AB3AC323E8665F0064A89F /* PDFViewGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */; };
+		48AB3AC823E86A770064A89F /* PDFOutlineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48AB3AC723E86A770064A89F /* PDFOutlineCell.xib */; };
+		48C91E9823E96C370014DF44 /* PageActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91E9623E96C370014DF44 /* PageActionTableViewCell.swift */; };
+		48C91E9923E96C370014DF44 /* PageActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91E9723E96C370014DF44 /* PageActionTableViewCell.xib */; };
+		48C91E9C23E976FE0014DF44 /* ActionMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91E9B23E976FE0014DF44 /* ActionMenuViewController.xib */; };
+		48C91EA023E992080014DF44 /* ShareActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91E9E23E992080014DF44 /* ShareActionTableViewCell.swift */; };
+		48C91EA123E992080014DF44 /* ShareActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91E9F23E992080014DF44 /* ShareActionTableViewCell.xib */; };
+		48C91EA623E999820014DF44 /* PagesSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EA423E999820014DF44 /* PagesSelectionViewController.swift */; };
+		48C91EA723E999820014DF44 /* PagesSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91EA523E999820014DF44 /* PagesSelectionViewController.xib */; };
+		48C91EAC23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EAA23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift */; };
+		48C91EAD23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91EAB23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib */; };
+		48C91EB223E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB023E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift */; };
+		48C91EB323E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */; };
+		48C91EB623E9E2830014DF44 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */; };
+		48C91EB823E9EDEC0014DF44 /* ReaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB723E9EDEC0014DF44 /* ReaderNavigationController.swift */; };
+		E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C9FA3122350A55003FBCB6 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		140E24F61F0A675900298665 /* PDFBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFBookmarkViewController.swift; sourceTree = "<group>"; };
+		140E24F81F0A73F200298665 /* PDFSearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFSearchResultsCell.swift; sourceTree = "<group>"; };
+		140E25091F0A78C900298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PDFReader.storyboard; sourceTree = "<group>"; };
+		140E250D1F0A790F00298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PDFSearchResultsCell.xib; sourceTree = "<group>"; };
+		140E25101F0A793100298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		140E25131F0AB67C00298665 /* ActionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuViewController.swift; sourceTree = "<group>"; };
+		140E25191F0ADEC800298665 /* Sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Sample.pdf; sourceTree = "<group>"; };
+		140E251E1F0AF89D00298665 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PDFThumbnailGridCell.xib; sourceTree = "<group>"; };
+		14155C7F1F0A425F00A53380 /* PDFReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderViewController.swift; sourceTree = "<group>"; };
+		14155C811F0A449F00A53380 /* PDFThumbnailGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFThumbnailGridViewController.swift; sourceTree = "<group>"; };
+		14155C831F0A450E00A53380 /* PDFThumbnailGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFThumbnailGridCell.swift; sourceTree = "<group>"; };
+		14155C851F0A459200A53380 /* PDFOutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFOutlineViewController.swift; sourceTree = "<group>"; };
+		14155C871F0A45BE00A53380 /* PDFOutlineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFOutlineCell.swift; sourceTree = "<group>"; };
+		14155C891F0A45E300A53380 /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
+		14155C8B1F0A460E00A53380 /* PDFSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFSearchViewController.swift; sourceTree = "<group>"; };
+		1421EF111F0A411E00BEB695 /* BookReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1421EF141F0A411E00BEB695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PDFReader.xcassets; sourceTree = "<group>"; };
+		1421EF201F0A411E00BEB695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4897D13A23E95BFA00736353 /* ActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewModel.swift; sourceTree = "<group>"; };
+		48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewGestureRecognizer.swift; sourceTree = "<group>"; };
+		48AB3AC723E86A770064A89F /* PDFOutlineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PDFOutlineCell.xib; sourceTree = "<group>"; };
+		48C91E9623E96C370014DF44 /* PageActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageActionTableViewCell.swift; sourceTree = "<group>"; };
+		48C91E9723E96C370014DF44 /* PageActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageActionTableViewCell.xib; sourceTree = "<group>"; };
+		48C91E9B23E976FE0014DF44 /* ActionMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionMenuViewController.xib; sourceTree = "<group>"; };
+		48C91E9E23E992080014DF44 /* ShareActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActionTableViewCell.swift; sourceTree = "<group>"; };
+		48C91E9F23E992080014DF44 /* ShareActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareActionTableViewCell.xib; sourceTree = "<group>"; };
+		48C91EA423E999820014DF44 /* PagesSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesSelectionViewController.swift; sourceTree = "<group>"; };
+		48C91EA523E999820014DF44 /* PagesSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesSelectionViewController.xib; sourceTree = "<group>"; };
+		48C91EAA23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		48C91EAB23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		48C91EB023E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesRangeSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesRangeSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
+		48C91EB723E9EDEC0014DF44 /* ReaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderNavigationController.swift; sourceTree = "<group>"; };
+		E7C9FA3122350A55003FBCB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1421EF0E1F0A411E00BEB695 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1421EF081F0A411E00BEB695 = {
+			isa = PBXGroup;
+			children = (
+				1421EF131F0A411E00BEB695 /* BookReader */,
+				1421EF121F0A411E00BEB695 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1421EF121F0A411E00BEB695 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1421EF111F0A411E00BEB695 /* BookReader.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1421EF131F0A411E00BEB695 /* BookReader */ = {
+			isa = PBXGroup;
+			children = (
+				1421EF141F0A411E00BEB695 /* AppDelegate.swift */,
+				48522FAE23EA1D790089FF84 /* PDFReader */,
+				140E250F1F0A793100298665 /* LaunchScreen.storyboard */,
+				E7C9FA3122350A55003FBCB6 /* Assets.xcassets */,
+				1421EF201F0A411E00BEB695 /* Info.plist */,
+				140E25191F0ADEC800298665 /* Sample.pdf */,
+			);
+			path = BookReader;
+			sourceTree = "<group>";
+		};
+		48522FAE23EA1D790089FF84 /* PDFReader */ = {
+			isa = PBXGroup;
+			children = (
+				48AB3AC123E8664A0064A89F /* PDFSupport */,
+				48AB3AC023E8663E0064A89F /* PDFViewControllers */,
+				140E25081F0A78C900298665 /* PDFReader.storyboard */,
+				1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */,
+			);
+			path = PDFReader;
+			sourceTree = "<group>";
+		};
+		4897D13923E95BE000736353 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				48C91EA223E9994F0014DF44 /* ActionMenuViewController */,
+				48C91EA323E9995E0014DF44 /* PagesSelectionViewController */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		48AB3AC023E8663E0064A89F /* PDFViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				48AB3AC623E86A3D0064A89F /* Search */,
+				48AB3AC423E86A170064A89F /* ThumbnailGrid */,
+				48AB3AC523E86A200064A89F /* Outline */,
+				14155C7F1F0A425F00A53380 /* PDFReaderViewController.swift */,
+				140E24F61F0A675900298665 /* PDFBookmarkViewController.swift */,
+			);
+			path = PDFViewControllers;
+			sourceTree = "<group>";
+		};
+		48AB3AC123E8664A0064A89F /* PDFSupport */ = {
+			isa = PBXGroup;
+			children = (
+				48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */,
+				48C91EB723E9EDEC0014DF44 /* ReaderNavigationController.swift */,
+				48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */,
+				14155C891F0A45E300A53380 /* AppearanceViewController.swift */,
+				4897D13923E95BE000736353 /* Actions */,
+			);
+			path = PDFSupport;
+			sourceTree = "<group>";
+		};
+		48AB3AC423E86A170064A89F /* ThumbnailGrid */ = {
+			isa = PBXGroup;
+			children = (
+				14155C831F0A450E00A53380 /* PDFThumbnailGridCell.swift */,
+				140E251F1F0AF89D00298665 /* PDFThumbnailGridCell.xib */,
+				14155C811F0A449F00A53380 /* PDFThumbnailGridViewController.swift */,
+			);
+			path = ThumbnailGrid;
+			sourceTree = "<group>";
+		};
+		48AB3AC523E86A200064A89F /* Outline */ = {
+			isa = PBXGroup;
+			children = (
+				14155C871F0A45BE00A53380 /* PDFOutlineCell.swift */,
+				48AB3AC723E86A770064A89F /* PDFOutlineCell.xib */,
+				14155C851F0A459200A53380 /* PDFOutlineViewController.swift */,
+			);
+			path = Outline;
+			sourceTree = "<group>";
+		};
+		48AB3AC623E86A3D0064A89F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				140E24F81F0A73F200298665 /* PDFSearchResultsCell.swift */,
+				140E250E1F0A790F00298665 /* PDFSearchResultsCell.xib */,
+				14155C8B1F0A460E00A53380 /* PDFSearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		48C91E9A23E9703C0014DF44 /* PageActionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				48C91E9623E96C370014DF44 /* PageActionTableViewCell.swift */,
+				48C91E9723E96C370014DF44 /* PageActionTableViewCell.xib */,
+			);
+			path = PageActionTableViewCell;
+			sourceTree = "<group>";
+		};
+		48C91E9D23E991F60014DF44 /* ShareActionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				48C91E9E23E992080014DF44 /* ShareActionTableViewCell.swift */,
+				48C91E9F23E992080014DF44 /* ShareActionTableViewCell.xib */,
+			);
+			path = ShareActionTableViewCell;
+			sourceTree = "<group>";
+		};
+		48C91EA223E9994F0014DF44 /* ActionMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				48C91EA823E9A1C90014DF44 /* Cells */,
+				4897D13A23E95BFA00736353 /* ActionViewModel.swift */,
+				140E25131F0AB67C00298665 /* ActionMenuViewController.swift */,
+				48C91E9B23E976FE0014DF44 /* ActionMenuViewController.xib */,
+			);
+			path = ActionMenuViewController;
+			sourceTree = "<group>";
+		};
+		48C91EA323E9995E0014DF44 /* PagesSelectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				48C91EA923E9A1D50014DF44 /* Cells */,
+				48C91EA423E999820014DF44 /* PagesSelectionViewController.swift */,
+				48C91EA523E999820014DF44 /* PagesSelectionViewController.xib */,
+			);
+			path = PagesSelectionViewController;
+			sourceTree = "<group>";
+		};
+		48C91EA823E9A1C90014DF44 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48C91E9D23E991F60014DF44 /* ShareActionTableViewCell */,
+				48C91E9A23E9703C0014DF44 /* PageActionTableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		48C91EA923E9A1D50014DF44 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48C91EAF23E9AC070014DF44 /* PagesRangeSelectionTableViewCell */,
+				48C91EAE23E9ABB00014DF44 /* PagesSelectionTableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		48C91EAE23E9ABB00014DF44 /* PagesSelectionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				48C91EAA23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift */,
+				48C91EAB23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib */,
+			);
+			path = PagesSelectionTableViewCell;
+			sourceTree = "<group>";
+		};
+		48C91EAF23E9AC070014DF44 /* PagesRangeSelectionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				48C91EB023E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift */,
+				48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */,
+			);
+			path = PagesRangeSelectionTableViewCell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1421EF101F0A411E00BEB695 /* BookReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1421EF231F0A411E00BEB695 /* Build configuration list for PBXNativeTarget "BookReader" */;
+			buildPhases = (
+				1421EF0D1F0A411E00BEB695 /* Sources */,
+				1421EF0E1F0A411E00BEB695 /* Frameworks */,
+				1421EF0F1F0A411E00BEB695 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BookReader;
+			productName = BookReader;
+			productReference = 1421EF111F0A411E00BEB695 /* BookReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1421EF091F0A411E00BEB695 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Kishikawa Katsumi";
+				TargetAttributes = {
+					1421EF101F0A411E00BEB695 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1010;
+					};
+				};
+			};
+			buildConfigurationList = 1421EF0C1F0A411E00BEB695 /* Build configuration list for PBXProject "BookReader" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1421EF081F0A411E00BEB695;
+			productRefGroup = 1421EF121F0A411E00BEB695 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1421EF101F0A411E00BEB695 /* BookReader */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1421EF0F1F0A411E00BEB695 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C91EA723E999820014DF44 /* PagesSelectionViewController.xib in Resources */,
+				140E25111F0A797E00298665 /* PDFReader.storyboard in Resources */,
+				140E25121F0A798400298665 /* LaunchScreen.storyboard in Resources */,
+				48C91EB323E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib in Resources */,
+				1421EF1C1F0A411E00BEB695 /* PDFReader.xcassets in Resources */,
+				140E250C1F0A790F00298665 /* PDFSearchResultsCell.xib in Resources */,
+				48C91E9923E96C370014DF44 /* PageActionTableViewCell.xib in Resources */,
+				48C91EAD23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib in Resources */,
+				E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */,
+				48AB3AC823E86A770064A89F /* PDFOutlineCell.xib in Resources */,
+				140E251D1F0AF89D00298665 /* PDFThumbnailGridCell.xib in Resources */,
+				48C91EA123E992080014DF44 /* ShareActionTableViewCell.xib in Resources */,
+				140E251A1F0AE1BD00298665 /* Sample.pdf in Resources */,
+				48C91E9C23E976FE0014DF44 /* ActionMenuViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1421EF0D1F0A411E00BEB695 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C91EB823E9EDEC0014DF44 /* ReaderNavigationController.swift in Sources */,
+				14155C8A1F0A45E300A53380 /* AppearanceViewController.swift in Sources */,
+				48C91E9823E96C370014DF44 /* PageActionTableViewCell.swift in Sources */,
+				14155C841F0A450E00A53380 /* PDFThumbnailGridCell.swift in Sources */,
+				4897D13B23E95BFA00736353 /* ActionViewModel.swift in Sources */,
+				140E24FA1F0A73F200298665 /* PDFSearchResultsCell.swift in Sources */,
+				140E25141F0AB67C00298665 /* ActionMenuViewController.swift in Sources */,
+				48C91EAC23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift in Sources */,
+				48C91EB223E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift in Sources */,
+				48AB3AC323E8665F0064A89F /* PDFViewGestureRecognizer.swift in Sources */,
+				48C91EB623E9E2830014DF44 /* SelfSizedTableView.swift in Sources */,
+				48C91EA023E992080014DF44 /* ShareActionTableViewCell.swift in Sources */,
+				14155C861F0A459200A53380 /* PDFOutlineViewController.swift in Sources */,
+				14155C8C1F0A460E00A53380 /* PDFSearchViewController.swift in Sources */,
+				48C91EA623E999820014DF44 /* PagesSelectionViewController.swift in Sources */,
+				140E24F71F0A675900298665 /* PDFBookmarkViewController.swift in Sources */,
+				14155C801F0A425F00A53380 /* PDFReaderViewController.swift in Sources */,
+				1421EF151F0A411E00BEB695 /* AppDelegate.swift in Sources */,
+				14155C881F0A45BE00A53380 /* PDFOutlineCell.swift in Sources */,
+				14155C821F0A449F00A53380 /* PDFThumbnailGridViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		140E25081F0A78C900298665 /* PDFReader.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				140E25091F0A78C900298665 /* Base */,
+			);
+			name = PDFReader.storyboard;
+			sourceTree = "<group>";
+		};
+		140E250E1F0A790F00298665 /* PDFSearchResultsCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				140E250D1F0A790F00298665 /* Base */,
+			);
+			name = PDFSearchResultsCell.xib;
+			sourceTree = "<group>";
+		};
+		140E250F1F0A793100298665 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				140E25101F0A793100298665 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		140E251F1F0AF89D00298665 /* PDFThumbnailGridCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				140E251E1F0AF89D00298665 /* Base */,
+			);
+			name = PDFThumbnailGridCell.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1421EF211F0A411E00BEB695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1421EF221F0A411E00BEB695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1421EF241F0A411E00BEB695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3KMY6RBT5Y;
+				INFOPLIST_FILE = BookReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pdf-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1421EF251F0A411E00BEB695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6M2Z6C29XA;
+				INFOPLIST_FILE = BookReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kishikawakatsumi.BookReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1421EF0C1F0A411E00BEB695 /* Build configuration list for PBXProject "BookReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1421EF211F0A411E00BEB695 /* Debug */,
+				1421EF221F0A411E00BEB695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1421EF231F0A411E00BEB695 /* Build configuration list for PBXNativeTarget "BookReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1421EF241F0A411E00BEB695 /* Debug */,
+				1421EF251F0A411E00BEB695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1421EF091F0A411E00BEB695 /* Project object */;
+}
