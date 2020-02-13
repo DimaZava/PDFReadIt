@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "BookReader"
-  spec.version      = "1.0.4"
+  spec.version      = "1.0.5"
   spec.summary      = "A short description of BookReader."
 
   # This description is used to generate tags and improve search results.
@@ -106,7 +106,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.resource  = "icon.png"
-  # spec.resources = "Resources/*.png"
+  spec.resources = "BookReader/Resources/**/*"
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

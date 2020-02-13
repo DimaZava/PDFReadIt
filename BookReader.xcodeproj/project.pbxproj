@@ -112,8 +112,9 @@
 		1421EF131F0A411E00BEB695 /* BookReader */ = {
 			isa = PBXGroup;
 			children = (
-				1421EF141F0A411E00BEB695 /* AppDelegate.swift */,
 				E6187FB523F5777F005245AC /* Classes */,
+				E68BA65A23F57C6400209405 /* Resources */,
+				1421EF141F0A411E00BEB695 /* AppDelegate.swift */,
 				140E250F1F0A793100298665 /* LaunchScreen.storyboard */,
 				E7C9FA3122350A55003FBCB6 /* Assets.xcassets */,
 				1421EF201F0A411E00BEB695 /* Info.plist */,
@@ -127,8 +128,6 @@
 			children = (
 				48AB3AC123E8664A0064A89F /* PDFSupport */,
 				48AB3AC023E8663E0064A89F /* PDFViewControllers */,
-				140E25081F0A78C900298665 /* PDFReader.storyboard */,
-				1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */,
 			);
 			path = PDFReader;
 			sourceTree = "<group>";
@@ -277,6 +276,15 @@
 				48522FAE23EA1D790089FF84 /* PDFReader */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		E68BA65A23F57C6400209405 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				140E25081F0A78C900298665 /* PDFReader.storyboard */,
+				1421EF1B1F0A411E00BEB695 /* PDFReader.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
