@@ -46,6 +46,14 @@ class PDFReaderViewController: UIViewController {
     @objc var pdfDocument: PDFDocument?
     var bookmarkButton: UIBarButtonItem!
     var searchNavigationController: UINavigationController?
+    var activeTouchDrawView: TouchDrawView?
+    var inkSettingsViewController: InkSettingsViewController?
+    lazy var drawingGestureRecognizer: PDFDrawingGestureRecognizer = {
+        let drawingGestureRecognizer = PDFDrawingGestureRecognizer()
+        drawingGestureRecognizer.pdfView = pdfView
+        pdfView.addGestureRecognizer(drawingGestureRecognizer)
+        return drawingGestureRecognizer
+    }()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -81,7 +89,7 @@ class PDFReaderViewController: UIViewController {
                                                object: nil)
 
         barHideOnTapGestureRecognizer.addTarget(self, action: #selector(gestureRecognizedToggleVisibility(_:)))
-        view.addGestureRecognizer(barHideOnTapGestureRecognizer)
+        pdfView.addGestureRecognizer(barHideOnTapGestureRecognizer)
 
         for segmentIndex in 0..<tableOfContentsToggleSegmentedControl.numberOfSegments {
             tableOfContentsToggleSegmentedControl.setWidth(50.0, forSegmentAt: segmentIndex)
@@ -150,6 +158,11 @@ class PDFReaderViewController: UIViewController {
         navigationController.popoverPresentationController?.permittedArrowDirections = .up
         navigationController.popoverPresentationController?.delegate = self
         present(navigationController, animated: true)
+    }
+
+    @objc
+    func annotateAction(_ sender: UIBarButtonItem) {
+        enableAnnotationMode()
     }
 
     @objc
@@ -238,11 +251,8 @@ class PDFReaderViewController: UIViewController {
             }
         }
     }
-}
 
-// MARK: - Private extension of PDFReaderViewController
-private extension PDFReaderViewController {
-
+    // MARK: - Other
     func resumeDefaultState() {
 
         let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_back"), style: .plain, target: self, action: #selector(back(_:)))
@@ -253,7 +263,8 @@ private extension PDFReaderViewController {
         let brightnessButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_brightness"), style: .plain, target: self, action: #selector(showAppearanceMenu(_:)))
         bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal"), style: .plain, target: self, action: #selector(addOrRemoveBookmark(_:)))
         let actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showActionMenu(_:)))
-        navigationItem.rightBarButtonItems = [actionButton, bookmarkButton, brightnessButton]
+        let annotateButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(annotateAction(_:)))
+        navigationItem.rightBarButtonItems = [annotateButton, actionButton, bookmarkButton, brightnessButton]
 
         pdfThumbnailViewContainer.alpha = 1
 
@@ -268,6 +279,10 @@ private extension PDFReaderViewController {
         updateBookmarkStatus()
         updatePageNumberLabel()
     }
+}
+
+// MARK: - Private extension of PDFReaderViewController
+private extension PDFReaderViewController {
 
     func showTableOfContents() {
         view.exchangeSubview(at: 0, withSubviewAt: 1)

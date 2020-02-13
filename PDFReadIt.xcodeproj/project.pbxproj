@@ -40,6 +40,12 @@
 		48C91EB323E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */; };
 		48C91EB623E9E2830014DF44 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */; };
 		48C91EB823E9EDEC0014DF44 /* ReaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB723E9EDEC0014DF44 /* ReaderNavigationController.swift */; };
+		E6650E1C23F5A66900F311D4 /* InkSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E1A23F5A66900F311D4 /* InkSettingsViewController.swift */; };
+		E6650E1D23F5A66900F311D4 /* InkSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6650E1B23F5A66900F311D4 /* InkSettingsViewController.xib */; };
+		E6650E2323F5B35C00F311D4 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E2223F5B35C00F311D4 /* UIViewController+Extensions.swift */; };
+		E6650E2523F5CEBA00F311D4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E2423F5CEBA00F311D4 /* UIView+Extensions.swift */; };
+		E6650E2923F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E2823F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift */; };
+		E6650E2B23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E2A23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift */; };
 		E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C9FA3122350A55003FBCB6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +85,12 @@
 		48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesRangeSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		48C91EB723E9EDEC0014DF44 /* ReaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderNavigationController.swift; sourceTree = "<group>"; };
+		E6650E1A23F5A66900F311D4 /* InkSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsViewController.swift; sourceTree = "<group>"; };
+		E6650E1B23F5A66900F311D4 /* InkSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsViewController.xib; sourceTree = "<group>"; };
+		E6650E2223F5B35C00F311D4 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		E6650E2423F5CEBA00F311D4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		E6650E2823F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDrawingGestureRecognizer.swift; sourceTree = "<group>"; };
+		E6650E2A23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDFReaderViewController+Annotations.swift"; sourceTree = "<group>"; };
 		E7C9FA3122350A55003FBCB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +156,7 @@
 		48AB3AC023E8663E0064A89F /* PDFViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E68BA66223F5990B00209405 /* Annotations */,
 				48AB3AC623E86A3D0064A89F /* Search */,
 				48AB3AC423E86A170064A89F /* ThumbnailGrid */,
 				48AB3AC523E86A200064A89F /* Outline */,
@@ -273,9 +286,29 @@
 		E6187FB523F5777F005245AC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E6650E2123F5B34600F311D4 /* Extensions */,
 				48522FAE23EA1D790089FF84 /* Reader */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		E6650E1E23F5A67200F311D4 /* InkSettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E6650E1A23F5A66900F311D4 /* InkSettingsViewController.swift */,
+				E6650E1B23F5A66900F311D4 /* InkSettingsViewController.xib */,
+			);
+			path = InkSettingsViewController;
+			sourceTree = "<group>";
+		};
+		E6650E2123F5B34600F311D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E6650E2223F5B35C00F311D4 /* UIViewController+Extensions.swift */,
+				E6650E2423F5CEBA00F311D4 /* UIView+Extensions.swift */,
+				E6650E2823F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E68BA65A23F57C6400209405 /* Resources */ = {
@@ -285,6 +318,15 @@
 				1421EF1B1F0A411E00BEB695 /* PDFReadIt.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E68BA66223F5990B00209405 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				E6650E1E23F5A67200F311D4 /* InkSettingsViewController */,
+				E6650E2A23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift */,
+			);
+			path = Annotations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +398,7 @@
 				48C91EAD23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib in Resources */,
 				E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */,
 				48AB3AC823E86A770064A89F /* PDFOutlineCell.xib in Resources */,
+				E6650E1D23F5A66900F311D4 /* InkSettingsViewController.xib in Resources */,
 				140E251D1F0AF89D00298665 /* PDFThumbnailGridCell.xib in Resources */,
 				48C91EA123E992080014DF44 /* ShareActionTableViewCell.xib in Resources */,
 				140E251A1F0AE1BD00298665 /* Sample.pdf in Resources */,
@@ -372,22 +415,27 @@
 			files = (
 				48C91EB823E9EDEC0014DF44 /* ReaderNavigationController.swift in Sources */,
 				14155C8A1F0A45E300A53380 /* AppearanceViewController.swift in Sources */,
+				E6650E2323F5B35C00F311D4 /* UIViewController+Extensions.swift in Sources */,
 				48C91E9823E96C370014DF44 /* PageActionTableViewCell.swift in Sources */,
 				14155C841F0A450E00A53380 /* PDFThumbnailGridCell.swift in Sources */,
 				4897D13B23E95BFA00736353 /* ActionViewModel.swift in Sources */,
 				140E24FA1F0A73F200298665 /* PDFSearchResultsCell.swift in Sources */,
 				140E25141F0AB67C00298665 /* ActionMenuViewController.swift in Sources */,
+				E6650E2923F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift in Sources */,
 				48C91EAC23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift in Sources */,
 				48C91EB223E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift in Sources */,
 				48AB3AC323E8665F0064A89F /* PDFViewGestureRecognizer.swift in Sources */,
+				E6650E2523F5CEBA00F311D4 /* UIView+Extensions.swift in Sources */,
 				48C91EB623E9E2830014DF44 /* SelfSizedTableView.swift in Sources */,
 				48C91EA023E992080014DF44 /* ShareActionTableViewCell.swift in Sources */,
 				14155C861F0A459200A53380 /* PDFOutlineViewController.swift in Sources */,
+				E6650E1C23F5A66900F311D4 /* InkSettingsViewController.swift in Sources */,
 				14155C8C1F0A460E00A53380 /* PDFSearchViewController.swift in Sources */,
 				48C91EA623E999820014DF44 /* PagesSelectionViewController.swift in Sources */,
 				140E24F71F0A675900298665 /* PDFBookmarkViewController.swift in Sources */,
 				14155C801F0A425F00A53380 /* PDFReaderViewController.swift in Sources */,
 				1421EF151F0A411E00BEB695 /* AppDelegate.swift in Sources */,
+				E6650E2B23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift in Sources */,
 				14155C881F0A45BE00A53380 /* PDFOutlineCell.swift in Sources */,
 				14155C821F0A449F00A53380 /* PDFThumbnailGridViewController.swift in Sources */,
 			);
