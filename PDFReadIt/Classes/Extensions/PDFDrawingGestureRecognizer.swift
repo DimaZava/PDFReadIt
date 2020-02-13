@@ -46,7 +46,7 @@ class PDFDrawingGestureRecognizer: UIGestureRecognizer {
             border.lineWidth = 10
             border.style = .solid
 
-            currentAnnotation = PDFAnnotation(bounds: pdfView.bounds, forType: .ink, withProperties: [
+            currentAnnotation = PDFAnnotation(bounds: pdfView.currentPage!.bounds(for: .mediaBox), forType: .ink, withProperties: [
                 PDFAnnotationKey.border: border,
                 PDFAnnotationKey.color: UIColor.red,
                 PDFAnnotationKey.interiorColor: UIColor.red,

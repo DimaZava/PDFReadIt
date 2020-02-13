@@ -46,14 +46,8 @@ class PDFReaderViewController: UIViewController {
     @objc var pdfDocument: PDFDocument?
     var bookmarkButton: UIBarButtonItem!
     var searchNavigationController: UINavigationController?
-    var activeTouchDrawView: TouchDrawView?
     var inkSettingsViewController: InkSettingsViewController?
-    lazy var drawingGestureRecognizer: PDFDrawingGestureRecognizer = {
-        let drawingGestureRecognizer = PDFDrawingGestureRecognizer()
-        drawingGestureRecognizer.pdfView = pdfView
-        pdfView.addGestureRecognizer(drawingGestureRecognizer)
-        return drawingGestureRecognizer
-    }()
+    var drawingGestureRecognizer: PDFDrawingGestureRecognizer?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -279,6 +273,20 @@ class PDFReaderViewController: UIViewController {
         updateBookmarkStatus()
         updatePageNumberLabel()
     }
+
+    func addDrawingGestureRecognizerToPDFView() {
+        let drawingGestureRecognizer = PDFDrawingGestureRecognizer()
+        drawingGestureRecognizer.pdfView = pdfView
+        self.drawingGestureRecognizer = drawingGestureRecognizer
+        pdfView.addGestureRecognizer(drawingGestureRecognizer)
+    }
+
+    func removeDrawingGestureRecognizerFromPDFView() {
+        guard let drawingGestureRecognizer = drawingGestureRecognizer else { return }
+        pdfView.removeGestureRecognizer(drawingGestureRecognizer)
+        self.drawingGestureRecognizer = nil
+    }
+
 }
 
 // MARK: - Private extension of PDFReaderViewController

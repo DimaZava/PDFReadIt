@@ -12,12 +12,12 @@ extension PDFReaderViewController {
 
     func enableAnnotationMode() {
         showAnnotationControls()
-        drawingGestureRecognizer.isEnabled = true
+        addDrawingGestureRecognizerToPDFView()
     }
 
     func disableAnnotationMode() {
         resumeDefaultState()
-        drawingGestureRecognizer.isEnabled = false
+        removeDrawingGestureRecognizerFromPDFView()
     }
 }
 
