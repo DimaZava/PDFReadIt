@@ -40,6 +40,8 @@ class PDFReaderViewController: UIViewController {
     // MARK: - Constants
     let tableOfContentsToggleSegmentedControl = UISegmentedControl(items: [#imageLiteral(resourceName: "pdf_reader_navigation_grid"), #imageLiteral(resourceName: "pdf_reader_navigation_list"), #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal")])
     let pdfViewGestureRecognizer = PDFViewGestureRecognizer()
+    var pdfPrevPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
+    var pdfNextPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
     let barHideOnTapGestureRecognizer = UITapGestureRecognizer()
 
     // MARK: - Variables
@@ -47,7 +49,11 @@ class PDFReaderViewController: UIViewController {
     var bookmarkButton: UIBarButtonItem!
     var searchNavigationController: UINavigationController?
     var inkSettingsViewController: InkSettingsViewController?
-    var drawingGestureRecognizer: PDFDrawingGestureRecognizer?
+    lazy var drawingGestureRecognizer: PDFDrawingGestureRecognizer = {
+        let recognizer = PDFDrawingGestureRecognizer(for: pdfView)
+        pdfView.addGestureRecognizer(recognizer)
+        return recognizer
+    }()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -62,12 +68,23 @@ class PDFReaderViewController: UIViewController {
         pdfView.document = pdfDocument
         titleLabel.text = pdfDocument?.documentAttributes?["Title"] as? String
 
-        pdfView.autoScales = true
-        pdfView.displayMode = .singlePage
+        pdfView.displayMode = .twoUp
+        pdfView.displaysAsBook = true
         pdfView.displayDirection = .horizontal
-        pdfView.usePageViewController(true, withViewOptions: [UIPageViewController.OptionsKey.interPageSpacing: 20])
+        pdfView.autoScales = true
+        //pdfView.usePageViewController(true)
+        
+        //pdfView.addGestureRecognizer(pdfViewGestureRecognizer)
 
-        pdfView.addGestureRecognizer(pdfViewGestureRecognizer)
+        let pdfPrevPageChangeSwipeGestureRecognizer = PDFPageChangeSwipeGestureRecognizer(pdfView: pdfView)
+        pdfPrevPageChangeSwipeGestureRecognizer.direction = .left
+        pdfView.addGestureRecognizer(pdfPrevPageChangeSwipeGestureRecognizer)
+        self.pdfPrevPageChangeSwipeGestureRecognizer = pdfPrevPageChangeSwipeGestureRecognizer
+
+        let pdfNextPageChangeSwipeGestureRecognizer = PDFPageChangeSwipeGestureRecognizer(pdfView: pdfView)
+        pdfNextPageChangeSwipeGestureRecognizer.direction = .right
+        pdfView.addGestureRecognizer(pdfNextPageChangeSwipeGestureRecognizer)
+        self.pdfNextPageChangeSwipeGestureRecognizer = pdfNextPageChangeSwipeGestureRecognizer
 
         pdfThumbnailView.layoutMode = .horizontal
         pdfThumbnailView.pdfView = pdfView
@@ -83,6 +100,8 @@ class PDFReaderViewController: UIViewController {
                                                object: nil)
 
         barHideOnTapGestureRecognizer.addTarget(self, action: #selector(gestureRecognizedToggleVisibility(_:)))
+        barHideOnTapGestureRecognizer.numberOfTapsRequired = 1
+        barHideOnTapGestureRecognizer.delegate = self
         pdfView.addGestureRecognizer(barHideOnTapGestureRecognizer)
 
         for segmentIndex in 0..<tableOfContentsToggleSegmentedControl.numberOfSegments {
@@ -194,7 +213,7 @@ class PDFReaderViewController: UIViewController {
         var bookmarks = UserDefaults.standard.array(forKey: documentURL) as? [Int] ?? [Int]()
         if let currentPage = pdfView.currentPage,
             let pageIndex = pdfDocument?.index(for: currentPage) {
-            if let index = bookmarks.index(of: pageIndex) {
+            if let index = bookmarks.firstIndex(of: pageIndex) {
                 bookmarks.remove(at: index)
                 UserDefaults.standard.set(bookmarks, forKey: documentURL)
                 bookmarkButton.image = #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal")
@@ -228,6 +247,7 @@ class PDFReaderViewController: UIViewController {
 
     @objc
     func pdfViewPageChanged(_ notification: Notification) {
+        //pdfView.scaleFactor = pdfView.scaleFactorForSizeToFit
         if pdfViewGestureRecognizer.isTracking {
             hideBars()
         }
@@ -275,18 +295,38 @@ class PDFReaderViewController: UIViewController {
     }
 
     func addDrawingGestureRecognizerToPDFView() {
-        let drawingGestureRecognizer = PDFDrawingGestureRecognizer()
-        drawingGestureRecognizer.pdfView = pdfView
-        self.drawingGestureRecognizer = drawingGestureRecognizer
-        pdfView.addGestureRecognizer(drawingGestureRecognizer)
+        drawingGestureRecognizer.isEnabled = true
     }
 
     func removeDrawingGestureRecognizerFromPDFView() {
-        guard let drawingGestureRecognizer = drawingGestureRecognizer else { return }
-        pdfView.removeGestureRecognizer(drawingGestureRecognizer)
-        self.drawingGestureRecognizer = nil
+        drawingGestureRecognizer.isEnabled = false
     }
 
+    func showBars(needsToHideNavigationBar: Bool = true) {
+        if let navigationController = navigationController {
+            UIView.animate(withDuration: CATransaction.animationDuration()) {
+                if needsToHideNavigationBar {
+                    navigationController.navigationBar.alpha = 1
+                }
+                self.pdfThumbnailViewContainer.alpha = 1
+                self.titleLabelContainer.alpha = 1
+                self.pageNumberLabelContainer.alpha = 1
+            }
+        }
+    }
+
+    func hideBars(needsToHideNavigationBar: Bool = true) {
+        if let navigationController = navigationController {
+            UIView.animate(withDuration: CATransaction.animationDuration()) {
+                if needsToHideNavigationBar {
+                    navigationController.navigationBar.alpha = 0
+                }
+                self.pdfThumbnailViewContainer.alpha = 0
+                self.titleLabelContainer.alpha = 0
+                self.pageNumberLabelContainer.alpha = 0
+            }
+        }
+    }
 }
 
 // MARK: - Private extension of PDFReaderViewController
@@ -327,28 +367,6 @@ private extension PDFReaderViewController {
             pageNumberLabel.text = String(format: "%d/%d", index + 1, pageCount)
         } else {
             pageNumberLabel.text = nil
-        }
-    }
-
-    func showBars() {
-        if let navigationController = navigationController {
-            UIView.animate(withDuration: CATransaction.animationDuration()) {
-                navigationController.navigationBar.alpha = 1
-                self.pdfThumbnailViewContainer.alpha = 1
-                self.titleLabelContainer.alpha = 1
-                self.pageNumberLabelContainer.alpha = 1
-            }
-        }
-    }
-
-    func hideBars() {
-        if let navigationController = navigationController {
-            UIView.animate(withDuration: CATransaction.animationDuration()) {
-                navigationController.navigationBar.alpha = 0
-                self.pdfThumbnailViewContainer.alpha = 0
-                self.titleLabelContainer.alpha = 0
-                self.pageNumberLabelContainer.alpha = 0
-            }
         }
     }
 }
@@ -422,6 +440,18 @@ extension PDFReaderViewController: ActionMenuViewControllerDelegate {
         let printInteractionController = UIPrintInteractionController.shared
         printInteractionController.printingItem = pdfDocument?.dataRepresentation()
         printInteractionController.present(animated: true)
+    }
+}
+
+extension PDFReaderViewController: UIGestureRecognizerDelegate {
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        if gestureRecognizer == barHideOnTapGestureRecognizer {
+            return true
+        }
+        return false
     }
 }
 

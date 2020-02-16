@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="InkSettingsStrokeColorCell" customModule="PDFReadIt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9H-c9-hHz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CC4-2j-fzg">
+                                <rect key="frame" x="16" y="11.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohQ-oV-Ssh">
+                                <rect key="frame" x="266" y="10" width="24" height="24"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="9RV-Zz-it3"/>
+                                    <constraint firstAttribute="width" constant="24" id="bIN-zP-PYy"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pdf_reader_chevron_right" translatesAutoresizingMaskIntoConstraints="NO" id="o2P-Vk-ku0">
+                                <rect key="frame" x="292" y="17" width="10" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="Ka6-gx-hHd"/>
+                                    <constraint firstAttribute="width" constant="10" id="Ow3-25-ZaO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="o2P-Vk-ku0" firstAttribute="leading" secondItem="ohQ-oV-Ssh" secondAttribute="trailing" constant="2" id="2hP-1Z-9vS"/>
+                            <constraint firstItem="ohQ-oV-Ssh" firstAttribute="centerY" secondItem="e9H-c9-hHz" secondAttribute="centerY" id="6rg-xl-3E5"/>
+                            <constraint firstItem="CC4-2j-fzg" firstAttribute="centerY" secondItem="e9H-c9-hHz" secondAttribute="centerY" id="Czt-BM-bc1"/>
+                            <constraint firstAttribute="trailing" secondItem="o2P-Vk-ku0" secondAttribute="trailing" constant="18" id="NFp-Oz-mWz"/>
+                            <constraint firstItem="o2P-Vk-ku0" firstAttribute="centerY" secondItem="e9H-c9-hHz" secondAttribute="centerY" id="eVe-aA-dqV"/>
+                            <constraint firstItem="CC4-2j-fzg" firstAttribute="leading" secondItem="e9H-c9-hHz" secondAttribute="leading" constant="16" id="oPy-oJ-A6i"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="e9H-c9-hHz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Hnr-cm-LKH"/>
+                    <constraint firstAttribute="bottom" secondItem="e9H-c9-hHz" secondAttribute="bottom" id="UfN-af-HgJ"/>
+                    <constraint firstItem="e9H-c9-hHz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gJ9-aS-HUE"/>
+                    <constraint firstAttribute="trailing" secondItem="e9H-c9-hHz" secondAttribute="trailing" id="iHF-UJ-QtD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="strokeColorImagePreview" destination="ohQ-oV-Ssh" id="eGS-95-Fuq"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="154"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="pdf_reader_chevron_right" width="11" height="22"/>
+    </resources>
+</document>

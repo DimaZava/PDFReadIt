@@ -46,6 +46,25 @@
 		E6650E2523F5CEBA00F311D4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E2423F5CEBA00F311D4 /* UIView+Extensions.swift */; };
 		E6650E2923F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E2823F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift */; };
 		E6650E2B23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E2A23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift */; };
+		E6B0B75323F6B5DF0018327E /* PDFPageChangePanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B75223F6B5DF0018327E /* PDFPageChangePanGestureRecognizer.swift */; };
+		E6B0B75523F6CF610018327E /* InkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B75423F6CF610018327E /* InkSettings.swift */; };
+		E6B0B75A23F6D7540018327E /* InkSettingsExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B75823F6D7540018327E /* InkSettingsExampleCell.swift */; };
+		E6B0B75B23F6D7540018327E /* InkSettingsExampleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B0B75923F6D7540018327E /* InkSettingsExampleCell.xib */; };
+		E6B0B75F23F6D91F0018327E /* InkSettingsStrokeColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B75D23F6D91F0018327E /* InkSettingsStrokeColorCell.swift */; };
+		E6B0B76023F6D91F0018327E /* InkSettingsStrokeColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B0B75E23F6D91F0018327E /* InkSettingsStrokeColorCell.xib */; };
+		E6B0B76423F6DA930018327E /* InkSettingsFillColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B76223F6DA930018327E /* InkSettingsFillColorCell.swift */; };
+		E6B0B76523F6DA930018327E /* InkSettingsFillColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B0B76323F6DA930018327E /* InkSettingsFillColorCell.xib */; };
+		E6B0B76923F6DB330018327E /* InkSettingsOpacityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B76723F6DB330018327E /* InkSettingsOpacityCell.swift */; };
+		E6B0B76A23F6DB330018327E /* InkSettingsOpacityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B0B76823F6DB330018327E /* InkSettingsOpacityCell.xib */; };
+		E6B0B76E23F6DDBC0018327E /* InkSettingsThicknessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B76C23F6DDBC0018327E /* InkSettingsThicknessCell.swift */; };
+		E6B0B76F23F6DDBC0018327E /* InkSettingsThicknessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B0B76D23F6DDBC0018327E /* InkSettingsThicknessCell.xib */; };
+		E6B0B77823F6F2810018327E /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B77123F6F2800018327E /* UIColor+Utilities.swift */; };
+		E6B0B77923F6F2810018327E /* ChromaAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B77223F6F2800018327E /* ChromaAddButton.swift */; };
+		E6B0B77A23F6F2810018327E /* ChromaShadeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B77323F6F2810018327E /* ChromaShadeSlider.swift */; };
+		E6B0B77B23F6F2810018327E /* ColorModeToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B77423F6F2810018327E /* ColorModeToggleButton.swift */; };
+		E6B0B77C23F6F2810018327E /* ChromaColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B77523F6F2810018327E /* ChromaColorPicker.swift */; };
+		E6B0B77D23F6F2810018327E /* ChromaHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B77723F6F2810018327E /* ChromaHandle.swift */; };
+		E6B0B78023F6F3250018327E /* InkSettingsColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B0B77F23F6F3250018327E /* InkSettingsColorPickerViewController.swift */; };
 		E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C9FA3122350A55003FBCB6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +110,25 @@
 		E6650E2423F5CEBA00F311D4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E6650E2823F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDrawingGestureRecognizer.swift; sourceTree = "<group>"; };
 		E6650E2A23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDFReaderViewController+Annotations.swift"; sourceTree = "<group>"; };
+		E6B0B75223F6B5DF0018327E /* PDFPageChangePanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageChangePanGestureRecognizer.swift; sourceTree = "<group>"; };
+		E6B0B75423F6CF610018327E /* InkSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettings.swift; sourceTree = "<group>"; };
+		E6B0B75823F6D7540018327E /* InkSettingsExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsExampleCell.swift; sourceTree = "<group>"; };
+		E6B0B75923F6D7540018327E /* InkSettingsExampleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsExampleCell.xib; sourceTree = "<group>"; };
+		E6B0B75D23F6D91F0018327E /* InkSettingsStrokeColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsStrokeColorCell.swift; sourceTree = "<group>"; };
+		E6B0B75E23F6D91F0018327E /* InkSettingsStrokeColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsStrokeColorCell.xib; sourceTree = "<group>"; };
+		E6B0B76223F6DA930018327E /* InkSettingsFillColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsFillColorCell.swift; sourceTree = "<group>"; };
+		E6B0B76323F6DA930018327E /* InkSettingsFillColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsFillColorCell.xib; sourceTree = "<group>"; };
+		E6B0B76723F6DB330018327E /* InkSettingsOpacityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsOpacityCell.swift; sourceTree = "<group>"; };
+		E6B0B76823F6DB330018327E /* InkSettingsOpacityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsOpacityCell.xib; sourceTree = "<group>"; };
+		E6B0B76C23F6DDBC0018327E /* InkSettingsThicknessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsThicknessCell.swift; sourceTree = "<group>"; };
+		E6B0B76D23F6DDBC0018327E /* InkSettingsThicknessCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsThicknessCell.xib; sourceTree = "<group>"; };
+		E6B0B77123F6F2800018327E /* UIColor+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
+		E6B0B77223F6F2800018327E /* ChromaAddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaAddButton.swift; sourceTree = "<group>"; };
+		E6B0B77323F6F2810018327E /* ChromaShadeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaShadeSlider.swift; sourceTree = "<group>"; };
+		E6B0B77423F6F2810018327E /* ColorModeToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorModeToggleButton.swift; sourceTree = "<group>"; };
+		E6B0B77523F6F2810018327E /* ChromaColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaColorPicker.swift; sourceTree = "<group>"; };
+		E6B0B77723F6F2810018327E /* ChromaHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChromaHandle.swift; sourceTree = "<group>"; };
+		E6B0B77F23F6F3250018327E /* InkSettingsColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsColorPickerViewController.swift; sourceTree = "<group>"; };
 		E7C9FA3122350A55003FBCB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +212,7 @@
 				48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */,
 				14155C891F0A45E300A53380 /* AppearanceViewController.swift */,
 				4897D13923E95BE000736353 /* Actions */,
+				E6B0B75423F6CF610018327E /* InkSettings.swift */,
 			);
 			path = PDFSupport;
 			sourceTree = "<group>";
@@ -295,6 +334,8 @@
 		E6650E1E23F5A67200F311D4 /* InkSettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E6B0B75623F6D7170018327E /* Cells */,
+				E6B0B77F23F6F3250018327E /* InkSettingsColorPickerViewController.swift */,
 				E6650E1A23F5A66900F311D4 /* InkSettingsViewController.swift */,
 				E6650E1B23F5A66900F311D4 /* InkSettingsViewController.xib */,
 			);
@@ -304,9 +345,11 @@
 		E6650E2123F5B34600F311D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E6B0B77023F6F2750018327E /* ColorPicker */,
 				E6650E2223F5B35C00F311D4 /* UIViewController+Extensions.swift */,
 				E6650E2423F5CEBA00F311D4 /* UIView+Extensions.swift */,
 				E6650E2823F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift */,
+				E6B0B75223F6B5DF0018327E /* PDFPageChangePanGestureRecognizer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +370,76 @@
 				E6650E2A23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift */,
 			);
 			path = Annotations;
+			sourceTree = "<group>";
+		};
+		E6B0B75623F6D7170018327E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0B75723F6D7320018327E /* InkSettingsExampleCell */,
+				E6B0B77E23F6F2E50018327E /* InkSettingsStrokeColor */,
+				E6B0B76123F6DA120018327E /* InkSettingsFillColorCell */,
+				E6B0B76623F6DB1D0018327E /* InkSettingsOpacityCell */,
+				E6B0B76B23F6DDA70018327E /* InkSettingsThicknessCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E6B0B75723F6D7320018327E /* InkSettingsExampleCell */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0B75823F6D7540018327E /* InkSettingsExampleCell.swift */,
+				E6B0B75923F6D7540018327E /* InkSettingsExampleCell.xib */,
+			);
+			path = InkSettingsExampleCell;
+			sourceTree = "<group>";
+		};
+		E6B0B76123F6DA120018327E /* InkSettingsFillColorCell */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0B76223F6DA930018327E /* InkSettingsFillColorCell.swift */,
+				E6B0B76323F6DA930018327E /* InkSettingsFillColorCell.xib */,
+			);
+			path = InkSettingsFillColorCell;
+			sourceTree = "<group>";
+		};
+		E6B0B76623F6DB1D0018327E /* InkSettingsOpacityCell */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0B76723F6DB330018327E /* InkSettingsOpacityCell.swift */,
+				E6B0B76823F6DB330018327E /* InkSettingsOpacityCell.xib */,
+			);
+			path = InkSettingsOpacityCell;
+			sourceTree = "<group>";
+		};
+		E6B0B76B23F6DDA70018327E /* InkSettingsThicknessCell */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0B76C23F6DDBC0018327E /* InkSettingsThicknessCell.swift */,
+				E6B0B76D23F6DDBC0018327E /* InkSettingsThicknessCell.xib */,
+			);
+			path = InkSettingsThicknessCell;
+			sourceTree = "<group>";
+		};
+		E6B0B77023F6F2750018327E /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0B77223F6F2800018327E /* ChromaAddButton.swift */,
+				E6B0B77523F6F2810018327E /* ChromaColorPicker.swift */,
+				E6B0B77723F6F2810018327E /* ChromaHandle.swift */,
+				E6B0B77323F6F2810018327E /* ChromaShadeSlider.swift */,
+				E6B0B77423F6F2810018327E /* ColorModeToggleButton.swift */,
+				E6B0B77123F6F2800018327E /* UIColor+Utilities.swift */,
+			);
+			path = ColorPicker;
+			sourceTree = "<group>";
+		};
+		E6B0B77E23F6F2E50018327E /* InkSettingsStrokeColor */ = {
+			isa = PBXGroup;
+			children = (
+				E6B0B75D23F6D91F0018327E /* InkSettingsStrokeColorCell.swift */,
+				E6B0B75E23F6D91F0018327E /* InkSettingsStrokeColorCell.xib */,
+			);
+			path = InkSettingsStrokeColor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,7 +474,7 @@
 				TargetAttributes = {
 					1421EF101F0A411E00BEB695 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -392,12 +505,17 @@
 				140E25111F0A797E00298665 /* PDFReadIt.storyboard in Resources */,
 				140E25121F0A798400298665 /* LaunchScreen.storyboard in Resources */,
 				48C91EB323E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib in Resources */,
+				E6B0B76F23F6DDBC0018327E /* InkSettingsThicknessCell.xib in Resources */,
+				E6B0B76A23F6DB330018327E /* InkSettingsOpacityCell.xib in Resources */,
 				1421EF1C1F0A411E00BEB695 /* PDFReadIt.xcassets in Resources */,
 				140E250C1F0A790F00298665 /* PDFSearchResultsCell.xib in Resources */,
 				48C91E9923E96C370014DF44 /* PageActionTableViewCell.xib in Resources */,
 				48C91EAD23E9A1EA0014DF44 /* PagesSelectionTableViewCell.xib in Resources */,
 				E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */,
 				48AB3AC823E86A770064A89F /* PDFOutlineCell.xib in Resources */,
+				E6B0B76523F6DA930018327E /* InkSettingsFillColorCell.xib in Resources */,
+				E6B0B76023F6D91F0018327E /* InkSettingsStrokeColorCell.xib in Resources */,
+				E6B0B75B23F6D7540018327E /* InkSettingsExampleCell.xib in Resources */,
 				E6650E1D23F5A66900F311D4 /* InkSettingsViewController.xib in Resources */,
 				140E251D1F0AF89D00298665 /* PDFThumbnailGridCell.xib in Resources */,
 				48C91EA123E992080014DF44 /* ShareActionTableViewCell.xib in Resources */,
@@ -416,23 +534,37 @@
 				48C91EB823E9EDEC0014DF44 /* ReaderNavigationController.swift in Sources */,
 				14155C8A1F0A45E300A53380 /* AppearanceViewController.swift in Sources */,
 				E6650E2323F5B35C00F311D4 /* UIViewController+Extensions.swift in Sources */,
+				E6B0B77D23F6F2810018327E /* ChromaHandle.swift in Sources */,
+				E6B0B77923F6F2810018327E /* ChromaAddButton.swift in Sources */,
 				48C91E9823E96C370014DF44 /* PageActionTableViewCell.swift in Sources */,
+				E6B0B75523F6CF610018327E /* InkSettings.swift in Sources */,
+				E6B0B77823F6F2810018327E /* UIColor+Utilities.swift in Sources */,
 				14155C841F0A450E00A53380 /* PDFThumbnailGridCell.swift in Sources */,
+				E6B0B75F23F6D91F0018327E /* InkSettingsStrokeColorCell.swift in Sources */,
+				E6B0B77A23F6F2810018327E /* ChromaShadeSlider.swift in Sources */,
+				E6B0B78023F6F3250018327E /* InkSettingsColorPickerViewController.swift in Sources */,
+				E6B0B77C23F6F2810018327E /* ChromaColorPicker.swift in Sources */,
+				E6B0B75323F6B5DF0018327E /* PDFPageChangePanGestureRecognizer.swift in Sources */,
 				4897D13B23E95BFA00736353 /* ActionViewModel.swift in Sources */,
 				140E24FA1F0A73F200298665 /* PDFSearchResultsCell.swift in Sources */,
+				E6B0B76423F6DA930018327E /* InkSettingsFillColorCell.swift in Sources */,
 				140E25141F0AB67C00298665 /* ActionMenuViewController.swift in Sources */,
 				E6650E2923F5F94200F311D4 /* PDFDrawingGestureRecognizer.swift in Sources */,
 				48C91EAC23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift in Sources */,
 				48C91EB223E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift in Sources */,
 				48AB3AC323E8665F0064A89F /* PDFViewGestureRecognizer.swift in Sources */,
 				E6650E2523F5CEBA00F311D4 /* UIView+Extensions.swift in Sources */,
+				E6B0B77B23F6F2810018327E /* ColorModeToggleButton.swift in Sources */,
 				48C91EB623E9E2830014DF44 /* SelfSizedTableView.swift in Sources */,
 				48C91EA023E992080014DF44 /* ShareActionTableViewCell.swift in Sources */,
 				14155C861F0A459200A53380 /* PDFOutlineViewController.swift in Sources */,
 				E6650E1C23F5A66900F311D4 /* InkSettingsViewController.swift in Sources */,
 				14155C8C1F0A460E00A53380 /* PDFSearchViewController.swift in Sources */,
+				E6B0B76923F6DB330018327E /* InkSettingsOpacityCell.swift in Sources */,
 				48C91EA623E999820014DF44 /* PagesSelectionViewController.swift in Sources */,
+				E6B0B76E23F6DDBC0018327E /* InkSettingsThicknessCell.swift in Sources */,
 				140E24F71F0A675900298665 /* PDFBookmarkViewController.swift in Sources */,
+				E6B0B75A23F6D7540018327E /* InkSettingsExampleCell.swift in Sources */,
 				14155C801F0A425F00A53380 /* PDFReaderViewController.swift in Sources */,
 				1421EF151F0A411E00BEB695 /* AppDelegate.swift in Sources */,
 				E6650E2B23F5FEC900F311D4 /* PDFReaderViewController+Annotations.swift in Sources */,
@@ -599,7 +731,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PDFReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -613,7 +745,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PDFReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

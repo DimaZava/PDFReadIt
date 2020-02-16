@@ -13,17 +13,30 @@ extension PDFReaderViewController {
     func enableAnnotationMode() {
         showAnnotationControls()
         addDrawingGestureRecognizerToPDFView()
+
+        pdfNextPageChangeSwipeGestureRecognizer?.isEnabled = false
+        pdfPrevPageChangeSwipeGestureRecognizer?.isEnabled = false
+        pdfViewGestureRecognizer.isEnabled = false
+        barHideOnTapGestureRecognizer.isEnabled = false
     }
 
     func disableAnnotationMode() {
         resumeDefaultState()
         removeDrawingGestureRecognizerFromPDFView()
+
+        pdfNextPageChangeSwipeGestureRecognizer?.isEnabled = true
+        pdfPrevPageChangeSwipeGestureRecognizer?.isEnabled = true
+        pdfViewGestureRecognizer.isEnabled = true
+        barHideOnTapGestureRecognizer.isEnabled = true
     }
 }
 
 private extension PDFReaderViewController {
 
     func showAnnotationControls() {
+
+        hideBars(needsToHideNavigationBar: false)
+
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTouchUpInside(_:)))
         ]
@@ -38,13 +51,8 @@ private extension PDFReaderViewController {
     @objc
     func selectInkOptionsButtonTouchUpInside(_ sender: UIBarButtonItem) {
         let inkSettingsViewController = InkSettingsViewController(nibName: String(describing: InkSettingsViewController.self), bundle: nil)
-        inkSettingsViewController.modalPresentationStyle = .popover
-        inkSettingsViewController.popoverPresentationController?.barButtonItem = sender
-        inkSettingsViewController.popoverPresentationController?.permittedArrowDirections = .up
-        inkSettingsViewController.popoverPresentationController?.delegate = self
-
         let navigationController = UINavigationController(rootViewController: inkSettingsViewController)
-        present(navigationController, animated: true)
+        presentPopover(navigationController, barButtonItem: sender)
     }
 
     @objc

@@ -26,6 +26,10 @@ class PDFSearchViewController: UITableViewController, PDFDocumentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModule))
+        ]
+
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
@@ -44,6 +48,11 @@ class PDFSearchViewController: UITableViewController, PDFDocumentDelegate {
     deinit {
         pdfDocument?.cancelFindString()
         pdfDocument?.delegate = nil
+    }
+
+    @objc
+    func dismissModule() {
+        navigationController?.dismiss(animated: true)
     }
 
     // MARK: - UITableViewDelegate & UITableViewDataSource

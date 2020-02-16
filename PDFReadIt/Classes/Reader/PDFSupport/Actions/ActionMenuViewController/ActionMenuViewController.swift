@@ -50,7 +50,7 @@ final class ActionMenuViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let desiredContentSize = tableView.intrinsicContentSize // ????
+        let desiredContentSize = tableView.intrinsicContentSize
         navigationController?.preferredContentSize = CGSize(width: desiredContentSize.width,
                                                             height: desiredContentSize.height)
         tableView.reloadData()

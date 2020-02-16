@@ -11,67 +11,97 @@ import Foundation
 import UIKit
 
 class PDFDrawingGestureRecognizer: UIGestureRecognizer {
-    unowned var pdfView: PDFView!
+
+    unowned let pdfView: PDFView
+    private let path = UIBezierPath()
     private var lastPoint = CGPoint()
     private var currentAnnotation : PDFAnnotation?
+    private var pageToDrawOn: PDFPage?
+
+    init(for pdfView: PDFView) {
+        self.pdfView = pdfView
+        super.init(target: nil, action: nil)
+    }
+
+    func finishDraw() {
+        currentAnnotation?.paths?.forEach({ currentAnnotation?.remove($0) })
+        currentAnnotation?.add(path)
+        currentAnnotation = nil
+        path.removeAllPoints()
+        pageToDrawOn = nil
+    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first,
-            let numberOfTouches = event?.allTouches?.count,
-            numberOfTouches == 1 {
-            state = .began
 
-            let position = touch.location(in: pdfView)
-            let convertedPoint = pdfView.convert(position, to: pdfView.currentPage!)
-
-            lastPoint = convertedPoint
-        } else {
-            state = .failed
+        if pageToDrawOn != nil {
+            path.removeAllPoints()
         }
+
+        guard let position = touches.first?.location(in: pdfView),
+            let numberOfTouches = event?.allTouches?.count,
+            numberOfTouches == 1,
+            let page = pdfView.page(for: position, nearest: false) else {
+                state = .failed
+                return
+        }
+
+        state = .began
+
+        pageToDrawOn = page
+        lastPoint = pdfView.convert(position, to: page)
+
+        let border = PDFBorder()
+        border.lineWidth = CGFloat(InkSettings.sharedInstance.thickness)
+        border.style = .solid
+
+        let properties = [
+            .border: border,
+            .color: InkSettings.sharedInstance.strokeColor
+                .withAlphaComponent(CGFloat(InkSettings.sharedInstance.opacity)),
+            .interiorColor: InkSettings.sharedInstance.fillColor as Any
+            ] as [PDFAnnotationKey: Any]
+
+        currentAnnotation = PDFAnnotation(bounds: page.bounds(for: .cropBox),
+                                          forType: .ink,
+                                          withProperties: properties)
+        pageToDrawOn?.addAnnotation(currentAnnotation!)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         state = .changed
 
-        guard let position = touches.first?.location(in: pdfView) else { return }
-        let convertedPoint = pdfView.convert(position, to: pdfView.currentPage!)
+        guard let position = touches.first?.location(in: pdfView),
+            let page = pdfView.page(for: position, nearest: false),
+            pageToDrawOn == page else { return }
 
-        let path = UIBezierPath()
+        let convertedPoint = pdfView.convert(position, to: page)
+
+        guard lastPoint != convertedPoint else { return }
+
         path.move(to: lastPoint)
         path.addLine(to: convertedPoint)
         lastPoint = convertedPoint
 
-        if currentAnnotation == nil {
-            let border = PDFBorder()
-            border.lineWidth = 10
-            border.style = .solid
-
-            currentAnnotation = PDFAnnotation(bounds: pdfView.currentPage!.bounds(for: .mediaBox), forType: .ink, withProperties: [
-                PDFAnnotationKey.border: border,
-                PDFAnnotationKey.color: UIColor.red,
-                PDFAnnotationKey.interiorColor: UIColor.red,
-            ])
-            let pageIndex = pdfView.document!.index(for: pdfView.currentPage!)
-            pdfView.document?.page(at: pageIndex)?.addAnnotation(currentAnnotation!)
+        if InkSettings.sharedInstance.opacity < 1 {
+            currentAnnotation?.paths?.forEach({ currentAnnotation?.remove($0) })
         }
-        currentAnnotation!.add(path)
+        currentAnnotation?.add(path)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let position = touches.first?.location(in: pdfView) else {
+        guard let position = touches.first?.location(in: pdfView),
+            let page = pdfView.page(for: position, nearest: false),
+            pageToDrawOn == page else {
             state = .ended
             return
         }
 
-        let convertedPoint = pdfView.convert(position, to: pdfView.currentPage!)
+        let convertedPoint = pdfView.convert(position, to: page)
 
-        let path = UIBezierPath()
         path.move(to: lastPoint)
         path.addLine(to: convertedPoint)
 
-        currentAnnotation?.add(path)
-        currentAnnotation = nil
-
+        finishDraw()
         state = .ended
     }
 }

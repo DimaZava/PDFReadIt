@@ -73,12 +73,13 @@ final class PageViewModel {
 
     init(with pdfDocument: PDFDocument, in pdfView: PDFView) {
         guard let currentPage = pdfView.currentPage else { fatalError("PDFDocument unitialized for PDF View") }
-        let pagesRange = (pdfDocument.pageCount > 0 ? 1 : 0)...pdfDocument.pageCount
-        selectedItem = .all(pagesRange)
+        let allPagesRange = (pdfDocument.pageCount > 0 ? 1 : 0)...pdfDocument.pageCount
+        let customPagesRange = (pdfDocument.pageCount > 0 ? 1 : 0)...(pdfDocument.pageCount > 0 ? 1 : 0)
+        selectedItem = .all(allPagesRange)
         items = [
-            .all(pagesRange),
-            .currentPage(pdfDocument.index(for: currentPage)),
-            .range(pagesRange)
+            .all(allPagesRange),
+            .currentPage(pdfDocument.index(for: currentPage) + 1), // needs to conform visual representation
+            .range(customPagesRange)
         ]
     }
 }
