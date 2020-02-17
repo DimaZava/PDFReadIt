@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "PDFReadIt"
-  spec.version      = "1.0.9"
+  spec.version      = "1.1.0"
   spec.summary      = "PDF reader for iOS platform with advanced functionality based on Apple's native PDFKit."
   spec.swift_version = '4.2'
 
