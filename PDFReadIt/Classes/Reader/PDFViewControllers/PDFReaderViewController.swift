@@ -13,6 +13,7 @@ import UIKit
 class PDFReaderViewController: UIViewController {
 
     // MARK: - Static members
+    @objc
     static func instantiateViewController(with document: PDFDocument) -> UINavigationController {
         guard let navigationController = UIStoryboard(name: "PDFReadIt", bundle: nil).instantiateInitialViewController() as? UINavigationController,
             let viewController = navigationController.topViewController as? Self else {
@@ -103,7 +104,7 @@ class PDFReaderViewController: UIViewController {
         pdfView.displayDirection = .horizontal
         pdfView.autoScales = true
         //pdfView.usePageViewController(true)
-        
+
         //pdfView.addGestureRecognizer(pdfViewGestureRecognizer)
 
         let pdfPrevPageChangeSwipeGestureRecognizer = PDFPageChangeSwipeGestureRecognizer(pdfView: pdfView)
@@ -151,7 +152,7 @@ class PDFReaderViewController: UIViewController {
             self.adjustThumbnailViewHeight()
         })
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? PDFThumbnailGridViewController {
             viewController.pdfDocument = pdfDocument
@@ -173,7 +174,7 @@ class PDFReaderViewController: UIViewController {
 
     @objc
     func back(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        dismissModule(animated: true)
     }
 
     @objc
@@ -293,6 +294,25 @@ class PDFReaderViewController: UIViewController {
             } else {
                 showBars()
             }
+        }
+    }
+
+    @objc
+    public func dismissModule(animated: Bool = true) {
+        switch parent {
+        case let navigationController as UINavigationController where !navigationController.viewControllers.isEmpty &&
+            navigationController.viewControllers.first != self:
+            navigationController.popViewController(animated: animated)
+        case _ where parent?.presentingViewController != nil || parent?.popoverPresentationController != nil:
+            if navigationController == nil {
+                dismiss(animated: animated)
+            } else {
+                navigationController?.dismiss(animated: animated)
+            }
+        case let navigationController as UINavigationController where !navigationController.viewControllers.isEmpty:
+            navigationController.popViewController(animated: animated)
+        default:
+            dismiss(animated: animated)
         }
     }
 

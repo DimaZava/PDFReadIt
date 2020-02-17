@@ -8,18 +8,31 @@
 
 import UIKit
 
+
 class ReaderNavigationController: UINavigationController {
 
-    var postPushAction: ((ReaderNavigationController) -> Void)?
-    var postPopAction: ((ReaderNavigationController) -> Void)?
+    @objc
+    var postPresentAction: ((ReaderNavigationController) -> Void)?
+    @objc
+    var postDismissAction: ((ReaderNavigationController) -> Void)?
 
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
-        postPushAction?(self)
+        postPresentAction?(self)
     }
 
     override func popViewController(animated: Bool) -> UIViewController? {
-        defer { postPopAction?(self) }
+        defer { postDismissAction?(self) }
         return super.popViewController(animated: animated)
+    }
+
+    override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.present(viewControllerToPresent, animated: flag, completion: completion)
+        postPresentAction?(self)
+    }
+
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        defer { postDismissAction?(self) }
+        super.dismiss(animated: flag, completion: completion)
     }
 }
