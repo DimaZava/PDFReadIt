@@ -52,16 +52,25 @@
                             <constraint firstItem="CC4-2j-fzg" firstAttribute="leading" secondItem="e9H-c9-hHz" secondAttribute="leading" constant="16" id="oPy-oJ-A6i"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAf-Qe-Jyk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="pAf-Qe-Jyk" secondAttribute="bottom" id="64t-EC-xMo"/>
                     <constraint firstItem="e9H-c9-hHz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Hnr-cm-LKH"/>
+                    <constraint firstItem="pAf-Qe-Jyk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kdg-Ie-wy2"/>
+                    <constraint firstAttribute="trailing" secondItem="pAf-Qe-Jyk" secondAttribute="trailing" id="Ode-Xd-fbM"/>
                     <constraint firstAttribute="bottom" secondItem="e9H-c9-hHz" secondAttribute="bottom" id="UfN-af-HgJ"/>
                     <constraint firstItem="e9H-c9-hHz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gJ9-aS-HUE"/>
                     <constraint firstAttribute="trailing" secondItem="e9H-c9-hHz" secondAttribute="trailing" id="iHF-UJ-QtD"/>
+                    <constraint firstItem="pAf-Qe-Jyk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ygW-aV-hN8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="disableIndicatorView" destination="pAf-Qe-Jyk" id="iCM-0U-iRs"/>
                 <outlet property="strokeColorImagePreview" destination="ohQ-oV-Ssh" id="eGS-95-Fuq"/>
             </connections>
             <point key="canvasLocation" x="139" y="154"/>

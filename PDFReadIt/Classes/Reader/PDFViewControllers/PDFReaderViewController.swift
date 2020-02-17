@@ -38,10 +38,9 @@ class PDFReaderViewController: UIViewController {
     @IBOutlet private weak var bookmarkViewConainer: UIView!
 
     // MARK: - Constants
-    let tableOfContentsToggleSegmentedControl = UISegmentedControl(items: [#imageLiteral(resourceName: "pdf_reader_navigation_grid"), #imageLiteral(resourceName: "pdf_reader_navigation_list"), #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal")])
+    private let tableOfContentsToggleSegmentedControl = UISegmentedControl(items: [#imageLiteral(resourceName: "pdf_reader_navigation_grid"), #imageLiteral(resourceName: "pdf_reader_navigation_list"), #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal")])
+    private let pdfDrawer = PDFDrawer()
     let pdfViewGestureRecognizer = PDFViewGestureRecognizer()
-    var pdfPrevPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
-    var pdfNextPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
     let barHideOnTapGestureRecognizer = UITapGestureRecognizer()
 
     // MARK: - Variables
@@ -49,11 +48,16 @@ class PDFReaderViewController: UIViewController {
     var bookmarkButton: UIBarButtonItem!
     var searchNavigationController: UINavigationController?
     var inkSettingsViewController: InkSettingsViewController?
-    lazy var drawingGestureRecognizer: PDFDrawingGestureRecognizer = {
-        let recognizer = PDFDrawingGestureRecognizer(for: pdfView)
+    var pdfPrevPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
+    var pdfNextPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
+    lazy var drawingGestureRecognizer: DrawingGestureRecognizer = {
+        let recognizer = DrawingGestureRecognizer()
         pdfView.addGestureRecognizer(recognizer)
+        recognizer.drawingDelegate = pdfDrawer
+        pdfDrawer.pdfView = pdfView
         return recognizer
     }()
+    private var shouldUpdatePDFScrollPosition = true
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -61,6 +65,32 @@ class PDFReaderViewController: UIViewController {
         setupUI()
         setupEvents()
         resumeDefaultState()
+    }
+
+    // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if shouldUpdatePDFScrollPosition {
+            fixPDFViewScrollPosition()
+        }
+
+    }
+
+    // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
+    private func fixPDFViewScrollPosition() {
+        if let page = pdfView.document?.page(at: 0) {
+            pdfView.go(to: PDFDestination(page: page, at: CGPoint(x: 0, y: page.bounds(for: pdfView.displayBox).size.height)))
+        }
+    }
+
+    // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        shouldUpdatePDFScrollPosition = false
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        pdfView.autoScales = true // This call is required to fix PDF document scale, seems to be bug inside PDFKit
     }
 
     func setupUI() {
@@ -277,7 +307,7 @@ class PDFReaderViewController: UIViewController {
         let brightnessButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_brightness"), style: .plain, target: self, action: #selector(showAppearanceMenu(_:)))
         bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal"), style: .plain, target: self, action: #selector(addOrRemoveBookmark(_:)))
         let actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showActionMenu(_:)))
-        let annotateButton = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(annotateAction(_:)))
+        let annotateButton = UIBarButtonItem(image: UIImage(named: "pdf_reader_annotation"), style: .plain, target: self, action: #selector(annotateAction(_:)))
         navigationItem.rightBarButtonItems = [annotateButton, actionButton, bookmarkButton, brightnessButton]
 
         pdfThumbnailViewContainer.alpha = 1

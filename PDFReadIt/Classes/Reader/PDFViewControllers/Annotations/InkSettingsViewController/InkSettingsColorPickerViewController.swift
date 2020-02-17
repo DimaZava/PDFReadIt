@@ -43,11 +43,11 @@ class InkSettingsColorPickerViewController: UIViewController {
             view.backgroundColor = .white
         }
 
-        let pickerSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.width * 0.8)
-        let pickerOrigin = CGPoint(x: view.bounds.midX - pickerSize.width / 2,
-                                   y: view.bounds.midY - pickerSize.height / 2)
+//        let pickerSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.width * 0.8)
+//        let pickerOrigin = CGPoint(x: view.bounds.midX - pickerSize.width / 2,
+//                                   y: view.bounds.midY - pickerSize.height / 2)
 
-        colorPicker = ChromaColorPicker(frame: CGRect(origin: pickerOrigin, size: pickerSize))
+        colorPicker = ChromaColorPicker(frame: view.frame)
         colorPicker.delegate = self
 
         colorPicker.padding = 10
@@ -55,8 +55,14 @@ class InkSettingsColorPickerViewController: UIViewController {
         colorPicker.currentAngle = Float.pi
         colorPicker.supportsShadesOfGray = true
         colorPicker.hexLabel.textColor = UIColor.white
+        colorPicker.fillToSuperview()
 
         view.addSubview(colorPicker)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.preferredContentSize = colorPicker.intrinsicContentSize
     }
 }
 

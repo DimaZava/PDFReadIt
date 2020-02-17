@@ -50,16 +50,25 @@
                             <constraint firstAttribute="trailing" secondItem="euX-0k-w7l" secondAttribute="trailing" constant="4" id="k0I-K7-1ID"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-p5-69A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="a6D-p5-69A" secondAttribute="trailing" id="9Cv-YS-d1u"/>
                     <constraint firstAttribute="bottom" secondItem="f8Y-y9-5nK" secondAttribute="bottom" id="AT3-N1-loO"/>
                     <constraint firstItem="f8Y-y9-5nK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CFs-Sb-uR8"/>
                     <constraint firstItem="f8Y-y9-5nK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Myc-F3-i7n"/>
                     <constraint firstAttribute="trailing" secondItem="f8Y-y9-5nK" secondAttribute="trailing" id="R6x-Y2-bX8"/>
+                    <constraint firstAttribute="bottom" secondItem="a6D-p5-69A" secondAttribute="bottom" id="WRe-fh-l7d"/>
+                    <constraint firstItem="a6D-p5-69A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aOn-As-QHw"/>
+                    <constraint firstItem="a6D-p5-69A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="v6c-Cz-ThN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="disableIndicatorView" destination="a6D-p5-69A" id="cvP-cN-mcX"/>
                 <outlet property="thicknessLabel" destination="euX-0k-w7l" id="6gw-N7-SEG"/>
                 <outlet property="thicknessSlider" destination="axt-Ah-aEs" id="GHm-7u-r8P"/>
             </connections>

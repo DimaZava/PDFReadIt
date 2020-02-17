@@ -42,8 +42,7 @@ private extension PDFReaderViewController {
         ]
 
         let rightBarButtonItems = [
-            UIBarButtonItem(title: "Ink", style: .plain, target: self, action: #selector(selectInkOptionsButtonTouchUpInside(_:))),
-            UIBarButtonItem(title: "Text", style: .plain, target: self, action: #selector(setTextButtonTouchUpInside(_:)))
+            UIBarButtonItem(image: UIImage(named: "pdf_reader_ink"), style: .plain, target: self, action: #selector(selectInkOptionsButtonTouchUpInside(_:)))
         ]
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
@@ -57,6 +56,7 @@ private extension PDFReaderViewController {
 
     @objc
     func setTextButtonTouchUpInside(_ sender: Any) {
+        
     }
 
     @objc

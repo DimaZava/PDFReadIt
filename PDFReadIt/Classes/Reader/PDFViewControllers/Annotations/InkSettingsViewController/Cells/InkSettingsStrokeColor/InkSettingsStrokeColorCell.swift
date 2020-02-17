@@ -11,7 +11,8 @@ import UIKit
 class InkSettingsStrokeColorCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak var strokeColorImagePreview: UIView!
+    @IBOutlet private weak var strokeColorImagePreview: UIView!
+    @IBOutlet private weak var disableIndicatorView: UIView!
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -22,6 +23,14 @@ class InkSettingsStrokeColorCell: UITableViewCell {
     }
 
     func configure(with settings: InkSettings) {
+        if case .eraser = settings.tool {
+            disableIndicatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            isUserInteractionEnabled = false
+            return
+        }
+
+        isUserInteractionEnabled = true
+        disableIndicatorView.backgroundColor = .clear
         strokeColorImagePreview.backgroundColor = settings.strokeColor
     }
 }

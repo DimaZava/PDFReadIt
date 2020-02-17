@@ -17,6 +17,7 @@ class InkSettingsOpacityCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet private weak var opacitySlider: UISlider!
     @IBOutlet private weak var opacityLabel: UILabel!
+    @IBOutlet private weak var disableIndicatorView: UIView!
 
     // MARK: - Variables
     weak var delegate: InkSettingsOpacityCellDelegate?
@@ -24,10 +25,21 @@ class InkSettingsOpacityCell: UITableViewCell {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         opacitySlider.addTarget(self, action: #selector(didChangeOpacitySliderValue(_:)), for: .valueChanged)
     }
 
     func configure(with settings: InkSettings) {
+        if case .eraser = settings.tool {
+            disableIndicatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            disableIndicatorView.isHidden = false
+            isUserInteractionEnabled = false
+            return
+        }
+
+        isUserInteractionEnabled = true
+        disableIndicatorView.isHidden = true
+        disableIndicatorView.backgroundColor = .clear
         opacitySlider.setValue(settings.opacity, animated: false)
         opacityLabel.text = "\(Int(settings.opacity * 100))%"
     }

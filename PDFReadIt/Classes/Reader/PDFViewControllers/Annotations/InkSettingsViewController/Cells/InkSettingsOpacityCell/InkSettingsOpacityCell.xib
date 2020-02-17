@@ -53,16 +53,25 @@
                             <constraint firstItem="eeP-sc-VJb" firstAttribute="centerY" secondItem="fUw-PD-52z" secondAttribute="centerY" id="y60-tW-xuO"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3A-6h-cac">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="fUw-PD-52z" secondAttribute="bottom" id="9F4-if-qVF"/>
                     <constraint firstItem="fUw-PD-52z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Hn5-tz-hak"/>
                     <constraint firstItem="fUw-PD-52z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UU7-Jl-gR1"/>
+                    <constraint firstAttribute="bottom" secondItem="M3A-6h-cac" secondAttribute="bottom" id="VTz-dE-Hvd"/>
+                    <constraint firstItem="M3A-6h-cac" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gBa-et-za7"/>
                     <constraint firstAttribute="trailing" secondItem="fUw-PD-52z" secondAttribute="trailing" id="hOL-ke-5fD"/>
+                    <constraint firstAttribute="trailing" secondItem="M3A-6h-cac" secondAttribute="trailing" id="hTT-iV-zf7"/>
+                    <constraint firstItem="M3A-6h-cac" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qT6-oE-OXt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="disableIndicatorView" destination="M3A-6h-cac" id="QK2-Qj-aYy"/>
                 <outlet property="opacityLabel" destination="eeP-sc-VJb" id="2dw-qb-bt0"/>
                 <outlet property="opacitySlider" destination="jU0-J1-S7P" id="BjX-yl-9IX"/>
             </connections>

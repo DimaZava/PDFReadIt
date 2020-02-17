@@ -13,9 +13,10 @@ class InkSettingsViewController: UIViewController {
     enum InkSettingsCells: Int, CaseIterable {
         case example
         case strokeColor
-        case fillColor
+        //case fillColor
         case opacity
         case thickness
+        case tools
     }
 
     // MARK: - Outlets
@@ -41,15 +42,18 @@ class InkSettingsViewController: UIViewController {
             case .strokeColor:
                 let name = String(describing: InkSettingsStrokeColorCell.self)
                 tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
-            case .fillColor:
-                let name = String(describing: InkSettingsFillColorCell.self)
-                tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+//            case .fillColor:
+//                let name = String(describing: InkSettingsFillColorCell.self)
+//                tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
             case .opacity:
                 let name = String(describing: InkSettingsOpacityCell.self)
                 tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
             case .thickness:
                 let name = String(describing: InkSettingsThicknessCell.self)
                 tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+            case .tools:
+                 let name = String(describing: InkSettingsToolsCell.self)
+                 tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
             }
         }
         tableView.delegate = self
@@ -57,12 +61,13 @@ class InkSettingsViewController: UIViewController {
         tableView.reloadData()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let desiredContentSize = tableView.intrinsicContentSize
-        navigationController?.preferredContentSize = CGSize(width: desiredContentSize.width,
-                                                            height: desiredContentSize.height)
-        tableView.reloadData()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if navigationController?.preferredContentSize != tableView.intrinsicContentSize {
+            let desiredContentSize = tableView.intrinsicContentSize
+            navigationController?.preferredContentSize = CGSize(width: desiredContentSize.width,
+                                                                height: desiredContentSize.height)
+        }
     }
 
     // MARK: - Actions
@@ -86,14 +91,16 @@ extension InkSettingsViewController: UITableViewDelegate {
             let viewController = InkSettingsColorPickerViewController(with: .strokeColor)
             viewController.delegate = self
             navigationController?.pushViewController(viewController, animated: true)
-        case .fillColor:
-            tableView.deselectRow(at: indexPath, animated: true)
-            let viewController = InkSettingsColorPickerViewController(with: .fillColor)
-            viewController.delegate = self
-            navigationController?.pushViewController(viewController, animated: true)
+//        case .fillColor:
+//            tableView.deselectRow(at: indexPath, animated: true)
+//            let viewController = InkSettingsColorPickerViewController(with: .fillColor)
+//            viewController.delegate = self
+//            navigationController?.pushViewController(viewController, animated: true)
         case .opacity:
             tableView.deselectRow(at: indexPath, animated: true)
         case .thickness:
+            tableView.deselectRow(at: indexPath, animated: true)
+        case .tools:
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -120,11 +127,11 @@ extension InkSettingsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! InkSettingsStrokeColorCell
             cell.configure(with: inkSettings)
             return cell
-        case .fillColor:
-            let name = String(describing: InkSettingsFillColorCell.self)
-            let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! InkSettingsFillColorCell
-            cell.configure(with: inkSettings)
-            return cell
+//        case .fillColor:
+//            let name = String(describing: InkSettingsFillColorCell.self)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! InkSettingsFillColorCell
+//            cell.configure(with: inkSettings)
+//            return cell
         case .opacity:
             let name = String(describing: InkSettingsOpacityCell.self)
             let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! InkSettingsOpacityCell
@@ -134,6 +141,12 @@ extension InkSettingsViewController: UITableViewDataSource {
         case .thickness:
             let name = String(describing: InkSettingsThicknessCell.self)
             let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! InkSettingsThicknessCell
+            cell.delegate = self
+            cell.configure(with: inkSettings)
+            return cell
+        case .tools:
+            let name = String(describing: InkSettingsToolsCell.self)
+            let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! InkSettingsToolsCell
             cell.delegate = self
             cell.configure(with: inkSettings)
             return cell
@@ -199,5 +212,18 @@ extension InkSettingsViewController: InkSettingsThicknessCellDelegate {
             indexPathsToReload.append(indexPath)
         }
         tableView.reloadRows(at: indexPathsToReload, with: .none)
+    }
+}
+
+extension InkSettingsViewController: InkSettingsToolsCellDelegate {
+
+    func didSelect(tool: InkSettings.DrawingTool) {
+        inkSettings.tool = tool
+        if case .eraser = tool {
+        } else {
+            inkSettings.thickness = Float(tool.width)
+            inkSettings.opacity = Float(tool.alpha)
+        }
+        tableView.reloadData()
     }
 }

@@ -52,7 +52,7 @@
                                     <segue destination="njU-wR-lHC" kind="embed" id="rc9-oT-5Rq"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRa-hu-L5d" customClass="PDFView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRa-hu-L5d" customClass="NonSelectablePDFView" customModule="PDFReadIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
