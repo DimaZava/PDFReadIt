@@ -83,8 +83,8 @@ class InkSettings {
     private init() {
         strokeColor = .blue
         fillColor = nil
-        opacity = 1
-        thickness = 10
         tool = .pen
+        opacity = Float(tool.alpha)
+        thickness = Float(tool.width)
     }
 }

@@ -67,7 +67,7 @@
 		E6B1EC5123FA94BF00892634 /* NonSelectablePDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC4A23FA94BE00892634 /* NonSelectablePDFView.swift */; };
 		E6B1EC5223FA94BF00892634 /* DrawingGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC4B23FA94BE00892634 /* DrawingGestureRecognizer.swift */; };
 		E6B1EC5323FA94BF00892634 /* PDFAnnotationWithPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC4C23FA94BE00892634 /* PDFAnnotationWithPath.swift */; };
-		E6B1EC5423FA94BF00892634 /* UIBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC4D23FA94BE00892634 /* UIBezierPath+.swift */; };
+		E6B1EC5423FA94BF00892634 /* UIBezierPathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC4D23FA94BE00892634 /* UIBezierPathExtensions.swift */; };
 		E6B1EC5523FA94BF00892634 /* PDFPage+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC4E23FA94BE00892634 /* PDFPage+Selection.swift */; };
 		E6B1EC5623FA94BF00892634 /* PDFDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC4F23FA94BE00892634 /* PDFDrawer.swift */; };
 		E6B1EC5723FA94BF00892634 /* DrawingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC5023FA94BE00892634 /* DrawingAnnotation.swift */; };
@@ -141,7 +141,7 @@
 		E6B1EC4A23FA94BE00892634 /* NonSelectablePDFView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonSelectablePDFView.swift; sourceTree = "<group>"; };
 		E6B1EC4B23FA94BE00892634 /* DrawingGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingGestureRecognizer.swift; sourceTree = "<group>"; };
 		E6B1EC4C23FA94BE00892634 /* PDFAnnotationWithPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFAnnotationWithPath.swift; sourceTree = "<group>"; };
-		E6B1EC4D23FA94BE00892634 /* UIBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+.swift"; sourceTree = "<group>"; };
+		E6B1EC4D23FA94BE00892634 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
 		E6B1EC4E23FA94BE00892634 /* PDFPage+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PDFPage+Selection.swift"; sourceTree = "<group>"; };
 		E6B1EC4F23FA94BE00892634 /* PDFDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFDrawer.swift; sourceTree = "<group>"; };
 		E6B1EC5023FA94BE00892634 /* DrawingAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingAnnotation.swift; sourceTree = "<group>"; };
@@ -469,7 +469,7 @@
 				E6B1EC4A23FA94BE00892634 /* NonSelectablePDFView.swift */,
 				E6B1EC4B23FA94BE00892634 /* DrawingGestureRecognizer.swift */,
 				E6B1EC4C23FA94BE00892634 /* PDFAnnotationWithPath.swift */,
-				E6B1EC4D23FA94BE00892634 /* UIBezierPath+.swift */,
+				E6B1EC4D23FA94BE00892634 /* UIBezierPathExtensions.swift */,
 				E6B1EC4E23FA94BE00892634 /* PDFPage+Selection.swift */,
 				E6B1EC4F23FA94BE00892634 /* PDFDrawer.swift */,
 				E6B1EC5023FA94BE00892634 /* DrawingAnnotation.swift */,
@@ -621,7 +621,7 @@
 				E6650E1C23F5A66900F311D4 /* InkSettingsViewController.swift in Sources */,
 				E6B1EC5323FA94BF00892634 /* PDFAnnotationWithPath.swift in Sources */,
 				14155C8C1F0A460E00A53380 /* PDFSearchViewController.swift in Sources */,
-				E6B1EC5423FA94BF00892634 /* UIBezierPath+.swift in Sources */,
+				E6B1EC5423FA94BF00892634 /* UIBezierPathExtensions.swift in Sources */,
 				E6B0B76923F6DB330018327E /* InkSettingsOpacityCell.swift in Sources */,
 				48C91EA623E999820014DF44 /* PagesSelectionViewController.swift in Sources */,
 				E6B0B76E23F6DDBC0018327E /* InkSettingsThicknessCell.swift in Sources */,

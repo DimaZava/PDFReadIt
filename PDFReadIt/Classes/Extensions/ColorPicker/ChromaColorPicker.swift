@@ -45,7 +45,11 @@ open class ChromaColorPicker: UIControl {
         case grayscale
     }
     
-    open private(set) var currentColor = UIColor.red
+    open var currentColor = UIColor.red {
+        didSet {
+            currentAngle = angleForColor(currentColor)
+        }
+    }
     open var supportsShadesOfGray: Bool = false {
         didSet {
             if supportsShadesOfGray {

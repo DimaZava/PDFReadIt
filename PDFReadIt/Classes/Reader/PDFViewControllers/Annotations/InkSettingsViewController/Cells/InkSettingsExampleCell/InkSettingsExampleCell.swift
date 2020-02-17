@@ -17,6 +17,11 @@ class InkSettingsExampleCell: UITableViewCell {
     let shapeLayer = CAShapeLayer()
 
     // MARK: - Lifecycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectionStyle = .none
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         if shapeLayer.frame != frame {

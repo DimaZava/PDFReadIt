@@ -37,32 +37,39 @@ class InkSettingsColorPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Select Color"
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
         } else {
             view.backgroundColor = .white
         }
 
-//        let pickerSize = CGSize(width: view.bounds.width * 0.8, height: view.bounds.width * 0.8)
-//        let pickerOrigin = CGPoint(x: view.bounds.midX - pickerSize.width / 2,
-//                                   y: view.bounds.midY - pickerSize.height / 2)
-
-        colorPicker = ChromaColorPicker(frame: view.frame)
+        colorPicker = ChromaColorPicker()
         colorPicker.delegate = self
-
         colorPicker.padding = 10
         colorPicker.stroke = 3
-        colorPicker.currentAngle = Float.pi
-        colorPicker.supportsShadesOfGray = true
-        colorPicker.hexLabel.textColor = UIColor.white
-        colorPicker.fillToSuperview()
+
+        switch currentMode {
+        case .strokeColor:
+            colorPicker.currentColor = InkSettings.sharedInstance.strokeColor
+        case .fillColor:
+            break //colorPicker.currentAngle = colorPicker.angleForColor(InkSettings.sharedInstance.fillColor)
+        }
 
         view.addSubview(colorPicker)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.preferredContentSize = colorPicker.intrinsicContentSize
+
+        guard colorPicker.frame.width != view.bounds.width * 0.8 else { return }
+        colorPicker.translatesAutoresizingMaskIntoConstraints = false
+        colorPicker.centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor, multiplier: 1).isActive = true
+        colorPicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        colorPicker.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.8).isActive = true
+        colorPicker.heightAnchor.constraint(equalToConstant: view.bounds.width * 0.8).isActive = true
+
+        navigationController?.preferredContentSize = CGSize(width: 0, height: view.bounds.width * 0.8)
     }
 }
 
