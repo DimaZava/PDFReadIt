@@ -44,7 +44,7 @@ class PDFThumbnailGridViewController: UICollectionViewController {
         backgroundView.backgroundColor = .gray
         collectionView?.backgroundView = backgroundView
         collectionView?.register(UINib(nibName: String(describing: PDFThumbnailGridCell.self), bundle: bundle),
-                                 forCellWithReuseIdentifier: "Cell")
+                                 forCellWithReuseIdentifier: String(describing: PDFThumbnailGridCell.self))
     }
 
     // MARK: - UICollectionViewDelegate & UICollectionViewDataSource
@@ -54,9 +54,10 @@ class PDFThumbnailGridViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
-                                                            for: indexPath) as? PDFThumbnailGridCell else {
-                                                                fatalError("Unable to dequeue PDFThumbnailGridCell")
+        guard let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: String(describing: PDFThumbnailGridCell.self),
+                                 for: indexPath) as? PDFThumbnailGridCell else {
+                                    fatalError("Unable to dequeue PDFThumbnailGridCell")
         }
 
         guard let page = pdfDocument?.page(at: indexPath.item) else { return cell }
