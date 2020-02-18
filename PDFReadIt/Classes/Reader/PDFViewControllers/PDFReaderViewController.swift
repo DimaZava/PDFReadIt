@@ -10,7 +10,8 @@ import MessageUI
 import PDFKit
 import UIKit
 
-class PDFReaderViewController: UIViewController {
+@objcMembers
+public class PDFReaderViewController: UIViewController {
 
     // MARK: - Static members
     @objc
@@ -61,7 +62,7 @@ class PDFReaderViewController: UIViewController {
     private var shouldUpdatePDFScrollPosition = true
 
     // MARK: - Lifecycle
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupEvents()
@@ -69,7 +70,7 @@ class PDFReaderViewController: UIViewController {
     }
 
     // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if shouldUpdatePDFScrollPosition {
             fixPDFViewScrollPosition()
@@ -85,12 +86,12 @@ class PDFReaderViewController: UIViewController {
     }
 
     // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         shouldUpdatePDFScrollPosition = false
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         pdfView.autoScales = true // This call is required to fix PDF document scale, seems to be bug inside PDFKit
     }
 
@@ -142,18 +143,18 @@ class PDFReaderViewController: UIViewController {
         tableOfContentsToggleSegmentedControl.addTarget(self, action: #selector(toggleTableOfContentsView(_:)), for: .valueChanged)
     }
 
-    override func viewWillLayoutSubviews() {
+    override public func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         adjustThumbnailViewHeight()
     }
 
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    override public func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { (context) in
             self.adjustThumbnailViewHeight()
         })
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? PDFThumbnailGridViewController {
             viewController.pdfDocument = pdfDocument
             viewController.delegate = self
@@ -423,7 +424,7 @@ private extension PDFReaderViewController {
         if pdfView.displayMode == .singlePage || pdfView.displayMode == .singlePageContinuous {
             pageNumberLabel.text = String("\(index + 1)/\(pageCount)")
         } else {
-            let currentPagesIndexes = (index != pageCount && index != 0) ? "\(index + 1)-\(index + 2)" : "\(index + 1)"
+            let currentPagesIndexes = (index > 0 && index < pageCount) ? "\(index + 1)-\(index + 2)" : "\(index + 1)"
             pageNumberLabel.text = String("\(currentPagesIndexes)/\(pageCount)")
         }
     }
@@ -436,7 +437,7 @@ extension PDFReaderViewController: PDFViewDelegate {
 // MARK: - UIPopoverPresentationControllerDelegate
 extension PDFReaderViewController: UIPopoverPresentationControllerDelegate {
 
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
 }
@@ -503,8 +504,8 @@ extension PDFReaderViewController: ActionMenuViewControllerDelegate {
 
 extension PDFReaderViewController: UIGestureRecognizerDelegate {
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                                  shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 
         if gestureRecognizer == barHideOnTapGestureRecognizer {
             return true

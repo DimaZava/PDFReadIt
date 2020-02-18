@@ -72,15 +72,28 @@ final class PageViewModel {
     var items: [PageSelectionItem]
 
     init(with pdfDocument: PDFDocument, in pdfView: PDFView) {
-        guard let currentPage = pdfView.currentPage else { fatalError("PDFDocument unitialized for PDF View") }
-        let allPagesRange = (pdfDocument.pageCount > 0 ? 1 : 0)...pdfDocument.pageCount
-        let customPagesRange = (pdfDocument.pageCount > 0 ? 1 : 0)...(pdfDocument.pageCount > 0 ? 1 : 0)
-        selectedItem = .all(allPagesRange)
+        guard let currentPage = pdfView.visiblePages.first else { fatalError("PDFDocument unitialized for PDF View") }
+
+        let index = pdfDocument.index(for: currentPage)
+        let allPagesRange = min(pdfDocument.pageCount, 1)...pdfDocument.pageCount
+        let customPagesRange: ClosedRange<Int>
+
+        if pdfView.displayMode == .singlePage || pdfView.displayMode == .singlePageContinuous {
+            customPagesRange = min(index + 1, 1)...min(index + 1, 1)
+        } else {
+            if index > 0 && index < pdfDocument.pageCount {
+                customPagesRange = index + 1...index + 2
+            } else {
+                customPagesRange = min(index + 1, 1)...min(index + 1, 1)
+            }
+        }
+
         items = [
             .all(allPagesRange),
             .currentPage(pdfDocument.index(for: currentPage) + 1), // needs to conform visual representation
             .range(customPagesRange)
         ]
+        selectedItem = items.first!
     }
 }
 
