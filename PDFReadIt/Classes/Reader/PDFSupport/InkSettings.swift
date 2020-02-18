@@ -52,15 +52,20 @@ class InkSettings {
         }
 
         var icon: UIImage? {
+            let bundle = Bundle(for: InkSettings.self)
             switch self {
             case .eraser:
-                return UIImage(named: "pdf_reader_eraser")?.withRenderingMode(.alwaysTemplate)
+                return UIImage(named: "PDFReaderEraser", in: bundle, compatibleWith: nil)?
+                    .withRenderingMode(.alwaysTemplate)
             case .pencil:
-                return UIImage(named: "pdf_reader_pencil")?.withRenderingMode(.alwaysTemplate)
+                return UIImage(named: "PDFReaderPencil", in: bundle, compatibleWith: nil)?
+                    .withRenderingMode(.alwaysTemplate)
             case .pen:
-                return UIImage(named: "pdf_reader_pen")?.withRenderingMode(.alwaysTemplate)
+                return UIImage(named: "PDFReaderPen", in: bundle, compatibleWith: nil)?
+                    .withRenderingMode(.alwaysTemplate)
             case .highlighter:
-                return UIImage(named: "pdf_reader_highlighter")?.withRenderingMode(.alwaysTemplate)
+                return UIImage(named: "PDFReaderHighlighter", in: bundle, compatibleWith: nil)?
+                    .withRenderingMode(.alwaysTemplate)
             }
         }
     }

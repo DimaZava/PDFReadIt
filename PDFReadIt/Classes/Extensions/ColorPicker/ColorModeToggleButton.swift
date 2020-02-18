@@ -24,16 +24,16 @@
 
 import UIKit
 
-open class ColorModeToggleButton: UIButton {
+class ColorModeToggleButton: UIButton {
 
     public enum ColorState {
         case hue
         case grayscale
     }
 
-    open var colorState: ColorState = .hue
+    var colorState: ColorState = .hue
 
-    open lazy var hueColorGradientLayer: CAGradientLayer = {
+    lazy var hueColorGradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         let colorUpperLeft = UIColor(red: 250/255.0, green: 217/255.0, blue: 97/255.0, alpha: 1)
         let colorLowerRight = UIColor(red: 247/255.0, green: 107/255.0, blue: 28/255.0, alpha: 1)
@@ -44,7 +44,7 @@ open class ColorModeToggleButton: UIButton {
         return gradient
     }()
 
-    open lazy var grayColorGradientLayer: CAGradientLayer = {
+    lazy var grayColorGradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         let colorUpperLeft = gray
@@ -74,14 +74,7 @@ open class ColorModeToggleButton: UIButton {
         addTarget(self, action: #selector(toggleState), for: .touchUpInside)
     }
 
-//    override open func sendActions(for controlEvents: UIControlEvents) {
-//        if controlEvents == .touchUpInside {
-//            toggleState()
-//        }
-//        super.sendActions(for: controlEvents)
-//    }
-//    
-    override open func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
 
         layer.masksToBounds = true
@@ -89,7 +82,7 @@ open class ColorModeToggleButton: UIButton {
         layoutGradientLayer()
     }
 
-  @objc open func toggleState() {
+  @objc func toggleState() {
         if colorState == .hue {
             colorState = .grayscale
         } else {

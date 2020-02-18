@@ -25,7 +25,9 @@ open class PDFReaderNavigationController: UINavigationController {
         return super.popViewController(animated: animated)
     }
 
-    override open func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    override open func present(_ viewControllerToPresent: UIViewController,
+                               animated flag: Bool,
+                               completion: (() -> Void)? = nil) {
         super.present(viewControllerToPresent, animated: flag, completion: completion)
         postPresentAction?(self)
     }

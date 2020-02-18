@@ -26,7 +26,10 @@ final class ActionMenuViewController: UIViewController {
     let viewModel: ActionViewModel
 
     // MARK: - Lifecycle
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, documentToShare: PDFDocument, in pdfView: PDFView) {
+    init(nibName nibNameOrNil: String?,
+         bundle nibBundleOrNil: Bundle?,
+         documentToShare: PDFDocument,
+         in pdfView: PDFView) {
         self.documentToShare = documentToShare
         self.pdfView = pdfView
         viewModel = ActionViewModel(with: documentToShare, in: pdfView)
@@ -40,9 +43,10 @@ final class ActionMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Share"
-        tableView.register(UINib(nibName: String(describing: PageActionTableViewCell.self), bundle: nil),
+        let bundle = Bundle(for: Self.self)
+        tableView.register(UINib(nibName: String(describing: PageActionTableViewCell.self), bundle: bundle),
                            forCellReuseIdentifier: String(describing: PageActionTableViewCell.self))
-        tableView.register(UINib(nibName: String(describing: ShareActionTableViewCell.self), bundle: nil),
+        tableView.register(UINib(nibName: String(describing: ShareActionTableViewCell.self), bundle: bundle),
                            forCellReuseIdentifier: String(describing: ShareActionTableViewCell.self))
         tableView.delegate = self
         tableView.dataSource = self
@@ -64,8 +68,9 @@ extension ActionMenuViewController: UITableViewDelegate {
         let section = viewModel.sections[indexPath.section]
         switch section {
         case .pages(let model):
-            let controller = PagesSelectionViewController(nibName: String(describing: PagesSelectionViewController.self),
-                                                          bundle: nil,
+            let nibName = String(describing: PagesSelectionViewController.self)
+            let controller = PagesSelectionViewController(nibName: nibName,
+                                                          bundle: Bundle(for: Self.self),
                                                           pageViewModel: model)
             navigationController?.pushViewController(controller, animated: true)
         case .shareButton:
@@ -130,14 +135,18 @@ extension ActionMenuViewController: UITableViewDataSource {
         let section = viewModel.sections[indexPath.section]
         switch section {
         case .pages(let model):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PageActionTableViewCell.self), for: indexPath) as? PageActionTableViewCell else {
-                fatalError("Unable to dequeue ActionTableViewCell")
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: String(describing: PageActionTableViewCell.self),
+                                     for: indexPath) as? PageActionTableViewCell else {
+                                        fatalError("Unable to dequeue ActionTableViewCell")
             }
             cell.configure(with: model.selectedItem)
             return cell
         case .shareButton(let model):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ShareActionTableViewCell.self), for: indexPath) as? ShareActionTableViewCell else {
-                fatalError("Unable to dequeue ShareActionTableViewCell")
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: String(describing: ShareActionTableViewCell.self),
+                                     for: indexPath) as? ShareActionTableViewCell else {
+                                        fatalError("Unable to dequeue ShareActionTableViewCell")
             }
             cell.configure(with: model.item)
             return cell

@@ -35,9 +35,10 @@ class PDFSearchViewController: UITableViewController, PDFDocumentDelegate {
         searchBar.searchBarStyle = .minimal
         navigationItem.titleView = searchBar
 
+        let bundle = Bundle(for: Self.self)
         tableView.rowHeight = 88
-        tableView.register(UINib(nibName: String(describing: PDFSearchResultsCell.self), bundle: nil),
-                           forCellReuseIdentifier: "Cell")
+        tableView.register(UINib(nibName: String(describing: PDFSearchResultsCell.self), bundle: bundle),
+                           forCellReuseIdentifier: String(describing: PDFSearchResultsCell.self))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,9 +74,10 @@ class PDFSearchViewController: UITableViewController, PDFDocumentDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",
-                                                       for: indexPath) as? PDFSearchResultsCell else {
-                                                        fatalError()
+        guard let cell = tableView
+            .dequeueReusableCell(withIdentifier: String(describing: PDFSearchResultsCell.self),
+                                 for: indexPath) as? PDFSearchResultsCell else {
+                                    fatalError("Unable to dequeue PDFSearchResultsCell")
         }
 
         let selection = searchResults[indexPath.row]

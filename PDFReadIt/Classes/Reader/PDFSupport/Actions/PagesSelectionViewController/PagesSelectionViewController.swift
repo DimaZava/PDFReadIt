@@ -47,9 +47,10 @@ private extension PagesSelectionViewController {
             isRangePickerVisible = true
         }
 
-        tableView.register(UINib(nibName: String(describing: PagesSelectionTableViewCell.self), bundle: nil),
+        let bundle = Bundle(for: Self.self)
+        tableView.register(UINib(nibName: String(describing: PagesSelectionTableViewCell.self), bundle: bundle),
                            forCellReuseIdentifier: String(describing: PagesSelectionTableViewCell.self))
-        tableView.register(UINib(nibName: String(describing: PagesRangeSelectionTableViewCell.self), bundle: nil),
+        tableView.register(UINib(nibName: String(describing: PagesRangeSelectionTableViewCell.self), bundle: bundle),
                            forCellReuseIdentifier: String(describing: PagesRangeSelectionTableViewCell.self))
         tableView.delegate = self
         tableView.dataSource = self
@@ -95,15 +96,17 @@ extension PagesSelectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.row < pageViewModel.items.count {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PagesSelectionTableViewCell.self),
-                                                           for: indexPath) as? PagesSelectionTableViewCell else {
-                                                            fatalError("Unable to dequeue PagesSelectionTableViewCell")
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: String(describing: PagesSelectionTableViewCell.self),
+                                     for: indexPath) as? PagesSelectionTableViewCell else {
+                                        fatalError("Unable to dequeue PagesSelectionTableViewCell")
             }
             cell.configure(for: pageViewModel.items[indexPath.row], in: pageViewModel)
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PagesRangeSelectionTableViewCell.self),
-                                                           for: indexPath) as? PagesRangeSelectionTableViewCell,
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: String(describing: PagesRangeSelectionTableViewCell.self),
+                                     for: indexPath) as? PagesRangeSelectionTableViewCell,
                 case let .all(range) = pageViewModel.items.first (where: { pagesSelectionItem -> Bool in
                     if case .all = pagesSelectionItem {
                         return true

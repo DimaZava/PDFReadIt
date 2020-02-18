@@ -32,8 +32,9 @@ class InkSettingsToolsCell: UITableViewCell {
     func configure(with settings: InkSettings) {
         tools = InkSettings.DrawingTool.allCases
         let name = String(describing: InkSettingsToolCollectionCell.self)
+        let bundle = Bundle(for: Self.self)
         collectionViewHeightConstraint.constant = Self.cellHeight
-        collectionView.register(UINib(nibName: name, bundle: nil), forCellWithReuseIdentifier: name)
+        collectionView.register(UINib(nibName: name, bundle: bundle), forCellWithReuseIdentifier: name)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -82,9 +83,10 @@ extension InkSettingsToolsCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellName = String(describing: InkSettingsToolCollectionCell.self)
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName,
-                                                            for: indexPath) as? InkSettingsToolCollectionCell else {
-                                                                fatalError("Unable to dequeue InkSettingsToolCollectionCell")
+        guard let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: cellName,
+                                 for: indexPath) as? InkSettingsToolCollectionCell else {
+                                    fatalError("Unable to dequeue InkSettingsToolCollectionCell")
         }
         cell.configure(tools[indexPath.row])
         return cell

@@ -46,9 +46,14 @@ class PDFBookmarkViewController: UICollectionViewController {
         backgroundView.backgroundColor = .gray
         collectionView?.backgroundView = backgroundView
 
-        collectionView?.register(UINib(nibName: String(describing: PDFThumbnailGridCell.self), bundle: nil), forCellWithReuseIdentifier: "Cell")
+        let bundle = Bundle(for: Self.self)
+        let nibName = String(describing: PDFThumbnailGridCell.self)
+        collectionView?.register(UINib(nibName: nibName, bundle: bundle), forCellWithReuseIdentifier: nibName)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange(_:)), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(userDefaultsDidChange(_:)),
+                                               name: UserDefaults.didChangeNotification,
+                                               object: nil)
         refreshData()
     }
 
@@ -71,9 +76,10 @@ class PDFBookmarkViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
-                                                            for: indexPath) as? PDFThumbnailGridCell else {
-                                                                fatalError()
+        guard let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: String(describing: PDFThumbnailGridCell.self),
+                                 for: indexPath) as? PDFThumbnailGridCell else {
+                                    fatalError("Unable to dequeue PDFThumbnailGridCell")
         }
 
         let pageNumber = bookmarks[indexPath.item]

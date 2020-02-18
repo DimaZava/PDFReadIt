@@ -24,7 +24,7 @@
 
 import UIKit
 
-open class ChromaSliderTrackLayer: CALayer {
+class ChromaSliderTrackLayer: CALayer {
     public let gradient = CAGradientLayer()
 
     override public init() {
@@ -40,33 +40,32 @@ open class ChromaSliderTrackLayer: CALayer {
     }
 }
 
-public protocol ChromaShadeSliderDelegate {
+protocol ChromaShadeSliderDelegate: AnyObject {
     func shadeSliderChoseColor(_ slider: ChromaShadeSlider, color: UIColor)
 }
 
-open class ChromaShadeSlider: UIControl {
-    open var currentValue: CGFloat = 0.0 //range of {-1,1}
+class ChromaShadeSlider: UIControl {
+    var currentValue: CGFloat = 0.0 //range of {-1,1}
 
     public let trackLayer = ChromaSliderTrackLayer()
     public let handleView = ChromaHandle()
-    open var handleWidth: CGFloat { return self.bounds.height }
-    open var handleCenterX: CGFloat = 0.0
-    open var delegate: ChromaShadeSliderDelegate?
+    var handleWidth: CGFloat { return self.bounds.height }
+    var handleCenterX: CGFloat = 0.0
+    weak var delegate: ChromaShadeSliderDelegate?
 
-    open var primaryColor = UIColor.gray {
+    var primaryColor = UIColor.gray {
         didSet {
             self.changeColorHue(to: currentColor)
             self.updateGradientTrack(for: primaryColor)
         }
     }
+
     /* The computed color of the primary color with shading based on the currentValue */
-    open var currentColor: UIColor {
-        get {
-            if currentValue < 0 {//darken
-                return primaryColor.darkerColor(-currentValue)
-            } else { //lighten
-                return primaryColor.lighterColor(currentValue)
-            }
+    var currentColor: UIColor {
+        if currentValue < 0 {//darken
+            return primaryColor.darkerColor(-currentValue)
+        } else { //lighten
+            return primaryColor.lighterColor(currentValue)
         }
     }
 
@@ -107,12 +106,13 @@ open class ChromaShadeSlider: UIControl {
         self.updateGradientTrack(for: primaryColor)
     }
 
-    override open func didMoveToSuperview() {
+    override func didMoveToSuperview() {
         self.updateGradientTrack(for: primaryColor)
     }
 
-    open func layoutLayerFrames() {
-        trackLayer.frame = self.bounds.insetBy(dx: handleWidth/2, dy: self.bounds.height/4) //Make half the height of the bounds
+    func layoutLayerFrames() {
+        //Make half the height of the bounds
+        trackLayer.frame = self.bounds.insetBy(dx: handleWidth / 2, dy: bounds.height / 4)
         trackLayer.cornerRadius = trackLayer.bounds.height/2
 
         self.updateGradientTrack(for: primaryColor)
@@ -121,18 +121,21 @@ open class ChromaShadeSlider: UIControl {
     }
 
     //Lays out handle according to the currentValue on slider
-    open func layoutHandleFrame() {
-        handleView.frame = CGRect(x: handleCenterX - handleWidth/2, y: self.bounds.height/2 - handleWidth/2, width: handleWidth, height: handleWidth)
+    func layoutHandleFrame() {
+        handleView.frame = CGRect(x: handleCenterX - handleWidth / 2,
+                                  y: bounds.height / 2 - handleWidth / 2,
+                                  width: handleWidth,
+                                  height: handleWidth)
     }
 
-    open func changeColorHue(to newColor: UIColor) {
+    func changeColorHue(to newColor: UIColor) {
         handleView.color = newColor
         if currentValue != 0 { //Don't call delegate if the color hasnt changed
             self.delegate?.shadeSliderChoseColor(self, color: newColor)
         }
     }
 
-    open func updateGradientTrack(for color: UIColor) {
+    func updateGradientTrack(for color: UIColor) {
         trackLayer.gradient.frame = trackLayer.bounds
         trackLayer.gradient.startPoint = CGPoint(x: 0, y: 0.5)
         trackLayer.gradient.endPoint = CGPoint(x: 1, y: 0.5)
@@ -142,46 +145,45 @@ open class ChromaShadeSlider: UIControl {
     }
 
     //Updates handeles location based on currentValue
-    open func updateHandleLocation() {
-        handleCenterX = (currentValue+1)/2 * (bounds.width - handleView.bounds.width) +  handleView.bounds.width/2
+    func updateHandleLocation() {
+        handleCenterX = (currentValue + 1) / 2 * (bounds.width - handleView.bounds.width) +  handleView.bounds.width/2
         handleView.color = currentColor
         self.layoutHandleFrame()
     }
 
-    override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        let location = touch.location(in: self)
-
-        if handleView.frame.contains(location) {
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        if handleView.frame.contains(touch.location(in: self)) {
             return true
         }
         return false
     }
 
-    override open func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        let location = touch.location(in: self)
+    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
 
+        let location = touch.location(in: self)
         //Update for center point
         handleCenterX = location.x
         handleCenterX = fittedValueInBounds(handleCenterX) //adjust value to fit in bounds if needed
 
         //Update current value
-        currentValue = ((handleCenterX - handleWidth/2)/trackLayer.bounds.width - 0.5) * 2  //find current value between {-1,1} of the slider
+        //find current value between {-1,1} of the slider
+        currentValue = ((handleCenterX - handleWidth / 2) / trackLayer.bounds.width - 0.5) * 2
 
         //Update handle color
-        self.changeColorHue(to: currentColor)
+        changeColorHue(to: currentColor)
 
         //Update layers frames
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        self.layoutHandleFrame()
+        layoutHandleFrame()
         CATransaction.commit()
 
-        self.sendActions(for: .valueChanged)
+        sendActions(for: .valueChanged)
         return true
     }
 
-    override open func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        self.sendActions(for: .editingDidEnd)
+    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+        sendActions(for: .editingDidEnd)
     }
 
   @objc func doubleTapRecognized(_ recognizer: UITapGestureRecognizer) {
@@ -190,19 +192,18 @@ open class ChromaShadeSlider: UIControl {
             return
         }
         //Tap is on handle
-
         resetHandleToCenter()
     }
 
-    open func resetHandleToCenter() {
+    func resetHandleToCenter() {
 
-        handleCenterX = self.bounds.width/2
-        self.layoutHandleFrame()
+        handleCenterX = bounds.width/2
+        layoutHandleFrame()
         handleView.color = primaryColor
         currentValue = 0.0
 
-        self.sendActions(for: .valueChanged)
-        self.delegate?.shadeSliderChoseColor(self, color: currentColor)
+        sendActions(for: .valueChanged)
+        delegate?.shadeSliderChoseColor(self, color: currentColor)
     }
 
     /* Helper Methods */
@@ -210,5 +211,4 @@ open class ChromaShadeSlider: UIControl {
     private func fittedValueInBounds(_ value: CGFloat) -> CGFloat {
         return min(max(value, trackLayer.frame.minX), trackLayer.frame.maxX)
     }
-
 }

@@ -44,15 +44,15 @@ extension PagesRangeSelectionTableViewCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard case .range = item,
             pickerView.selectedRow(inComponent: 0) <= pickerView.selectedRow(inComponent: 1) else { return }
-
-        delegate?.didUpdate(range: pickerView.selectedRow(inComponent: 0) + 1...pickerView.selectedRow(inComponent: 1) + 1)
+        let updatedRange = pickerView.selectedRow(inComponent: 0) + 1...pickerView.selectedRow(inComponent: 1) + 1
+        delegate?.didUpdate(range: updatedRange)
     }
 }
 
 extension PagesRangeSelectionTableViewCell: UIPickerViewDataSource {
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        2
+        return 2
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

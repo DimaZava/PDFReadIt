@@ -24,18 +24,18 @@
 
 import UIKit
 
-open class ChromaHandle: UIView {
-    open var color = UIColor.black {
+class ChromaHandle: UIView {
+    var color = UIColor.black {
         didSet {
             circleLayer.fillColor = color.cgColor
         }
     }
-    override open var frame: CGRect {
+    override var frame: CGRect {
         didSet { self.layoutCircleLayer() }
     }
-    open var circleLayer = CAShapeLayer()
+    var circleLayer = CAShapeLayer()
 
-    open var shadowOffset: CGSize? {
+    var shadowOffset: CGSize? {
         set {
             if let offset = newValue {
                 circleLayer.shadowColor = UIColor.black.cgColor
@@ -62,7 +62,7 @@ open class ChromaHandle: UIView {
         self.layer.addSublayer(circleLayer)
     }
 
-    open func layoutCircleLayer() {
+    func layoutCircleLayer() {
         circleLayer.path = UIBezierPath(ovalIn: self.bounds).cgPath
         circleLayer.strokeColor = UIColor.white.cgColor
         circleLayer.lineWidth = frame.width/8.75 //4

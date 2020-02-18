@@ -34,26 +34,27 @@ class InkSettingsViewController: UIViewController {
             UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneBarButtonAction(_:)))
         ]
 
+        let bundle = Bundle(for: Self.self)
         InkSettingsCells.allCases.forEach { cellType in
             switch cellType {
             case .example:
                 let name = String(describing: InkSettingsExampleCell.self)
-                tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+                tableView.register(UINib(nibName: name, bundle: bundle), forCellReuseIdentifier: name)
             case .strokeColor:
                 let name = String(describing: InkSettingsStrokeColorCell.self)
-                tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+                tableView.register(UINib(nibName: name, bundle: bundle), forCellReuseIdentifier: name)
 //            case .fillColor:
 //                let name = String(describing: InkSettingsFillColorCell.self)
-//                tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+//                tableView.register(UINib(nibName: name, bundle: bundle), forCellReuseIdentifier: name)
             case .opacity:
                 let name = String(describing: InkSettingsOpacityCell.self)
-                tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+                tableView.register(UINib(nibName: name, bundle: bundle), forCellReuseIdentifier: name)
             case .thickness:
                 let name = String(describing: InkSettingsThicknessCell.self)
-                tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+                tableView.register(UINib(nibName: name, bundle: bundle), forCellReuseIdentifier: name)
             case .tools:
                  let name = String(describing: InkSettingsToolsCell.self)
-                 tableView.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+                 tableView.register(UINib(nibName: name, bundle: bundle), forCellReuseIdentifier: name)
             }
         }
         tableView.delegate = self
@@ -115,7 +116,7 @@ extension InkSettingsViewController: UITableViewDataSource {
         return InkSettingsCells.allCases.count
     }
 
-    // swiftlint:disable:next cyclomatic_complexity
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cellType = InkSettingsCells(rawValue: indexPath.row) else {
             fatalError("Unknown InkSettingsCells case")
@@ -124,17 +125,17 @@ extension InkSettingsViewController: UITableViewDataSource {
         switch cellType {
         case .example:
             let name = String(describing: InkSettingsExampleCell.self)
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: name,
-                                                           for: indexPath) as? InkSettingsExampleCell else {
-                                                            fatalError()
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: name, for: indexPath) as? InkSettingsExampleCell else {
+                    fatalError("Unable to dequeue InkSettingsExampleCell")
             }
             cell.configure(with: inkSettings)
             return cell
         case .strokeColor:
             let name = String(describing: InkSettingsStrokeColorCell.self)
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: name,
-                                                           for: indexPath) as? InkSettingsStrokeColorCell else {
-                                                            fatalError()
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: name, for: indexPath) as? InkSettingsStrokeColorCell else {
+                    fatalError("Unable to dequeue InkSettingsStrokeColorCell")
             }
             cell.configure(with: inkSettings)
             return cell
@@ -145,27 +146,27 @@ extension InkSettingsViewController: UITableViewDataSource {
 //            return cell
         case .opacity:
             let name = String(describing: InkSettingsOpacityCell.self)
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: name,
-                                                           for: indexPath) as? InkSettingsOpacityCell else {
-                                                            fatalError()
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: name, for: indexPath) as? InkSettingsOpacityCell else {
+                    fatalError("Unable to dequeue InkSettingsOpacityCell")
             }
             cell.delegate = self
             cell.configure(with: inkSettings)
             return cell
         case .thickness:
             let name = String(describing: InkSettingsThicknessCell.self)
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: name,
-                                                           for: indexPath) as? InkSettingsThicknessCell else {
-                                                            fatalError()
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: name, for: indexPath) as? InkSettingsThicknessCell else {
+                    fatalError("Unable to dequeue InkSettingsThicknessCell")
             }
             cell.delegate = self
             cell.configure(with: inkSettings)
             return cell
         case .tools:
             let name = String(describing: InkSettingsToolsCell.self)
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: name,
-                                                           for: indexPath) as? InkSettingsToolsCell else {
-                                                            fatalError()
+            guard let cell = tableView
+                .dequeueReusableCell(withIdentifier: name, for: indexPath) as? InkSettingsToolsCell else {
+                    fatalError("Unable to dequeue InkSettingsToolsCell")
             }
             cell.delegate = self
             cell.configure(with: inkSettings)

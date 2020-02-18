@@ -10,12 +10,12 @@ import UIKit
 
 extension CGRect {
     var center: CGPoint {
-        return CGPoint( x: self.size.width/2.0, y: self.size.height/2.0)
+        return CGPoint( x: size.width / 2.0, y: size.height / 2.0)
     }
 }
 extension CGPoint {
-    func vector(toPoint p1: CGPoint) -> CGVector {
-        return CGVector(dx: p1.x-self.x, dy: p1.y-self.y)
+    func vector(to point: CGPoint) -> CGVector {
+        return CGVector(dx: point.x - self.x, dy: point.y - self.y)
     }
 }
 
@@ -26,8 +26,8 @@ extension UIBezierPath {
         let bound  = self.cgPath.boundingBox
         let center = bounds.center
 
-        let zeroedTo = CGPoint(x: toPoint.x-bound.origin.x, y: toPoint.y-bound.origin.y)
-        let vector = center.vector(toPoint: zeroedTo)
+        let zeroedTo = CGPoint(x: toPoint.x - bound.origin.x, y: toPoint.y - bound.origin.y)
+        let vector = center.vector(to: zeroedTo)
 
         offset(to: CGSize(width: vector.dx, height: vector.dy))
         return self

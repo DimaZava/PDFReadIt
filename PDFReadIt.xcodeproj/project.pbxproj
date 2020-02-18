@@ -75,6 +75,7 @@
 		E6B1EC5C23FA9A6300892634 /* InkSettingsToolsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B1EC5A23FA9A6300892634 /* InkSettingsToolsCell.xib */; };
 		E6B1EC6023FA9BB000892634 /* InkSettingsToolCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC5E23FA9BB000892634 /* InkSettingsToolCollectionCell.swift */; };
 		E6B1EC6123FA9BB000892634 /* InkSettingsToolCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B1EC5F23FA9BB000892634 /* InkSettingsToolCollectionCell.xib */; };
+		E6FBF4CF23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FBF4CE23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift */; };
 		E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C9FA3122350A55003FBCB6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +150,7 @@
 		E6B1EC5A23FA9A6300892634 /* InkSettingsToolsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsToolsCell.xib; sourceTree = "<group>"; };
 		E6B1EC5E23FA9BB000892634 /* InkSettingsToolCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsToolCollectionCell.swift; sourceTree = "<group>"; };
 		E6B1EC5F23FA9BB000892634 /* InkSettingsToolCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsToolCollectionCell.xib; sourceTree = "<group>"; };
+		E6FBF4CE23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDFReaderViewController+Delegates.swift"; sourceTree = "<group>"; };
 		E7C9FA3122350A55003FBCB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +221,7 @@
 				48AB3AC423E86A170064A89F /* ThumbnailGrid */,
 				48AB3AC523E86A200064A89F /* Outline */,
 				14155C7F1F0A425F00A53380 /* PDFReaderViewController.swift */,
+				E6FBF4CE23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift */,
 				140E24F61F0A675900298665 /* PDFBookmarkViewController.swift */,
 			);
 			path = PDFViewControllers;
@@ -365,11 +368,11 @@
 		E6650E2123F5B34600F311D4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E6B1EC4923FA94BE00892634 /* Drawing */,
 				E6B0B77023F6F2750018327E /* ColorPicker */,
 				E6650E2223F5B35C00F311D4 /* UIViewController+Extensions.swift */,
 				E6650E2423F5CEBA00F311D4 /* UIView+Extensions.swift */,
 				E6B0B75223F6B5DF0018327E /* PDFPageChangePanGestureRecognizer.swift */,
-				E6B1EC4923FA94BE00892634 /* Drawing */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				E6B1EC5523FA94BF00892634 /* PDFPage+Selection.swift in Sources */,
 				E6B0B76423F6DA930018327E /* InkSettingsFillColorCell.swift in Sources */,
 				140E25141F0AB67C00298665 /* ActionMenuViewController.swift in Sources */,
+				E6FBF4CF23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift in Sources */,
 				48C91EAC23E9A1EA0014DF44 /* PagesSelectionTableViewCell.swift in Sources */,
 				48C91EB223E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift in Sources */,
 				48AB3AC323E8665F0064A89F /* PDFViewGestureRecognizer.swift in Sources */,

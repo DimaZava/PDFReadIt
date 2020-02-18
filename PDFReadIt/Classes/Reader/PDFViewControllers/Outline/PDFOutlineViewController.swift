@@ -28,7 +28,8 @@ class PDFOutlineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(UINib(nibName: String(describing: PDFOutlineCell.self), bundle: nil),
+        let bundle = Bundle(for: Self.self)
+        tableView.register(UINib(nibName: String(describing: PDFOutlineCell.self), bundle: bundle),
                            forCellReuseIdentifier: String(describing: PDFOutlineCell.self))
         tableView.delegate = self
         tableView.dataSource = self
