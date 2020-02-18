@@ -21,8 +21,7 @@ class InkSettingsToolsCell: UITableViewCell {
     @IBOutlet private weak var collectionViewHeightConstraint: NSLayoutConstraint!
 
     // MARK: - Constants
-    let minimumInteritemSpacing: CGFloat = 8
-    let minimumLineSpacing: CGFloat = 8
+    let itemOffset: CGFloat = 8
 
     // MARK: - Variables
     weak var delegate: InkSettingsToolsCellDelegate?
@@ -50,8 +49,7 @@ extension InkSettingsToolsCell: UICollectionViewDelegate, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let offset = minimumInteritemSpacing / 2 - minimumLineSpacing / 2
-        let sizeToReturn = CGSize(width: collectionView.frame.size.width / CGFloat(tools.count) - offset,
+        let sizeToReturn = CGSize(width: collectionView.frame.size.width / CGFloat(tools.count) - itemOffset,
                                   height: InkSettingsToolsCell.cellHeight)
         return sizeToReturn
     }
@@ -59,19 +57,19 @@ extension InkSettingsToolsCell: UICollectionViewDelegate, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumInteritemSpacing
+        return itemOffset
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return minimumLineSpacing
+        return itemOffset
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        return UIEdgeInsets(top: 0, left: itemOffset / 2, bottom: 0, right: itemOffset / 2)
     }
 }
 
