@@ -42,8 +42,10 @@ class PDFOutlineViewController: UIViewController {
                 if let label = current.label, !label.isEmpty {
                     toc.append(current)
                 }
-                for i in (0..<current.numberOfChildren).reversed() {
-                    stack.append(current.child(at: i)!)
+                for index in (0..<current.numberOfChildren).reversed() {
+                    if let child = current.child(at: index) {
+                        stack.append(child)
+                    }
                 }
             }
         }
@@ -70,7 +72,11 @@ extension PDFOutlineViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PDFOutlineCell.self), for: indexPath) as! PDFOutlineCell
+        let cellName = String(describing: PDFOutlineCell.self)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellName,
+                                                       for: indexPath) as? PDFOutlineCell else {
+                                                        fatalError()
+        }
         let outline = toc[indexPath.row]
 
         cell.label = outline.label

@@ -73,11 +73,14 @@ class PDFSearchViewController: UITableViewController, PDFDocumentDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PDFSearchResultsCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",
+                                                       for: indexPath) as? PDFSearchResultsCell else {
+                                                        fatalError()
+        }
 
         let selection = searchResults[indexPath.row]
 
-        let extendedSelection = selection.copy() as! PDFSelection
+        guard let extendedSelection = selection.copy() as? PDFSelection else { fatalError() }
         extendedSelection.extendForLineBoundaries()
 
         let outline = pdfDocument?.outlineItem(for: selection)

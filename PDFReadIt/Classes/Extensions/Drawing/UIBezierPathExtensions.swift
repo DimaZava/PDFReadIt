@@ -10,11 +10,11 @@ import UIKit
 
 extension CGRect {
     var center: CGPoint {
-        return CGPoint( x: self.size.width/2.0,y: self.size.height/2.0)
+        return CGPoint( x: self.size.width/2.0, y: self.size.height/2.0)
     }
 }
 extension CGPoint {
-    func vector(to p1:CGPoint) -> CGVector {
+    func vector(toPoint p1: CGPoint) -> CGVector {
         return CGVector(dx: p1.x-self.x, dy: p1.y-self.y)
     }
 }
@@ -22,53 +22,51 @@ extension CGPoint {
 extension UIBezierPath {
 
     @discardableResult
-    func moveCenter(to: CGPoint) -> Self {
+    func moveCenter(toPoint: CGPoint) -> Self {
         let bound  = self.cgPath.boundingBox
         let center = bounds.center
-        
-        let zeroedTo = CGPoint(x: to.x-bound.origin.x, y: to.y-bound.origin.y)
-        let vector = center.vector(to: zeroedTo)
-        
+
+        let zeroedTo = CGPoint(x: toPoint.x-bound.origin.x, y: toPoint.y-bound.origin.y)
+        let vector = center.vector(toPoint: zeroedTo)
+
         offset(to: CGSize(width: vector.dx, height: vector.dy))
         return self
     }
 
     @discardableResult
-    func offset(to offset:CGSize) -> Self {
-        let t = CGAffineTransform(translationX: offset.width, y: offset.height)
-        applyCentered(transform: t)
+    func offset(to offset: CGSize) -> Self {
+        let transform = CGAffineTransform(translationX: offset.width, y: offset.height)
+        applyCentered(transform: transform)
         return self
     }
 
     @discardableResult
-    func fit(into:CGRect) -> Self {
-        let bounds = self.cgPath.boundingBox
-        
-        let sw     = into.size.width/bounds.width
-        let sh     = into.size.height/bounds.height
-        let factor = min(sw, max(sh, 0.0))
-        
-        return scale(x: factor, y: factor)
+    func fit(into: CGRect) -> Self {
+        let bounds = cgPath.boundingBox
+        let scaleWidth = into.size.width / bounds.width
+        let scaleHeight = into.size.height / bounds.height
+        let factor = min(scaleWidth, max(scaleHeight, 0.0))
+        return scale(scaleX: factor, scaleY: factor)
     }
 
     @discardableResult
-    func scale(x:CGFloat, y:CGFloat) -> Self {
-        let scale = CGAffineTransform(scaleX: x, y: y)
+    func scale(scaleX: CGFloat, scaleY: CGFloat) -> Self {
+        let scale = CGAffineTransform(scaleX: scaleX, y: scaleY)
         applyCentered(transform: scale)
         return self
     }
-    
+
     @discardableResult
     func applyCentered(transform: @autoclosure () -> CGAffineTransform ) -> Self {
         let bound  = self.cgPath.boundingBox
         let center = CGPoint(x: bound.midX, y: bound.midY)
         var xform  = CGAffineTransform.identity
-        
+
         xform = xform.concatenating(CGAffineTransform(translationX: -center.x, y: -center.y))
         xform = xform.concatenating(transform())
         xform = xform.concatenating( CGAffineTransform(translationX: center.x, y: center.y))
         apply(xform)
-        
+
         return self
     }
 }

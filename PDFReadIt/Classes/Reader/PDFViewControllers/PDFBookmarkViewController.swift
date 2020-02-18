@@ -69,8 +69,12 @@ class PDFBookmarkViewController: UICollectionViewController {
         return bookmarks.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PDFThumbnailGridCell
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell",
+                                                            for: indexPath) as? PDFThumbnailGridCell else {
+                                                                fatalError()
+        }
 
         let pageNumber = bookmarks[indexPath.item]
         if let page = pdfDocument?.page(at: pageNumber) {

@@ -25,14 +25,14 @@
 import UIKit
 
 open class ColorModeToggleButton: UIButton {
-    
+
     public enum ColorState {
         case hue
         case grayscale
     }
-    
+
     open var colorState: ColorState = .hue
-    
+
     open lazy var hueColorGradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         let colorUpperLeft = UIColor(red: 250/255.0, green: 217/255.0, blue: 97/255.0, alpha: 1)
@@ -43,7 +43,7 @@ open class ColorModeToggleButton: UIButton {
         gradient.frame = self.bounds
         return gradient
     }()
-    
+
     open lazy var grayColorGradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         let gray = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
@@ -55,26 +55,25 @@ open class ColorModeToggleButton: UIButton {
         gradient.frame = self.bounds
         return gradient
     }()
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
     private func commonInit() {
         layer.backgroundColor = UIColor.clear.cgColor
         layer.addSublayer(hueColorGradientLayer)
         layer.addSublayer(grayColorGradientLayer)
-        
+
         addTarget(self, action: #selector(toggleState), for: .touchUpInside)
     }
-    
+
 //    override open func sendActions(for controlEvents: UIControlEvents) {
 //        if controlEvents == .touchUpInside {
 //            toggleState()
@@ -84,36 +83,34 @@ open class ColorModeToggleButton: UIButton {
 //    
     override open func layoutSubviews() {
         super.layoutSubviews()
-        
+
         layer.masksToBounds = true
         layer.cornerRadius = bounds.width/2
         layoutGradientLayer()
     }
-    
+
   @objc open func toggleState() {
         if colorState == .hue {
             colorState = .grayscale
-        }
-        else {
+        } else {
             colorState = .hue
         }
-        
+
         layoutGradientLayer()
     }
-    
+
     private func layoutGradientLayer() {
         hueColorGradientLayer.frame = bounds
         grayColorGradientLayer.frame = bounds
-        
+
         if colorState == .hue {
             // Display inverse gradients. (i.e. Gray is displayed when hue is active)
             grayColorGradientLayer.isHidden = false
             hueColorGradientLayer.isHidden = true
-        }
-        else {
+        } else {
             hueColorGradientLayer.isHidden = false
             grayColorGradientLayer.isHidden = true
         }
     }
-    
+
 }

@@ -12,7 +12,7 @@ import PDFKit
 class PDFDrawer {
     weak var pdfView: PDFView!
     private var path: UIBezierPath?
-    private var currentAnnotation : DrawingAnnotation?
+    private var currentAnnotation: DrawingAnnotation?
     private var currentPage: PDFPage?
 }
 
@@ -26,7 +26,7 @@ extension PDFDrawer: DrawingGestureRecognizerDelegate {
         path = UIBezierPath()
         path?.move(to: convertedPoint)
     }
-    
+
     func gestureRecognizerMoved(_ location: CGPoint) {
 
         guard let page = currentPage else { return }
@@ -38,12 +38,12 @@ extension PDFDrawer: DrawingGestureRecognizerDelegate {
             removeAnnotationAtPoint(point: convertedPoint, page: page)
             return
         }
-        
+
         path?.addLine(to: convertedPoint)
         path?.move(to: convertedPoint)
         drawAnnotation(onPage: page)
     }
-    
+
     func gestureRecognizerEnded(_ location: CGPoint) {
 
         guard let page = currentPage else { return }
@@ -55,19 +55,19 @@ extension PDFDrawer: DrawingGestureRecognizerDelegate {
             removeAnnotationAtPoint(point: convertedPoint, page: page)
             return
         }
-        
+
         // Drawing
         guard currentAnnotation != nil else { return }
-        
+
         path?.addLine(to: convertedPoint)
         path?.move(to: convertedPoint)
-        
+
         // Final annotation
         page.removeAnnotation(currentAnnotation!)
         createFinalAnnotation(path: path!, page: page)
         currentAnnotation = nil
     }
-    
+
     private func createAnnotation(path: UIBezierPath, page: PDFPage) -> DrawingAnnotation {
         let border = PDFBorder()
         border.lineWidth = CGFloat(InkSettings.sharedInstance.thickness)
@@ -80,30 +80,30 @@ extension PDFDrawer: DrawingGestureRecognizerDelegate {
         annotation.border = border
         return annotation
     }
-    
+
     private func drawAnnotation(onPage: PDFPage) {
         guard let path = path else { return }
-        
+
         if currentAnnotation == nil {
             currentAnnotation = createAnnotation(path: path, page: onPage)
         }
-        
+
         currentAnnotation?.path = path
         forceRedraw(annotation: currentAnnotation!, onPage: onPage)
     }
-    
+
     private func createFinalAnnotation(path: UIBezierPath, page: PDFPage) {
         let border = PDFBorder()
         border.lineWidth = CGFloat(InkSettings.sharedInstance.thickness)
-        
+
         let bounds = CGRect(x: path.bounds.origin.x - 5,
                             y: path.bounds.origin.y - 5,
                             width: path.bounds.size.width + 10,
                             height: path.bounds.size.height + 10)
         let signingPathCentered = UIBezierPath()
         signingPathCentered.cgPath = path.cgPath
-        signingPathCentered.moveCenter(to: bounds.center)
-        
+        signingPathCentered.moveCenter(toPoint: bounds.center)
+
         let annotation = PDFAnnotation(bounds: bounds, forType: .ink, withProperties: nil)
         annotation.color = InkSettings.sharedInstance.strokeColor
             .withAlphaComponent(CGFloat(InkSettings.sharedInstance.opacity))
@@ -111,13 +111,13 @@ extension PDFDrawer: DrawingGestureRecognizerDelegate {
         annotation.add(signingPathCentered)
         page.addAnnotation(annotation)
     }
-    
+
     private func removeAnnotationAtPoint(point: CGPoint, page: PDFPage) {
         if let selectedAnnotation = page.annotationWithHitTest(at: point) {
             selectedAnnotation.page?.removeAnnotation(selectedAnnotation)
         }
     }
-    
+
     private func forceRedraw(annotation: PDFAnnotation, onPage: PDFPage) {
         onPage.removeAnnotation(annotation)
         onPage.addAnnotation(annotation)

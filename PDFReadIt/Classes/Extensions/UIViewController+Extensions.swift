@@ -39,7 +39,12 @@ extension UIViewController {
     ///   - delegate: the popover's presentationController delegate. Default is nil.
     ///   - animated: Pass true to animate the presentation; otherwise, pass false.
     ///   - completion: The block to execute after the presentation finishes. Default is nil.
-    func presentPopover(_ popoverContent: UIViewController, sourcePoint: CGPoint, size: CGSize? = nil, delegate: UIPopoverPresentationControllerDelegate? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func presentPopover(_ popoverContent: UIViewController,
+                        sourcePoint: CGPoint,
+                        size: CGSize? = nil,
+                        delegate: UIPopoverPresentationControllerDelegate? = nil,
+                        animated: Bool = true,
+                        completion: (() -> Void)? = nil) {
         popoverContent.modalPresentationStyle = .popover
 
         if let size = size {
@@ -64,7 +69,12 @@ extension UIViewController {
     ///   - delegate: the popover's presentationController delegate. Default is nil.
     ///   - animated: Pass true to animate the presentation; otherwise, pass false.
     ///   - completion: The block to execute after the presentation finishes. Default is nil.
-    func presentPopover(_ popoverContent: UIViewController, barButtonItem: UIBarButtonItem, size: CGSize? = nil, delegate: UIPopoverPresentationControllerDelegate? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func presentPopover(_ popoverContent: UIViewController,
+                        barButtonItem: UIBarButtonItem,
+                        size: CGSize? = nil,
+                        delegate: UIPopoverPresentationControllerDelegate? = nil,
+                        animated: Bool = true,
+                        completion: (() -> Void)? = nil) {
         popoverContent.modalPresentationStyle = .popover
 
         if let size = size {

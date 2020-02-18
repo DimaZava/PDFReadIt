@@ -14,9 +14,9 @@ import UIKit
 open class PDFReaderViewController: UIViewController {
 
     // MARK: - Static members
-    @objc
-    static func instantiateViewController(with document: PDFDocument) -> UINavigationController {
-        guard let navigationController = UIStoryboard(name: "PDFReadIt", bundle: nil).instantiateInitialViewController() as? UINavigationController,
+    static public func instantiateViewController(with document: PDFDocument) -> UINavigationController {
+        guard let navigationController = UIStoryboard(name: "PDFReadIt", bundle: nil)
+            .instantiateInitialViewController() as? UINavigationController,
             let viewController = navigationController.topViewController as? Self else {
                 fatalError("Unable to instantiate PDFReaderViewController")
         }
@@ -46,7 +46,7 @@ open class PDFReaderViewController: UIViewController {
     let barHideOnTapGestureRecognizer = UITapGestureRecognizer()
 
     // MARK: - Variables
-    @objc var pdfDocument: PDFDocument?
+    var pdfDocument: PDFDocument?
     var bookmarkButton: UIBarButtonItem!
     var searchNavigationController: UINavigationController?
     var inkSettingsViewController: InkSettingsViewController?
@@ -81,7 +81,8 @@ open class PDFReaderViewController: UIViewController {
     // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
     private func fixPDFViewScrollPosition() {
         if let page = pdfView.document?.page(at: 0) {
-            pdfView.go(to: PDFDestination(page: page, at: CGPoint(x: 0, y: page.bounds(for: pdfView.displayBox).size.height)))
+            pdfView.go(to: PDFDestination(page: page,
+                                          at: CGPoint(x: 0, y: page.bounds(for: pdfView.displayBox).size.height)))
         }
     }
 
@@ -140,7 +141,8 @@ open class PDFReaderViewController: UIViewController {
             tableOfContentsToggleSegmentedControl.setWidth(50.0, forSegmentAt: segmentIndex)
         }
         tableOfContentsToggleSegmentedControl.selectedSegmentIndex = 0
-        tableOfContentsToggleSegmentedControl.addTarget(self, action: #selector(toggleTableOfContentsView(_:)), for: .valueChanged)
+        tableOfContentsToggleSegmentedControl.addTarget(self, action: #selector(toggleTableOfContentsView(_:)),
+                                                        for: .valueChanged)
     }
 
     override open func viewWillLayoutSubviews() {
@@ -148,8 +150,9 @@ open class PDFReaderViewController: UIViewController {
         adjustThumbnailViewHeight()
     }
 
-    override open func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { (context) in
+    override open func willTransition(to newCollection: UITraitCollection,
+                                      with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { (_) in
             self.adjustThumbnailViewHeight()
         })
     }
@@ -168,22 +171,18 @@ open class PDFReaderViewController: UIViewController {
     }
 
     // MARK: - Actions
-    @objc
     func resume(_ sender: UIBarButtonItem) {
         resumeDefaultState()
     }
 
-    @objc
     func back(_ sender: UIBarButtonItem) {
         dismissModule(animated: true)
     }
 
-    @objc
     func showTableOfContents(_ sender: UIBarButtonItem) {
         showTableOfContents()
     }
 
-    @objc
     func showActionMenu(_ sender: UIBarButtonItem) {
 
         guard let documentToShare = pdfDocument else {
@@ -205,12 +204,10 @@ open class PDFReaderViewController: UIViewController {
         present(navigationController, animated: true)
     }
 
-    @objc
     func annotateAction(_ sender: UIBarButtonItem) {
         enableAnnotationMode()
     }
 
-    @objc
     func showAppearanceMenu(_ sender: UIBarButtonItem) {
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: "AppearanceViewController")
             as? AppearanceViewController else { return }
@@ -222,7 +219,6 @@ open class PDFReaderViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
 
-    @objc
     func showSearchView(_ sender: UIBarButtonItem) {
         if let searchNavigationController = self.searchNavigationController {
             present(searchNavigationController, animated: true, completion: nil)
@@ -237,7 +233,6 @@ open class PDFReaderViewController: UIViewController {
         }
     }
 
-    @objc
     func addOrRemoveBookmark(_ sender: UIBarButtonItem) {
 
         guard let documentURL = pdfDocument?.documentURL?.absoluteString else { return }
@@ -256,7 +251,6 @@ open class PDFReaderViewController: UIViewController {
         }
     }
 
-    @objc
     func toggleTableOfContentsView(_ sender: UISegmentedControl) {
         pdfView.isHidden = true
         titleLabelContainer.alpha = 0
@@ -277,7 +271,6 @@ open class PDFReaderViewController: UIViewController {
         }
     }
 
-    @objc
     func pdfViewPageChanged(_ notification: Notification) {
         //pdfView.scaleFactor = pdfView.scaleFactorForSizeToFit
         if pdfViewGestureRecognizer.isTracking {
@@ -287,7 +280,6 @@ open class PDFReaderViewController: UIViewController {
         updatePageNumberLabel()
     }
 
-    @objc
     func gestureRecognizedToggleVisibility(_ gestureRecognizer: UITapGestureRecognizer) {
         if let navigationController = navigationController {
             if navigationController.navigationBar.alpha > 0 {
@@ -298,7 +290,6 @@ open class PDFReaderViewController: UIViewController {
         }
     }
 
-    @objc
     open func dismissModule(animated: Bool = true) {
         switch parent {
         case let navigationController as UINavigationController where !navigationController.viewControllers.isEmpty &&
@@ -321,14 +312,29 @@ open class PDFReaderViewController: UIViewController {
     func resumeDefaultState() {
 
         let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_back"), style: .plain, target: self, action: #selector(back(_:)))
-        let contentsButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(showTableOfContents(_:)))
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchView(_:)))
+        let contentsButton = UIBarButtonItem(barButtonSystemItem: .bookmarks,
+                                             target: self,
+                                             action: #selector(showTableOfContents(_:)))
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search,
+                                           target: self,
+                                           action: #selector(showSearchView(_:)))
         navigationItem.leftBarButtonItems = [backButton, contentsButton, searchButton]
 
-        let brightnessButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_brightness"), style: .plain, target: self, action: #selector(showAppearanceMenu(_:)))
-        bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal"), style: .plain, target: self, action: #selector(addOrRemoveBookmark(_:)))
-        let actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showActionMenu(_:)))
-        let annotateButton = UIBarButtonItem(image: UIImage(named: "pdf_reader_annotation"), style: .plain, target: self, action: #selector(annotateAction(_:)))
+        let brightnessButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_brightness"),
+                                               style: .plain,
+                                               target: self,
+                                               action: #selector(showAppearanceMenu(_:)))
+        bookmarkButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_bookmark_normal"),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(addOrRemoveBookmark(_:)))
+        let actionButton = UIBarButtonItem(barButtonSystemItem: .action,
+                                           target: self,
+                                           action: #selector(showActionMenu(_:)))
+        let annotateButton = UIBarButtonItem(image: UIImage(named: "pdf_reader_annotation"),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(annotateAction(_:)))
         navigationItem.rightBarButtonItems = [annotateButton, actionButton, bookmarkButton, brightnessButton]
 
         pdfThumbnailViewContainer.alpha = 1
@@ -389,7 +395,10 @@ private extension PDFReaderViewController {
 
         let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "pdf_reader_navigation_back"), style: .plain, target: self, action: #selector(back(_:)))
         let tableOfContentsToggleBarButton = UIBarButtonItem(customView: tableOfContentsToggleSegmentedControl)
-        let resumeBarButton = UIBarButtonItem(title: NSLocalizedString("Resume", comment: ""), style: .plain, target: self, action: #selector(resume(_:)))
+        let resumeBarButton = UIBarButtonItem(title: NSLocalizedString("Resume", comment: ""),
+                                              style: .plain,
+                                              target: self,
+                                              action: #selector(resume(_:)))
         navigationItem.leftBarButtonItems = [backButton, tableOfContentsToggleBarButton]
         navigationItem.rightBarButtonItems = [resumeBarButton]
 
@@ -446,7 +455,8 @@ extension PDFReaderViewController: UIPopoverPresentationControllerDelegate {
 extension PDFReaderViewController: MFMailComposeViewControllerDelegate {
 
     open func mailComposeController(_ controller: MFMailComposeViewController,
-                                      didFinishWith result: MFMailComposeResult, error: Error?) {
+                                    didFinishWith result: MFMailComposeResult,
+                                    error: Error?) {
         controller.dismiss(animated: true)
     }
 }
@@ -480,7 +490,9 @@ extension PDFReaderViewController: ActionMenuViewControllerDelegate {
         if let title = documentAttributes[PDFDocumentAttribute.titleAttribute] as? String {
             mailComposeViewController.setSubject(title)
         }
-        mailComposeViewController.addAttachmentData(attachmentData, mimeType: "application/pdf", fileName: lastPathComponent)
+        mailComposeViewController.addAttachmentData(attachmentData,
+                                                    mimeType: "application/pdf",
+                                                    fileName: lastPathComponent)
 
         mailComposeViewController.mailComposeDelegate = self
         mailComposeViewController.modalPresentationStyle = .formSheet
@@ -505,7 +517,7 @@ extension PDFReaderViewController: ActionMenuViewControllerDelegate {
 extension PDFReaderViewController: UIGestureRecognizerDelegate {
 
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                                  shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+                                shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 
         if gestureRecognizer == barHideOnTapGestureRecognizer {
             return true
@@ -517,7 +529,8 @@ extension PDFReaderViewController: UIGestureRecognizerDelegate {
 // MARK: - SearchViewControllerDelegate
 extension PDFReaderViewController: SearchViewControllerDelegate {
 
-    func searchViewController(_ searchViewController: PDFSearchViewController, didSelectSearchResult selection: PDFSelection) {
+    func searchViewController(_ searchViewController: PDFSearchViewController,
+                              didSelectSearchResult selection: PDFSelection) {
         selection.color = .yellow
         pdfView.currentSelection = selection
         pdfView.go(to: selection)
@@ -528,7 +541,8 @@ extension PDFReaderViewController: SearchViewControllerDelegate {
 // MARK: - OutlineViewControllerDelegate
 extension PDFReaderViewController: OutlineViewControllerDelegate {
 
-    func outlineViewController(_ outlineViewController: PDFOutlineViewController, didSelectOutlineAt destination: PDFDestination) {
+    func outlineViewController(_ outlineViewController: PDFOutlineViewController,
+                               didSelectOutlineAt destination: PDFDestination) {
         resumeDefaultState()
         pdfView.go(to: destination)
     }
@@ -537,7 +551,8 @@ extension PDFReaderViewController: OutlineViewControllerDelegate {
 // MARK: - ThumbnailGridViewControllerDelegate
 extension PDFReaderViewController: ThumbnailGridViewControllerDelegate {
 
-    func thumbnailGridViewController(_ thumbnailGridViewController: PDFThumbnailGridViewController, didSelectPage page: PDFPage) {
+    func thumbnailGridViewController(_ thumbnailGridViewController: PDFThumbnailGridViewController,
+                                     didSelectPage page: PDFPage) {
         resumeDefaultState()
         pdfView.go(to: page)
     }
@@ -545,7 +560,8 @@ extension PDFReaderViewController: ThumbnailGridViewControllerDelegate {
 
 extension PDFReaderViewController: BookmarkViewControllerDelegate {
 
-    func bookmarkViewController(_ bookmarkViewController: PDFBookmarkViewController, didSelectPage page: PDFPage) {
+    func bookmarkViewController(_ bookmarkViewController: PDFBookmarkViewController,
+                                didSelectPage page: PDFPage) {
         resumeDefaultState()
         pdfView.go(to: page)
     }

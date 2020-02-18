@@ -61,5 +61,5 @@ class InkSettingsExampleCell: UITableViewCell {
 
         layer.addSublayer(shapeLayer)
     }
-    
+
 }

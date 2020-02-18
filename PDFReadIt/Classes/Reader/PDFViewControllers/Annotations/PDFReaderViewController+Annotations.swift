@@ -46,7 +46,7 @@ private extension PDFReaderViewController {
         ]
         navigationItem.rightBarButtonItems = rightBarButtonItems
     }
-    
+
     @objc
     func selectInkOptionsButtonTouchUpInside(_ sender: UIBarButtonItem) {
         let inkSettingsViewController = InkSettingsViewController(nibName: String(describing: InkSettingsViewController.self), bundle: nil)
@@ -56,7 +56,7 @@ private extension PDFReaderViewController {
 
     @objc
     func setTextButtonTouchUpInside(_ sender: Any) {
-        
+
     }
 
     @objc

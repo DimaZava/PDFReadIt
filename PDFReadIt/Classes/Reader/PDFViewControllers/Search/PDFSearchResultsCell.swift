@@ -26,8 +26,8 @@ class PDFSearchResultsCell: UITableViewCell {
             pageNumberLabel.text = page
         }
     }
-    var resultText: String? = nil
-    var searchText: String? = nil
+    var resultText: String?
+    var searchText: String?
 
     // MARK: - Lifecycle
     override func awakeFromNib() {

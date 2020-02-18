@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = PDFReaderViewController.instantiateViewController(with: document)
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
-        
+
         return true
     }
 

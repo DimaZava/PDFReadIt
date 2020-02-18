@@ -11,9 +11,9 @@ import UIKit
 open class PDFReaderNavigationController: UINavigationController {
 
     @objc
-    var postPresentAction: ((PDFReaderNavigationController) -> Void)?
+    open var postPresentAction: ((PDFReaderNavigationController) -> Void)?
     @objc
-    var postDismissAction: ((PDFReaderNavigationController) -> Void)?
+    open var postDismissAction: ((PDFReaderNavigationController) -> Void)?
 
     override open func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)

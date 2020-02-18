@@ -64,7 +64,8 @@ class InkSettingsColorPickerViewController: UIViewController {
 
         guard colorPicker.frame.width != view.bounds.width * 0.8 else { return }
         colorPicker.translatesAutoresizingMaskIntoConstraints = false
-        colorPicker.centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor, multiplier: 1).isActive = true
+        colorPicker.centerXAnchor.constraint(equalToSystemSpacingAfter: view.centerXAnchor,
+                                             multiplier: 1).isActive = true
         colorPicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         colorPicker.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.8).isActive = true
         colorPicker.heightAnchor.constraint(equalToConstant: view.bounds.width * 0.8).isActive = true

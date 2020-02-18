@@ -64,10 +64,10 @@ class InkSettings {
             }
         }
     }
-    
+
     static let sharedInstance = InkSettings()
 
-    // MARK - Variables
+    // MARK: - Variables
     var strokeColor: UIColor
     var fillColor: UIColor?
     var opacity: Float

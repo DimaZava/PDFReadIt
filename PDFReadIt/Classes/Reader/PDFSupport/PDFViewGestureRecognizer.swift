@@ -9,7 +9,7 @@
 import UIKit
 
 final class PDFViewGestureRecognizer: UIGestureRecognizer {
-    
+
     var isTracking = false
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {

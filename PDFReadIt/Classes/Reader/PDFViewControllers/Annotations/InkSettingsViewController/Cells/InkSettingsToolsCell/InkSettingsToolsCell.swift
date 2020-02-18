@@ -49,7 +49,8 @@ extension InkSettingsToolsCell: UICollectionViewDelegate, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let sizeToReturn = CGSize(width: collectionView.frame.size.width / CGFloat(tools.count) - minimumInteritemSpacing / 2 - minimumLineSpacing / 2,
+        let offset = minimumInteritemSpacing / 2 - minimumLineSpacing / 2
+        let sizeToReturn = CGSize(width: collectionView.frame.size.width / CGFloat(tools.count) - offset,
                                   height: InkSettingsToolsCell.cellHeight)
         return sizeToReturn
     }
@@ -78,9 +79,12 @@ extension InkSettingsToolsCell: UICollectionViewDataSource {
         return tools.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: InkSettingsToolCollectionCell.self), for: indexPath) as? InkSettingsToolCollectionCell else {
-            fatalError("Unable to dequeue InkSettingsToolCollectionCell")
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellName = String(describing: InkSettingsToolCollectionCell.self)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName,
+                                                            for: indexPath) as? InkSettingsToolCollectionCell else {
+                                                                fatalError("Unable to dequeue InkSettingsToolCollectionCell")
         }
         cell.configure(tools[indexPath.row])
         return cell

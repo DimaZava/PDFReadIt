@@ -20,7 +20,7 @@ class PDFPageChangeSwipeGestureRecognizer: UISwipeGestureRecognizer {
     }
 
     @objc
-    func handleGesture(_ gestureRecognizer: UISwipeGestureRecognizer) -> Void {
+    func handleGesture(_ gestureRecognizer: UISwipeGestureRecognizer) {
         guard gestureRecognizer.state == .ended else { return }
         switch gestureRecognizer.direction {
         case .left:

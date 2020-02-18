@@ -11,7 +11,7 @@ import PDFKit
 import Foundation
 
 extension PDFAnnotation {
-    
+
     func contains(point: CGPoint) -> Bool {
 //        var hitPath: CGPath?
 //
