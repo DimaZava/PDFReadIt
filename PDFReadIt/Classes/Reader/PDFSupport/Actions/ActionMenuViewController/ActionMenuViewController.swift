@@ -75,10 +75,15 @@ extension ActionMenuViewController: UITableViewDelegate {
                 delegate?.didPrepareForShare(document: documentToShare)
             case .range(let range):
                 // need to -1 because pages are indexed starting with 0
-                let pages = range.compactMap { documentToShare.page(at: $0 - 1) }
+                let pages = range.compactMap { documentToShare.page(at: $0 - 1)?.dataRepresentation }
                 let compiledDocument = PDFDocument()
+
                 pages.enumerated().forEach { pageTuple in
-                    compiledDocument.insert(pageTuple.element, at: pageTuple.offset)
+                    if let document = PDFDocument(data: pageTuple.element),
+                        document.pageCount == 1,
+                        let page = document.page(at: 0) {
+                        compiledDocument.insert(page, at: pageTuple.offset)
+                    }
                 }
                 delegate?.didPrepareForShare(document: compiledDocument)
             case .currentPage(let pageIndex):
