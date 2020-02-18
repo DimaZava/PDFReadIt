@@ -11,7 +11,7 @@ import PDFKit
 import UIKit
 
 @objcMembers
-public class PDFReaderViewController: UIViewController {
+open class PDFReaderViewController: UIViewController {
 
     // MARK: - Static members
     @objc
@@ -62,7 +62,7 @@ public class PDFReaderViewController: UIViewController {
     private var shouldUpdatePDFScrollPosition = true
 
     // MARK: - Lifecycle
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupEvents()
@@ -70,7 +70,7 @@ public class PDFReaderViewController: UIViewController {
     }
 
     // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
-    override public func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if shouldUpdatePDFScrollPosition {
             fixPDFViewScrollPosition()
@@ -86,12 +86,12 @@ public class PDFReaderViewController: UIViewController {
     }
 
     // This code is required to fix PDFView Scroll Position when NOT using pdfView.usePageViewController(true)
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         shouldUpdatePDFScrollPosition = false
     }
 
-    override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         pdfView.autoScales = true // This call is required to fix PDF document scale, seems to be bug inside PDFKit
     }
 
@@ -143,18 +143,18 @@ public class PDFReaderViewController: UIViewController {
         tableOfContentsToggleSegmentedControl.addTarget(self, action: #selector(toggleTableOfContentsView(_:)), for: .valueChanged)
     }
 
-    override public func viewWillLayoutSubviews() {
+    override open func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         adjustThumbnailViewHeight()
     }
 
-    override public func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    override open func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { (context) in
             self.adjustThumbnailViewHeight()
         })
     }
 
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? PDFThumbnailGridViewController {
             viewController.pdfDocument = pdfDocument
             viewController.delegate = self
@@ -197,7 +197,7 @@ public class PDFReaderViewController: UIViewController {
                                                       in: pdfView)
         viewController.delegate = self
 
-        let navigationController = ReaderNavigationController(rootViewController: viewController)
+        let navigationController = PDFReaderNavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .popover
         navigationController.popoverPresentationController?.barButtonItem = sender
         navigationController.popoverPresentationController?.permittedArrowDirections = .up
@@ -299,7 +299,7 @@ public class PDFReaderViewController: UIViewController {
     }
 
     @objc
-    public func dismissModule(animated: Bool = true) {
+    open func dismissModule(animated: Bool = true) {
         switch parent {
         case let navigationController as UINavigationController where !navigationController.viewControllers.isEmpty &&
             navigationController.viewControllers.first != self:
@@ -437,7 +437,7 @@ extension PDFReaderViewController: PDFViewDelegate {
 // MARK: - UIPopoverPresentationControllerDelegate
 extension PDFReaderViewController: UIPopoverPresentationControllerDelegate {
 
-    public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+    open func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
 }
@@ -445,7 +445,7 @@ extension PDFReaderViewController: UIPopoverPresentationControllerDelegate {
 // MARK: - MFMailComposeViewControllerDelegate
 extension PDFReaderViewController: MFMailComposeViewControllerDelegate {
 
-    public func mailComposeController(_ controller: MFMailComposeViewController,
+    open func mailComposeController(_ controller: MFMailComposeViewController,
                                       didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
@@ -504,7 +504,7 @@ extension PDFReaderViewController: ActionMenuViewControllerDelegate {
 
 extension PDFReaderViewController: UIGestureRecognizerDelegate {
 
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                                   shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 
         if gestureRecognizer == barHideOnTapGestureRecognizer {
