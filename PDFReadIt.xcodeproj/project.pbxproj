@@ -227,12 +227,12 @@
 		48AB3AC123E8664A0064A89F /* PDFSupport */ = {
 			isa = PBXGroup;
 			children = (
-				48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */,
-				48C91EB723E9EDEC0014DF44 /* ReaderNavigationController.swift */,
-				48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */,
-				14155C891F0A45E300A53380 /* AppearanceViewController.swift */,
 				4897D13923E95BE000736353 /* Actions */,
+				14155C891F0A45E300A53380 /* AppearanceViewController.swift */,
 				E6B0B75423F6CF610018327E /* InkSettings.swift */,
+				48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */,
+				48C91EB723E9EDEC0014DF44 /* ReaderNavigationController.swift */,
+				48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */,
 			);
 			path = PDFSupport;
 			sourceTree = "<group>";

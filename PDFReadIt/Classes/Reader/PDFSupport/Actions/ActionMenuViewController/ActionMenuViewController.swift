@@ -86,6 +86,13 @@ extension ActionMenuViewController: UITableViewDelegate {
                 // need to -1 because pages are indexed starting with 0
                 if let page = documentToShare.page(at: pageIndex - 1) {
                     compiledDocument.insert(page, at: 0)
+
+                    if pdfView.displayMode == .twoUp,
+                        pageIndex - 1 != 0 {
+                        if let page = documentToShare.page(at: pageIndex) {
+                            compiledDocument.insert(page, at: 1)
+                        }
+                    }
                 }
                 delegate?.didPrepareForShare(document: compiledDocument)
             }

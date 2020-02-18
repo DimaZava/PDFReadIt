@@ -413,10 +413,18 @@ private extension PDFReaderViewController {
     }
 
     func updatePageNumberLabel() {
-        if let currentPage = pdfView.currentPage, let index = pdfDocument?.index(for: currentPage), let pageCount = pdfDocument?.pageCount {
-            pageNumberLabel.text = String(format: "%d/%d", index + 1, pageCount)
+        guard let currentPage = pdfView.visiblePages.first,
+            let index = pdfDocument?.index(for: currentPage),
+            let pageCount = pdfDocument?.pageCount else {
+                pageNumberLabel.text = nil
+                return
+        }
+
+        if pdfView.displayMode == .singlePage || pdfView.displayMode == .singlePageContinuous {
+            pageNumberLabel.text = String("\(index + 1)/\(pageCount)")
         } else {
-            pageNumberLabel.text = nil
+            let currentPagesIndexes = (index != pageCount && index != 0) ? "\(index + 1)-\(index + 2)" : "\(index + 1)"
+            pageNumberLabel.text = String("\(currentPagesIndexes)/\(pageCount)")
         }
     }
 }
