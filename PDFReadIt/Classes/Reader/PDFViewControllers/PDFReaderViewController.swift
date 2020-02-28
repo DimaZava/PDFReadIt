@@ -87,16 +87,13 @@ open class PDFReaderViewController: UIViewController {
         super.viewDidLayoutSubviews()
         if shouldUpdatePDFScrollPosition {
             fixPDFViewScrollPosition()
+            pdfView.autoScales = true // This call is required to fix PDF document scale, seems to be bug inside PDFKit
         }
     }
 
     override open func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         adjustThumbnailViewHeight()
-    }
-
-    override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        pdfView.autoScales = true // This call is required to fix PDF document scale, seems to be bug inside PDFKit
     }
 
     override open func willTransition(to newCollection: UITraitCollection,

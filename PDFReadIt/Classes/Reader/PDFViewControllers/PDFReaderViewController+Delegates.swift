@@ -17,25 +17,10 @@ extension PDFReaderViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
-// MARK: - MFMailComposeViewControllerDelegate
-extension PDFReaderViewController: MFMailComposeViewControllerDelegate {
-
-    open func mailComposeController(_ controller: MFMailComposeViewController,
-                                    didFinishWith result: MFMailComposeResult,
-                                    error: Error?) {
-        controller.dismiss(animated: true)
-    }
-}
-
 // MARK: - ActionMenuViewControllerDelegate
 extension PDFReaderViewController: ActionMenuViewControllerDelegate {
 
     func didPrepareForShare(document: PDFDocument) {
-
-        guard MFMailComposeViewController.canSendMail() else {
-            print("This device doesn't support MFMailComposeViewController")
-            return
-        }
 
         let documentToProceed: PDFDocument
         if document.documentURL == nil {
@@ -47,26 +32,22 @@ extension PDFReaderViewController: ActionMenuViewControllerDelegate {
             documentToProceed = document
         }
 
-        guard let fileName = documentToProceed.documentURL?.lastPathComponent,
-            let attachmentData = documentToProceed.dataRepresentation() else { return }
+        guard let fileURL = documentToProceed.documentURL else { return }
 
-        let mailComposeViewController = MFMailComposeViewController()
+        let activityViewController = UIActivityViewController(activityItems: [fileURL],
+                                                              applicationActivities: nil)
 
-        if let title = pdfDocument?.documentAttributes?[PDFDocumentAttribute.titleAttribute] as? String {
-            mailComposeViewController.setSubject(title)
-        }
-
-        mailComposeViewController.addAttachmentData(attachmentData, mimeType: "application/pdf", fileName: fileName)
-        mailComposeViewController.mailComposeDelegate = self
-        mailComposeViewController.modalPresentationStyle = .formSheet
-        mailComposeViewController.isModalInPopover = true
-
-        if navigationController?.presentedViewController != nil {
-            navigationController?.dismiss(animated: true, completion: {
-                self.navigationController?.present(mailComposeViewController, animated: true)
-            })
-        } else {
-            navigationController?.present(mailComposeViewController, animated: true)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            if navigationController?.presentedViewController != nil {
+                navigationController?.dismiss(animated: true, completion: {
+                    self.navigationController?.present(activityViewController, animated: true)
+                })
+            } else {
+                navigationController?.present(activityViewController, animated: true)
+            }
+        } else if UIDevice.current.userInterfaceIdiom == .pad {
+            navigationController?.presentedViewController?.dismiss(animated: false)
+            presentPopover(activityViewController, sourcePoint: CGPoint(x: view.frame.maxX, y: view.frame.midY))
         }
     }
 
