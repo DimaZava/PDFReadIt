@@ -75,6 +75,7 @@
 		E6B1EC5C23FA9A6300892634 /* InkSettingsToolsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B1EC5A23FA9A6300892634 /* InkSettingsToolsCell.xib */; };
 		E6B1EC6023FA9BB000892634 /* InkSettingsToolCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B1EC5E23FA9BB000892634 /* InkSettingsToolCollectionCell.swift */; };
 		E6B1EC6123FA9BB000892634 /* InkSettingsToolCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6B1EC5F23FA9BB000892634 /* InkSettingsToolCollectionCell.xib */; };
+		E6E3FD63241111D200FF0351 /* Sample_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6E3FD62241111D200FF0351 /* Sample_1.pdf */; };
 		E6FBF4CF23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FBF4CE23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift */; };
 		E7C9FA3222350A55003FBCB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C9FA3122350A55003FBCB6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -150,6 +151,7 @@
 		E6B1EC5A23FA9A6300892634 /* InkSettingsToolsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsToolsCell.xib; sourceTree = "<group>"; };
 		E6B1EC5E23FA9BB000892634 /* InkSettingsToolCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsToolCollectionCell.swift; sourceTree = "<group>"; };
 		E6B1EC5F23FA9BB000892634 /* InkSettingsToolCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsToolCollectionCell.xib; sourceTree = "<group>"; };
+		E6E3FD62241111D200FF0351 /* Sample_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Sample_1.pdf; sourceTree = "<group>"; };
 		E6FBF4CE23FC6B7A00AF3758 /* PDFReaderViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDFReaderViewController+Delegates.swift"; sourceTree = "<group>"; };
 		E7C9FA3122350A55003FBCB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				140E250F1F0A793100298665 /* LaunchScreen.storyboard */,
 				E7C9FA3122350A55003FBCB6 /* Assets.xcassets */,
 				1421EF201F0A411E00BEB695 /* Info.plist */,
+				E6E3FD62241111D200FF0351 /* Sample_1.pdf */,
 				E652CFAE23FD27ED00A8D2CB /* Sample.pdf */,
 			);
 			path = PDFReadIt;
@@ -574,6 +577,7 @@
 				48AB3AC823E86A770064A89F /* PDFOutlineCell.xib in Resources */,
 				E6B0B76523F6DA930018327E /* InkSettingsFillColorCell.xib in Resources */,
 				E6B0B76023F6D91F0018327E /* InkSettingsStrokeColorCell.xib in Resources */,
+				E6E3FD63241111D200FF0351 /* Sample_1.pdf in Resources */,
 				E652CFAF23FD27ED00A8D2CB /* Sample.pdf in Resources */,
 				E6B0B75B23F6D7540018327E /* InkSettingsExampleCell.xib in Resources */,
 				E6650E1D23F5A66900F311D4 /* InkSettingsViewController.xib in Resources */,

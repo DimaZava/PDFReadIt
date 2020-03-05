@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        let url = Bundle.main.url(forResource: "Sample", withExtension: "pdf")
+        let url = Bundle.main.url(forResource: "Sample_1", withExtension: "pdf")
         let document = PDFDocument(url: url!)!
 
         window = UIWindow(frame: UIScreen.main.bounds)

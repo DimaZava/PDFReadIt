@@ -124,6 +124,10 @@ open class PDFReaderViewController: UIViewController {
 
         pdfView.document = pdfDocument
         titleLabel.text = pdfDocument?.documentAttributes?[PDFDocumentAttribute.titleAttribute] as? String
+            ?? pdfDocument?.documentURL?.lastPathComponent
+        if titleLabel.text == nil {
+            titleLabel.isHidden = true
+        }
 
         pdfView.displayMode = .twoUp
         pdfView.displaysAsBook = true
