@@ -26,10 +26,12 @@ class PDFPageChangeSwipeGestureRecognizer: UISwipeGestureRecognizer {
         case .left:
             if pdfView.canGoToNextPage {
                 pdfView.goToNextPage(self)
+                pdfView.scaleFactor = pdfView.scaleFactorForSizeToFit
             }
         case .right:
             if pdfView.canGoToPreviousPage {
                 pdfView.goToPreviousPage(self)
+                pdfView.scaleFactor = pdfView.scaleFactorForSizeToFit
             }
         case .up:
             break
