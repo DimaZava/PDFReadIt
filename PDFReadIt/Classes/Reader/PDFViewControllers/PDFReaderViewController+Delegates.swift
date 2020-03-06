@@ -24,8 +24,14 @@ extension PDFReaderViewController: ActionMenuViewControllerDelegate {
 
         let documentToProceed: PDFDocument
         if document.documentURL == nil {
-            let basicName = pdfDocument?.documentURL?.lastPathComponent ?? "Document.pdf"
-            let urlToWrite = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(basicName)
+            let basicName = pdfDocument?.documentURL?.lastPathComponent ?? "Document"
+            var urlToWrite = URL(fileURLWithPath: NSTemporaryDirectory())
+                .appendingPathComponent(basicName)
+
+            if urlToWrite.pathExtension != "pdf" {
+                urlToWrite.appendPathExtension("pdf")
+            }
+
             document.write(to: urlToWrite)
             documentToProceed = PDFDocument(url: urlToWrite)!
         } else {
