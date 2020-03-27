@@ -19,50 +19,9 @@ extension PDFReaderViewController: UIPopoverPresentationControllerDelegate {
 
 // MARK: - ActionMenuViewControllerDelegate
 extension PDFReaderViewController: ActionMenuViewControllerDelegate {
-
-    func didPrepareForShare(document: PDFDocument) {
-
-        let documentToProceed: PDFDocument
-        if document.documentURL == nil {
-            let basicName = pdfDocument?.documentURL?.lastPathComponent ?? "Document"
-            var urlToWrite = URL(fileURLWithPath: NSTemporaryDirectory())
-                .appendingPathComponent(basicName)
-
-            if urlToWrite.pathExtension != "pdf" {
-                urlToWrite.appendPathExtension("pdf")
-            }
-
-            document.write(to: urlToWrite)
-            documentToProceed = PDFDocument(url: urlToWrite)!
-        } else {
-            documentToProceed = document
-        }
-
-        guard let fileURL = documentToProceed.documentURL else { return }
-
-        let activityViewController = UIActivityViewController(activityItems: [fileURL],
-                                                              applicationActivities: nil)
-
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            if navigationController?.presentedViewController != nil {
-                navigationController?.dismiss(animated: true, completion: {
-                    self.navigationController?.present(activityViewController, animated: true)
-                })
-            } else {
-                navigationController?.present(activityViewController, animated: true)
-            }
-        } else if UIDevice.current.userInterfaceIdiom == .pad {
-            navigationController?.presentedViewController?.dismiss(animated: false)
-            presentPopover(activityViewController, sourcePoint: CGPoint(x: view.frame.maxX, y: view.frame.midY))
-        }
-    }
-
-    func actionMenuViewControllerPrintDocument(_ actionMenuViewController: ActionMenuViewController) {
-        UIPrintInteractionController.shared.printingItem = pdfDocument?.dataRepresentation()
-        UIPrintInteractionController.shared.present(animated: true)
-    }
 }
 
+// MARK: - UIGestureRecognizerDelegate
 extension PDFReaderViewController: UIGestureRecognizerDelegate {
 
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,

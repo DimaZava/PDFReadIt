@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionMenuViewController" customModule="BookReader" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionMenuViewController" customModule="PDFReadIt" customModuleProvider="target">
             <connections>
+                <outlet property="loadingLockView" destination="3py-ZE-b9K" id="vNs-8E-Awn"/>
                 <outlet property="tableView" destination="baj-d3-fXa" id="7gY-5r-i4a"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lB7-K1-00K"/>
             </connections>
@@ -19,17 +20,34 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="baj-d3-fXa" customClass="SelfSizedTableView" customModule="BookReader" customModuleProvider="target">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="baj-d3-fXa" customClass="SelfSizedTableView" customModule="PDFReadIt" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3py-ZE-b9K">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="1YF-ec-CN6">
+                            <rect key="frame" x="188.5" y="390.5" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="1YF-ec-CN6" firstAttribute="centerX" secondItem="3py-ZE-b9K" secondAttribute="centerX" id="tiI-Ch-uZT"/>
+                        <constraint firstItem="1YF-ec-CN6" firstAttribute="centerY" secondItem="3py-ZE-b9K" secondAttribute="centerY" id="x2K-7j-Wpa"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3py-ZE-b9K" secondAttribute="trailing" id="5cb-nK-DZQ"/>
+                <constraint firstItem="3py-ZE-b9K" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="SGu-Rl-aSr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3py-ZE-b9K" secondAttribute="bottom" id="YO9-TS-qVX"/>
                 <constraint firstItem="baj-d3-fXa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lkw-x6-mns"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="baj-d3-fXa" secondAttribute="bottom" id="mOd-al-uCj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="baj-d3-fXa" secondAttribute="trailing" id="taO-Uc-YWP"/>
                 <constraint firstItem="baj-d3-fXa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="vUi-Mg-8Wm"/>
+                <constraint firstItem="3py-ZE-b9K" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xTH-70-jt7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="153"/>
