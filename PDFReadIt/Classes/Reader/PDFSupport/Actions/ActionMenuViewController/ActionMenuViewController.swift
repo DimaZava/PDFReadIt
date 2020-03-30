@@ -76,15 +76,29 @@ extension ActionMenuViewController {
 
         DispatchQueue.global(qos: .userInitiated).async {
 
-            let basicName = self.documentToShare.documentURL?.lastPathComponent ?? "Document"
-            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            var urlToWrite = path.appendingPathComponent(basicName)
+            let ifNeedsToCreateTempCopy = document.documentURL == nil ||
+                document.documentURL != nil &&
+                (0..<document.pageCount).first { pageIndex -> Bool in
+                    guard let annotations = document.page(at: pageIndex)?.annotations else { return false }
+                    return !annotations
+                        .filter({ $0.type == String(PDFAnnotationSubtype.ink.rawValue.dropFirst()) }).isEmpty
+                } != nil
 
-            if urlToWrite.pathExtension != "pdf" {
-                urlToWrite.appendPathExtension("pdf")
+            var urlToWrite: URL
+            if ifNeedsToCreateTempCopy {
+                let basicName = self.documentToShare.documentURL?.lastPathComponent ?? "Document"
+                let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                urlToWrite = path.appendingPathComponent(basicName)
+
+                if urlToWrite.pathExtension != "pdf" {
+                    urlToWrite.appendPathExtension("pdf")
+                }
+
+                document.write(to: urlToWrite)
+            } else {
+                // we know that documentURL is non nil because of ifNeedsToCreateTempCopy
+                urlToWrite = document.documentURL!
             }
-
-            document.write(to: urlToWrite)
 
             DispatchQueue.main.async {
 
@@ -155,7 +169,7 @@ extension ActionMenuViewController: UITableViewDelegate {
                                 let document = PDFDocument(data: pageData),
                                 document.pageCount == 1,
                                 let page = document.page(at: 0) {
-                                compiledDocument.insert(page, at: rangeElement - 1)
+                                compiledDocument.insert(page, at: compiledDocument.pageCount)
                             }
                         }
                     }
