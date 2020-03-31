@@ -106,11 +106,13 @@ extension ActionMenuViewController {
 
                 let activityViewController = UIActivityViewController(activityItems: [urlToWrite],
                                                                       applicationActivities: nil)
-                activityViewController.completionWithItemsHandler = { type, completed, items, error in
-                    do {
-                        try FileManager.default.removeItem(at: urlToWrite)
-                    } catch {
-                        print(error)
+                if ifNeedsToCreateTempCopy {
+                    activityViewController.completionWithItemsHandler = { type, completed, items, error in
+                        do {
+                            try FileManager.default.removeItem(at: urlToWrite)
+                        } catch {
+                            print(error)
+                        }
                     }
                 }
 

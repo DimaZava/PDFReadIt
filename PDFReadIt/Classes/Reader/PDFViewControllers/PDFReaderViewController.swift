@@ -68,6 +68,9 @@ open class PDFReaderViewController: UIViewController {
     }()
     private var shouldUpdatePDFScrollPosition = true
 
+    @objc
+    open var postDismissAction: ((PDFReaderViewController) -> Void)?
+
     // MARK: - Lifecycle
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -307,6 +310,7 @@ open class PDFReaderViewController: UIViewController {
         default:
             dismiss(animated: animated)
         }
+        postDismissAction?(self)
     }
 
     func showBars(needsToHideNavigationBar: Bool = true) {
