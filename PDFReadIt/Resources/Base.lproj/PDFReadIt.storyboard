@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XKz-NW-4Fd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XKz-NW-4Fd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -120,6 +120,19 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="LBJ-3o-kam"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQ3-lI-rex">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Per-96-aoJ">
+                                        <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.52179538216560506" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Per-96-aoJ" firstAttribute="centerY" secondItem="rQ3-lI-rex" secondAttribute="centerY" id="jhV-l6-QZh"/>
+                                    <constraint firstItem="Per-96-aoJ" firstAttribute="centerX" secondItem="rQ3-lI-rex" secondAttribute="centerX" id="tLe-qW-Zlc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -131,10 +144,13 @@
                             <constraint firstItem="ltT-FO-jdU" firstAttribute="trailing" secondItem="wu0-JT-Hpp" secondAttribute="trailing" id="AOW-Xy-o72"/>
                             <constraint firstItem="ZP2-Cv-L3H" firstAttribute="trailing" secondItem="wu0-JT-Hpp" secondAttribute="trailing" id="C81-Fz-Scq"/>
                             <constraint firstItem="ZP2-Cv-L3H" firstAttribute="bottom" secondItem="wu0-JT-Hpp" secondAttribute="bottom" id="GcI-Xy-pUd"/>
+                            <constraint firstItem="rQ3-lI-rex" firstAttribute="leading" secondItem="wu0-JT-Hpp" secondAttribute="leading" id="OCK-GE-RXO"/>
                             <constraint firstItem="ZP2-Cv-L3H" firstAttribute="leading" secondItem="wu0-JT-Hpp" secondAttribute="leading" id="P7e-rN-B6v"/>
+                            <constraint firstAttribute="bottom" secondItem="rQ3-lI-rex" secondAttribute="bottom" id="R52-AK-uN0"/>
                             <constraint firstItem="EfD-K5-tnG" firstAttribute="top" secondItem="wu0-JT-Hpp" secondAttribute="top" id="RHF-qb-KTa"/>
                             <constraint firstItem="gH8-GA-Txo" firstAttribute="trailing" secondItem="wu0-JT-Hpp" secondAttribute="trailing" id="SWf-gb-j27"/>
                             <constraint firstItem="gH8-GA-Txo" firstAttribute="leading" secondItem="wu0-JT-Hpp" secondAttribute="leading" id="UNi-6g-xS9"/>
+                            <constraint firstItem="rQ3-lI-rex" firstAttribute="top" secondItem="wu0-JT-Hpp" secondAttribute="top" id="UU3-aG-oCH"/>
                             <constraint firstItem="uxG-pn-ceU" firstAttribute="centerX" secondItem="wu0-JT-Hpp" secondAttribute="centerX" id="ZLf-bW-TVT"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uxG-pn-ceU" secondAttribute="trailing" constant="15" id="ZNN-oe-ztY"/>
                             <constraint firstItem="uxG-pn-ceU" firstAttribute="top" secondItem="FES-HY-1sl" secondAttribute="top" constant="15" id="jzJ-Gk-SqD"/>
@@ -147,12 +163,15 @@
                             <constraint firstItem="EfD-K5-tnG" firstAttribute="leading" secondItem="wu0-JT-Hpp" secondAttribute="leading" id="t9O-Ci-pTu"/>
                             <constraint firstItem="ltT-FO-jdU" firstAttribute="top" secondItem="wu0-JT-Hpp" secondAttribute="top" id="uqf-Xg-9sH"/>
                             <constraint firstItem="dRa-hu-L5d" firstAttribute="bottom" secondItem="wu0-JT-Hpp" secondAttribute="bottom" id="v0w-Y1-hGn"/>
+                            <constraint firstAttribute="trailing" secondItem="rQ3-lI-rex" secondAttribute="trailing" id="vLf-ba-Xjm"/>
                             <constraint firstItem="dRa-hu-L5d" firstAttribute="trailing" secondItem="wu0-JT-Hpp" secondAttribute="trailing" id="y69-D2-8SZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FES-HY-1sl"/>
                     </view>
                     <navigationItem key="navigationItem" id="for-RT-gCR"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Per-96-aoJ" id="q0U-Bt-EM2"/>
+                        <outlet property="activityIndicatorContainerView" destination="rQ3-lI-rex" id="m25-Dw-F52"/>
                         <outlet property="bookmarkViewConainer" destination="ltT-FO-jdU" id="kh7-g3-o2C"/>
                         <outlet property="outlineViewConainer" destination="ZP2-Cv-L3H" id="LZA-0q-ZpQ"/>
                         <outlet property="pageNumberLabel" destination="v3u-OX-nvq" id="sMZ-5T-ad9"/>

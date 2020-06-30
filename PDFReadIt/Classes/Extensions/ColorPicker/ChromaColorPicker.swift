@@ -493,7 +493,7 @@ class ChromaColorPicker: UIControl {
 
         colorToggleButton.isEnabled = true // Unlock
     }
-    
+
     // MARK: - Helper Methods
     private func angleToCenterFromPoint(_ point: CGPoint) -> Float {
         let deltaX = Float(bounds.midX - point.x)

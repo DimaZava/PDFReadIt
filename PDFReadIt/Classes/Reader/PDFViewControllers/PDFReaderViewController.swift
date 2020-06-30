@@ -15,12 +15,18 @@ open class PDFReaderViewController: UIViewController {
 
     // MARK: - Static members
     static public func instantiateViewController(with document: PDFDocument) -> UINavigationController {
+        return instantiateViewController(with: document, isNeedToOverwriteDocument: true)
+    }
+
+    static public func instantiateViewController(with document: PDFDocument,
+                                                 isNeedToOverwriteDocument: Bool) -> UINavigationController {
         guard let navigationController = UIStoryboard(name: "PDFReadIt", bundle: Bundle(for: self))
             .instantiateInitialViewController() as? UINavigationController,
             let viewController = navigationController.topViewController as? Self else {
                 fatalError("Unable to instantiate PDFReaderViewController")
         }
         viewController.pdfDocument = document
+        viewController.isNeedToOverwriteDocument = isNeedToOverwriteDocument
         return navigationController
     }
 
@@ -38,6 +44,8 @@ open class PDFReaderViewController: UIViewController {
     @IBOutlet private weak var thumbnailGridViewConainer: UIView!
     @IBOutlet private weak var outlineViewConainer: UIView!
     @IBOutlet private weak var bookmarkViewConainer: UIView!
+    @IBOutlet private weak var activityIndicatorContainerView: UIView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - Constants
     let pdfViewGestureRecognizer = PDFViewGestureRecognizer()
@@ -54,6 +62,8 @@ open class PDFReaderViewController: UIViewController {
     }()
 
     // MARK: - Variables
+    /// Set this flag to false if you don't want to overwrite opened document (for example with drawings on it)
+    var isNeedToOverwriteDocument = true
     var pdfPrevPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
     var pdfNextPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
     private(set) var pdfDocument: PDFDocument?
@@ -68,7 +78,6 @@ open class PDFReaderViewController: UIViewController {
     }()
     private var shouldUpdatePDFScrollPosition = true
 
-    @objc
     open var postDismissAction: ((PDFReaderViewController) -> Void)?
 
     // MARK: - Lifecycle
@@ -126,9 +135,9 @@ open class PDFReaderViewController: UIViewController {
     func setupUI() {
 
         pdfView.document = pdfDocument
-        titleLabel.text = pdfDocument?.documentAttributes?[PDFDocumentAttribute.titleAttribute] as? String
-            ?? pdfDocument?.documentURL?.lastPathComponent
-        
+        titleLabel.text = pdfDocument?.documentAttributes?[PDFDocumentAttribute.titleAttribute] as? String ??
+            pdfDocument?.documentURL?.lastPathComponent
+
         if titleLabel.text == nil {
             titleLabel.isHidden = true
         }
@@ -295,22 +304,65 @@ open class PDFReaderViewController: UIViewController {
     }
 
     func dismissModule(animated: Bool = true) {
-        switch parent {
-        case let navigationController as UINavigationController where !navigationController.viewControllers.isEmpty &&
-            navigationController.viewControllers.first != self:
-            navigationController.popViewController(animated: animated)
-        case _ where parent?.presentingViewController != nil || parent?.popoverPresentationController != nil:
-            if navigationController == nil {
-                dismiss(animated: animated)
-            } else {
-                navigationController?.dismiss(animated: animated)
+
+        let dismissBlock = {
+            switch self.parent {
+            case let navController as UINavigationController where !navController.viewControllers.isEmpty &&
+                navController.viewControllers.first != self:
+                navController.popViewController(animated: animated)
+            case _ where self.parent?.presentingViewController != nil ||
+                self.parent?.popoverPresentationController != nil:
+                if self.navigationController == nil {
+                    self.dismiss(animated: animated)
+                } else {
+                    self.navigationController?.dismiss(animated: animated)
+                }
+            case let navigationController as UINavigationController where !navigationController.viewControllers.isEmpty:
+                navigationController.popViewController(animated: animated)
+            default:
+                self.dismiss(animated: animated)
             }
-        case let navigationController as UINavigationController where !navigationController.viewControllers.isEmpty:
-            navigationController.popViewController(animated: animated)
-        default:
-            dismiss(animated: animated)
+            self.postDismissAction?(self)
         }
-        postDismissAction?(self)
+
+        if isNeedToOverwriteDocument,
+            let documentURL = pdfDocument?.documentURL,
+            documentURL.isFileURL {
+
+            showWaitingView()
+
+            DispatchQueue.global(qos: .userInitiated).async {
+                do {
+                    if FileManager.default.fileExists(atPath: documentURL.path) {
+                        try FileManager.default.removeItem(at: documentURL)
+                    }
+                    self.pdfDocument?.write(to: documentURL)
+                } catch {
+                    print(error)
+                }
+
+                DispatchQueue.main.async {
+                    self.hideWaitingView()
+                    dismissBlock()
+                }
+            }
+        } else {
+            dismissBlock()
+        }
+    }
+
+    func showWaitingView() {
+        navigationItem.leftBarButtonItems?.forEach { $0.isEnabled = false }
+        navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = false }
+        activityIndicatorContainerView.isHidden = false
+        activityIndicator.startAnimating()
+    }
+
+    func hideWaitingView() {
+        activityIndicator.stopAnimating()
+        activityIndicatorContainerView.isHidden = true
+        navigationItem.leftBarButtonItems?.forEach { $0.isEnabled = true }
+        navigationItem.rightBarButtonItems?.forEach { $0.isEnabled = true }
     }
 
     func showBars(needsToHideNavigationBar: Bool = true) {
