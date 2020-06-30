@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Reader Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="Of4-T1-IX2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XKz-NW-4Fd" customClass="PDFReaderNavigationController" customModule="PDFReadIt" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XKz-NW-4Fd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RP2-o8-441">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -219,7 +219,7 @@ open class PDFReaderViewController: UIViewController {
                                                       in: pdfView)
         viewController.delegate = self
 
-        let navigationController = PDFReaderNavigationController(rootViewController: viewController)
+        let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .popover
         navigationController.popoverPresentationController?.barButtonItem = sender
         navigationController.popoverPresentationController?.permittedArrowDirections = .up
