@@ -15,10 +15,20 @@ open class PDFReaderViewController: UIViewController {
 
     // MARK: - Static members
     static public func instantiateViewController(with document: PDFDocument) -> UINavigationController {
-        return instantiateViewController(with: document, isNeedToOverwriteDocument: true)
+        return instantiateViewController(with: document,
+                                         overridenTitle: nil,
+                                         isNeedToOverwriteDocument: true)
+    }
+    
+    static public func instantiateViewController(with document: PDFDocument,
+                                                 overridenTitle: String?) -> UINavigationController {
+        return instantiateViewController(with: document,
+                                         overridenTitle: overridenTitle,
+                                         isNeedToOverwriteDocument: true)
     }
 
     static public func instantiateViewController(with document: PDFDocument,
+                                                 overridenTitle: String?,
                                                  isNeedToOverwriteDocument: Bool) -> UINavigationController {
         guard let navigationController = UIStoryboard(name: "PDFReadIt", bundle: Bundle(for: self))
             .instantiateInitialViewController() as? UINavigationController,
@@ -27,6 +37,7 @@ open class PDFReaderViewController: UIViewController {
         }
         viewController.pdfDocument = document
         viewController.isNeedToOverwriteDocument = isNeedToOverwriteDocument
+        viewController.overridenTitle = overridenTitle
         return navigationController
     }
 
@@ -64,6 +75,7 @@ open class PDFReaderViewController: UIViewController {
     // MARK: - Variables
     /// Set this flag to false if you don't want to overwrite opened document (for example with drawings on it)
     var isNeedToOverwriteDocument = true
+    var overridenTitle: String?
     var pdfPrevPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
     var pdfNextPageChangeSwipeGestureRecognizer: PDFPageChangeSwipeGestureRecognizer?
     private(set) var pdfDocument: PDFDocument?
@@ -135,7 +147,9 @@ open class PDFReaderViewController: UIViewController {
     func setupUI() {
 
         pdfView.document = pdfDocument
-        titleLabel.text = pdfDocument?.documentAttributes?[PDFDocumentAttribute.titleAttribute] as? String ??
+        titleLabel.text =
+            overridenTitle ??
+            pdfDocument?.documentAttributes?[PDFDocumentAttribute.titleAttribute] as? String ??
             pdfDocument?.documentURL?.lastPathComponent
 
         if titleLabel.text == nil {

@@ -38,7 +38,6 @@
 		48C91EB223E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB023E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift */; };
 		48C91EB323E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */; };
 		48C91EB623E9E2830014DF44 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */; };
-		48C91EB823E9EDEC0014DF44 /* PDFReaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C91EB723E9EDEC0014DF44 /* PDFReaderNavigationController.swift */; };
 		E652CFAF23FD27ED00A8D2CB /* Sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E652CFAE23FD27ED00A8D2CB /* Sample.pdf */; };
 		E6650E1C23F5A66900F311D4 /* InkSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6650E1A23F5A66900F311D4 /* InkSettingsViewController.swift */; };
 		E6650E1D23F5A66900F311D4 /* InkSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6650E1B23F5A66900F311D4 /* InkSettingsViewController.xib */; };
@@ -114,7 +113,6 @@
 		48C91EB023E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesRangeSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		48C91EB123E9AC4F0014DF44 /* PagesRangeSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagesRangeSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
-		48C91EB723E9EDEC0014DF44 /* PDFReaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReaderNavigationController.swift; sourceTree = "<group>"; };
 		E652CFAE23FD27ED00A8D2CB /* Sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Sample.pdf; sourceTree = "<group>"; };
 		E6650E1A23F5A66900F311D4 /* InkSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkSettingsViewController.swift; sourceTree = "<group>"; };
 		E6650E1B23F5A66900F311D4 /* InkSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InkSettingsViewController.xib; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 				14155C891F0A45E300A53380 /* AppearanceViewController.swift */,
 				E6B0B75423F6CF610018327E /* InkSettings.swift */,
 				48AB3AC223E8665F0064A89F /* PDFViewGestureRecognizer.swift */,
-				48C91EB723E9EDEC0014DF44 /* PDFReaderNavigationController.swift */,
 				48C91EB523E9E2830014DF44 /* SelfSizedTableView.swift */,
 			);
 			path = PDFSupport;
@@ -615,7 +612,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48C91EB823E9EDEC0014DF44 /* PDFReaderNavigationController.swift in Sources */,
 				14155C8A1F0A45E300A53380 /* AppearanceViewController.swift in Sources */,
 				E6650E2323F5B35C00F311D4 /* UIViewController+Extensions.swift in Sources */,
 				E6B0B77D23F6F2810018327E /* ChromaHandle.swift in Sources */,
